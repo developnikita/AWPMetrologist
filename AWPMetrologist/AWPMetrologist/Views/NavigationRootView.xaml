@@ -15,11 +15,12 @@
           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <muxc:NavigationView x:Name="NavView"
+                             IsSettingsVisible="False"
                              IsBackButtonVisible="Collapsed"
                              Loaded="NavView_Loaded"
                              ItemInvoked="NavView_ItemInvoked">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Tag="accounting" 
+                <muxc:NavigationViewItem Tag="Accounting" 
                                          Content="Учёт СИ">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" 
@@ -27,15 +28,15 @@
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
-                <muxc:NavigationViewItem Tag="verification" 
-                                         Content="Результаты поверки">
+                <muxc:NavigationViewItem Tag="Verification" 
+                                         Content="Поверка/Калибровка">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets"
                                   Glyph="&#xE720;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
-                <muxc:NavigationViewItem Tag="schedules" 
+                <muxc:NavigationViewItem Tag="Schedules" 
                                          Content="План-графики">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" 
@@ -44,12 +45,27 @@
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.PaneFooter>
-                <muxc:NavigationViewItem Content="Log In">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                <StackPanel Orientation="Vertical">
+                    <muxc:NavigationViewItem Content="Log In">
+                        <muxc:NavigationViewItem.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets"
                                   Glyph="&#xE720;" ></FontIcon>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+                    <muxc:NavigationViewItem Content="Sittings">
+                        <muxc:NavigationViewItem.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE720;" ></FontIcon>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+                    <muxc:NavigationViewItem Content="Справка">
+                        <muxc:NavigationViewItem.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE720;" ></FontIcon>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+                </StackPanel>
+                
             </muxc:NavigationView.PaneFooter>
             
             <Frame x:Name="AppNavFrame" 

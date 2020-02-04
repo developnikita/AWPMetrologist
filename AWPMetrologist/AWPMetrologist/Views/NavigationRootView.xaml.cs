@@ -22,7 +22,28 @@ namespace AWPMetrologist.Views
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
+            if (args.IsSettingsInvoked)
+            {
+                // TODO: Settings!!!
+                return;
+            }
 
+            // NOTE: as не вызовет исключение, не повлияет ли на тестирование и отладку.
+            switch (args.InvokedItemContainer.Tag as string)
+            {
+                case "Accounting":
+                    {
+                        AppNavFrame.Navigate(typeof(AccountingView));
+                    } break;
+                case "Verification":
+                    {
+                        AppNavFrame.Navigate(typeof(VerificationView));
+                    } break;
+                case "Schedules":
+                    {
+                        AppNavFrame.Navigate(typeof(SchedulesView));
+                    } break;
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -33,6 +54,19 @@ namespace AWPMetrologist.Views
         private void AppNavFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
 
+        }
+
+        public Frame AppFrame
+        {
+            get
+            {
+                return AppNavFrame;
+            }
+            // NOTE: Временное решение
+            set
+            {
+                AppNavFrame = value;
+            }
         }
     }
 }

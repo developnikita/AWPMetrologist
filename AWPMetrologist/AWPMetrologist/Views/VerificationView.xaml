@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="AWPMetrologist.Views.VerificationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:AWPMetrologist.Views"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Title" 
+                   Grid.Row="0">
+            Результаты поверки/калибровки
+        </TextBlock>
+        <controls:DataGrid AutoGenerateColumns="True"
+                           Grid.Row="1">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="№ П.П">
+                    
+                </controls:DataGridTextColumn>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</Page>
