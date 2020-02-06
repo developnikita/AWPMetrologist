@@ -134,7 +134,10 @@
     <Compile Include="Services\Navigation\IPageWithViewModel.cs" />
     <Compile Include="Services\Navigation\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
+    <Compile Include="ViewModels\AccountingViewModel.cs" />
+    <Compile Include="ViewModels\SchedulesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\VerificationViewModel.cs" />
     <Compile Include="Views\AccountingView.xaml.cs">
       <DependentUpon>AccountingView.xaml</DependentUpon>
     </Compile>
