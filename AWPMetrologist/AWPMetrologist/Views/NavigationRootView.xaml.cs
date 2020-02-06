@@ -24,8 +24,7 @@ namespace AWPMetrologist.Views
         {
             if (args.IsSettingsInvoked)
             {
-                // TODO: Settings!!!
-                return;
+                AppNavFrame.Navigate(typeof(SettingsView));
             }
 
             // NOTE: as не вызовет исключение, не повлияет ли на тестирование и отладку.
@@ -43,6 +42,7 @@ namespace AWPMetrologist.Views
                     {
                         AppNavFrame.Navigate(typeof(SchedulesView));
                     } break;
+
             }
         }
 
