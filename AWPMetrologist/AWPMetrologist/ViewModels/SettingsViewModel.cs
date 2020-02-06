@@ -1,11 +1,6 @@
-﻿using AWPMetrologist.Services;
-using Microsoft.Toolkit.Uwp.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using AWPMetrologist.Helpers;
+using AWPMetrologist.Services;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.ApplicationModel;
 

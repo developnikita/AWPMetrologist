@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 // using AWPMetrologist.DataModels;
-// using AWPMetrologist.ViewModels;
+using AWPMetrologist.ViewModels;
 using AWPMetrologist.Views;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI.Xaml.Controls;
