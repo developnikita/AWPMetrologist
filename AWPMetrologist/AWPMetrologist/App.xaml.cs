@@ -1,7 +1,9 @@
-﻿using AWPMetrologist.Views;
-using System;
+﻿using System;
+using Autofac;
+using AWPMetrologist.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -87,5 +89,9 @@ namespace AWPMetrologist
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        private IContainer _conteiner;
+        private BackgroundTaskDeferral appserviceDeferral;
+        private NavigationRootView rootPage;
     }
 }
