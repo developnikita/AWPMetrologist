@@ -1,4 +1,8 @@
-﻿using Windows.UI.Xaml;
+﻿using AWPMetrologist.Helpers;
+using AWPMetrologist.Services.Navigation;
+using Microsoft.Toolkit.Uwp.Helpers;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -12,19 +16,44 @@ namespace AWPMetrologist.Views
     {
         public NavigationRootView()
         {
+            _instance = this;
             this.InitializeComponent();
+
+            var nav = SystemNavigationManager.GetForCurrentView();
+            nav.BackRequested += Nav_BackRequested;
+        }
+
+        public void InitializeNavigationService(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            _navigationService.Navigated += NavigationService_Navigated;
+        }
+
+        private void NavigationService_Navigated(object sender, System.EventArgs e)
+        {
+            var ignored = DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            {
+                var nav = SystemNavigationManager.GetForCurrentView();
+                nav.AppViewBackButtonVisibility = _navigationService.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            });
         }
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-
+            if (!_hasLoadedPreviously)
+            {
+                // TODO: Выбрать домашнюю страницу
+                // _navigationService.NavigatedTo();
+                _hasLoadedPreviously = true;
+            }
         }
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
-                AppNavFrame.Navigate(typeof(SettingsView));
+                _navigationService.NavigateToSettingsAsync();
+                return;
             }
 
             // NOTE: as не вызовет исключение, не повлияет ли на тестирование и отладку.
@@ -32,16 +61,19 @@ namespace AWPMetrologist.Views
             {
                 case "Accounting":
                     {
-                        AppNavFrame.Navigate(typeof(AccountingView));
-                    } break;
+                        _navigationService.NavigateToAccountingAsync();
+                    }
+                    break;
                 case "Verification":
                     {
-                        AppNavFrame.Navigate(typeof(VerificationView));
-                    } break;
+                        _navigationService.NavigateToVerificationAsync();
+                    }
+                    break;
                 case "Schedules":
                     {
-                        AppNavFrame.Navigate(typeof(SchedulesView));
-                    } break;
+                        _navigationService.NavigateToSchedulesAsync();
+                    }
+                    break;
 
             }
         }
@@ -56,6 +88,28 @@ namespace AWPMetrologist.Views
 
         }
 
+        private void Nav_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            var ignored = _navigationService.GoBackAsync();
+            e.Handled = true;
+        }
+
+        public static NavigationRootView Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+        public TitleBarHelper TitleHelper
+        {
+            get
+            {
+                return TitleBarHelper.Instance;
+            }
+        }
+
         public Frame AppFrame
         {
             get
@@ -68,5 +122,9 @@ namespace AWPMetrologist.Views
                 AppNavFrame = value;
             }
         }
+
+        private static NavigationRootView _instance;
+        private INavigationService _navigationService;
+        private bool _hasLoadedPreviously;
     }
 }

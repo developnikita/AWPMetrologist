@@ -5,8 +5,22 @@ namespace AWPMetrologist.Services.Navigation
 {
     public interface INavigationService
     {
+        Task NavigateToSettingsAsync();
+
+        Task NavigateToAccountingAsync();
+
+        Task NavigateToVerificationAsync();
+
+        Task NavigateToSchedulesAsync();
+
+        Task GoBackAsync();
+
+        bool CanGoBack { get; }
+
+        bool IsNavigating { get; }
+
         event EventHandler Navigated;
 
-        Task NavigateToSettingsAsync();
+        event EventHandler<bool> IsNavigatingChanged;
     }
 }

@@ -1,0 +1,8 @@
+﻿CREATE TABLE dbo.Users
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[Login] VARCHAR(10) NOT NULL,
+	[Full_name] VARCHAR(100) NOT NULL,
+
+	CONSTRAINT AK_Login UNIQUE(Login)
+);

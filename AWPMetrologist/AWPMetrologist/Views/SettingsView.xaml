@@ -14,7 +14,8 @@
                                        EnumType="services:ElementThemeExtended" />
     </Page.Resources>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="{StaticResource PageMargin}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+          Margin="{StaticResource PageMargin}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -46,7 +47,7 @@
                     
                     <RadioButton Content="Тёмная"
                                  GroupName="AppTheme"
-                                 IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Light, Mode=TwoWay}"
+                                 IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Dark, Mode=TwoWay}"
                                  Command="{x:Bind ViewModel.SwitchThemeCommand}">
                         <RadioButton.CommandParameter>
                             <services:ElementThemeExtended>Dark</services:ElementThemeExtended>
@@ -55,7 +56,7 @@
 
                     <RadioButton Content="Стандартная"
                                  GroupName="AppTheme"
-                                 IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Light, Mode=TwoWay}"
+                                 IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Default, Mode=TwoWay}"
                                  Command="{x:Bind ViewModel.SwitchThemeCommand}">
                         <RadioButton.CommandParameter>
                             <services:ElementThemeExtended>Default</services:ElementThemeExtended>
@@ -64,7 +65,7 @@
 
                     <RadioButton Content="Кастомная"
                                  GroupName="AppTheme"
-                                 IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Light, Mode=TwoWay}"
+                                 IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Custom, Mode=TwoWay}"
                                  Command="{x:Bind ViewModel.SwitchThemeCommand}">
                         <RadioButton.CommandParameter>
                             <services:ElementThemeExtended>Custom</services:ElementThemeExtended>

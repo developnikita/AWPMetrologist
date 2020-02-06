@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AWPMetrologist.ViewModels
 {
-    class VerificationViewModel
+    public class VerificationViewModel
     {
     }
 }

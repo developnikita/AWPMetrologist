@@ -23,6 +23,7 @@ namespace AWPMetrologist.Services
         }
 
         // TODO: Для добавления красоты.
+        /*
         public static Style GetHomeBackground()
         {
             return null;
@@ -38,7 +39,7 @@ namespace AWPMetrologist.Services
             return TrueTheme();
         }
 
-        /*
+        
         public static string GetHomeImageSource()
         {
             return "";
@@ -184,7 +185,7 @@ namespace AWPMetrologist.Services
         public static event EventHandler<ElementThemeExtended> OnThemeChanged = (sender, args) => { };
 
         private static ResourceDictionary _customTheme = new ResourceDictionary { Source = new Uri("ms-appx:///Themes/Branded.xaml", UriKind.Absolute) };
-        private static ResourceDictionary _stockTheme = new ResourceDictionary { Source = new Uri("ms-appx:///Theme/Stock.xaml", UriKind.Absolute) };
+        private static ResourceDictionary _stockTheme = new ResourceDictionary { Source = new Uri("ms-appx:///Themes/Stock.xaml", UriKind.Absolute) };
 
         private const string SettingsKey = "RequestedTheme";
     }

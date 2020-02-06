@@ -20,11 +20,20 @@ namespace AWPMetrologist.Services.Navigation
 
             PageViewModels = new Dictionary<Type, NavigatedToViewModelDelegate>();
             RegisterPageViewModel<SettingsView, SettingsViewModel>();
+            RegisterPageViewModel<AccountingView, AccountingViewModel>();
+            RegisterPageViewModel<VerificationView, VerificationViewModel>();
+            RegisterPageViewModel<SchedulesView, SchedulesViewModel>();
 
             Frame.Navigated += Frame_Navigated;
         }
 
         public Task NavigateToSettingsAsync() => NavigateToPage<SettingsView>();
+
+        public Task NavigateToAccountingAsync() => NavigateToPage<AccountingView>();
+
+        public Task NavigateToVerificationAsync() => NavigateToPage<VerificationView>();
+
+        public Task NavigateToSchedulesAsync() => NavigateToPage<SchedulesView>();
 
         public async Task GoBackAsync()
         {
@@ -42,7 +51,7 @@ namespace AWPMetrologist.Services.Navigation
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
-            IsNavigating = true;
+            IsNavigating = false;
             if (PageViewModels.ContainsKey(e.SourcePageType))
             {
                 var loadViewModelDelegate = PageViewModels[e.SourcePageType];

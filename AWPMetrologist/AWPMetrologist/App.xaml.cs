@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Autofac;
+using AWPMetrologist.Services;
+using AWPMetrologist.Services.Navigation;
+using AWPMetrologist.ViewModels;
 using AWPMetrologist.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -25,45 +29,98 @@ namespace AWPMetrologist
             this.Suspending += OnSuspending;
         }
 
+        public NavigationRootView GetNavigationRoot()
+        {
+            if (Window.Current.Content is NavigationRootView)
+            {
+                return Window.Current.Content as NavigationRootView;
+            }
+            else if (Window.Current.Content is Frame)
+            {
+                return ((Frame)Window.Current.Content).Content as NavigationRootView;
+            }
+
+            throw new Exception("Window content is unknown type");
+        }
+
+        public Frame GetFrame()
+        {
+            var root = GetNavigationRoot();
+            return root.AppFrame;
+        }
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            await InitializeAsync();
+            InitWindow(skipWindowCreation: e.PrelaunchActivated);
 
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
+            await StartUpAsync();
+        }
+
+        protected async override void OnActivated(IActivatedEventArgs args)
+        {
+            await InitializeAsync();
+            InitWindow(skipWindowCreation: false);
+
+            if (args.Kind == ActivationKind.Protocol)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
+                Window.Current.Activate();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                }
-
-                // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
+                await StartUpAsync();
             }
+        }
 
-            if (e.PrelaunchActivated == false)
+        private void InitWindow(bool skipWindowCreation)
+        {
+            var builder = new ContainerBuilder();
+
+            rootPage = Window.Current.Content as NavigationRootView;
+            bool initApp = rootPage == null && !skipWindowCreation;
+
+            if (initApp)
             {
-                if (rootFrame.Content == null)
-                {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
-                    rootFrame.Navigate(typeof(NavigationRootView), e.Arguments);
-                }
-                // Ensure the current window is active
+                rootPage = new NavigationRootView();
+
+                FrameAdapter adapter = new FrameAdapter(rootPage.AppFrame);
+
+                builder.RegisterInstance(adapter)
+                    .AsImplementedInterfaces();
+
+                builder.RegisterType<SettingsViewModel>();
+                builder.RegisterType<AccountingViewModel>();
+                builder.RegisterType<SchedulesViewModel>();
+                builder.RegisterType<VerificationViewModel>();
+
+                builder.RegisterType<NavigationService>()
+                    .AsImplementedInterfaces()
+                    .SingleInstance();
+
+                _container = builder.Build();
+                rootPage.InitializeNavigationService(_container.Resolve<INavigationService>());
+
+                adapter.NavigationFailed += OnNavigationFailed;
+
+                Window.Current.Content = rootPage;
+
                 Window.Current.Activate();
             }
+        }
+
+        private async Task InitializeAsync()
+        {
+            await ThemeSelectorService.InitializeAsync();
+            await Task.CompletedTask;
+        }
+
+        private async Task StartUpAsync()
+        {
+            ThemeSelectorService.SetRequestedTheme();
+            await Task.CompletedTask;
         }
 
         /// <summary>
@@ -71,7 +128,7 @@ namespace AWPMetrologist
         /// </summary>
         /// <param name="sender">The Frame which failed navigation</param>
         /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
@@ -90,8 +147,8 @@ namespace AWPMetrologist
             deferral.Complete();
         }
 
-        private IContainer _conteiner;
-        private BackgroundTaskDeferral appserviceDeferral;
+        private IContainer _container;
+        private BackgroundTaskDeferral appServiceDeferral;
         private NavigationRootView rootPage;
     }
 }
