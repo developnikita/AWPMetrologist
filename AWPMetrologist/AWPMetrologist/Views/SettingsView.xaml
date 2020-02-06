@@ -7,15 +7,14 @@
     xmlns:helper="using:AWPMetrologist.Helpers"
     xmlns:services="using:AWPMetrologist.Services"
     xmlns:local="using:AWPMetrologist.Views"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Page.Resources>
         <helper:EnumToBooleanConverter x:Key="ThemeEnumConverter" 
                                        EnumType="services:ElementThemeExtended" />
     </Page.Resources>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="{StaticResource PageMargin}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -24,15 +23,18 @@
 
         <TextBlock Grid.Row="0"
                    Text="Settings"
-                   FontWeight="Light"/>
+                   FontWeight="Light"
+                   Style="{StaticResource PageTitleStyle}"/>
 
         <StackPanel Grid.Row="1">
-            <StackPanel>
-                <TextBlock Text="Персонализвция"/>
+            <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
+                <TextBlock Text="Персонализвция"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
 
-                <TextBlock Text="Выберете тему" />
+                <TextBlock Text="Выберете тему"
+                           Style="{StaticResource BodyTextStyle}"/>
 
-                <StackPanel>
+                <StackPanel Margin="{StaticResource EightTopMargin}">
                     <RadioButton Content="Светлая"
                                  GroupName="AppTheme"
                                  IsChecked="{x:Bind ViewModel.ElementThemeExtended, Converter={StaticResource ThemeEnumConverter}, ConverterParameter=Light, Mode=TwoWay}"
@@ -71,24 +73,29 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel>
-                <TextBlock Text="Адрес подключения" />
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Header="Введите ИП-адресс:" 
-                             PlaceholderText="Ip-address"/>
-                    <TextBlock Text=":" />
-                    <TextBox Header="Порт:"
-                             PlaceholderText="Порт"/>
+            <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
+                <TextBlock Text="Адрес подключения"
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <StackPanel Orientation="Horizontal"
+                            Margin="{StaticResource EightTopMargin}">
+                    <TextBox PlaceholderText="ИП адресс" />
+                    <TextBlock Text=":" 
+                               Style="{StaticResource BodyTextStyle}"/>
+                    <TextBox PlaceholderText="Порт"/>
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel>
-                <TextBlock Text="О приложении" />
+            <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
+                <TextBlock Text="О приложении" 
+                           Style="{StaticResource SubtitleTextBlockStyle}"/>
 
-                <StackPanel>
-                    <TextBlock Text="Версия 0.0.1"/>
+                <StackPanel Margin="{StaticResource EightTopMargin}">
+                    <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"/>
 
-                    <HyperlinkButton Content="Link"/>
+                    <TextBlock Text="Подробнее"
+                               Margin="{StaticResource EightTopMargin}"/>
+                    <HyperlinkButton Content="Link"
+                                     Margin="{StaticResource EightTopMargin}"/>
                 </StackPanel>
                 
             </StackPanel>
