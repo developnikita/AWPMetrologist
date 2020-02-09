@@ -70,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContract\MeasuringInstrument.cs" />
+    <Compile Include="DataContract\MICategory.cs" />
+    <Compile Include="DataContract\MIKind.cs" />
+    <Compile Include="DataContract\VerificationPlace.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
     </Compile>
