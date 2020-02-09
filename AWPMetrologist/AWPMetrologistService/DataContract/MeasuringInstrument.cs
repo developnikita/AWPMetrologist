@@ -5,6 +5,7 @@ namespace AWPMetrologistService.DataContract
     [DataContract]
     public class MeasuringInstrument
     {
+        // NOTE: Нужные ли FK_ID подумать!!!
         [DataMember]
         public int Id { get; set; }
 
@@ -12,7 +13,10 @@ namespace AWPMetrologistService.DataContract
         public string MSType { get; set; }
 
         [DataMember]
-        public string Name { get; set; }
+        public int DeviceId { get; set; }
+
+        [DataMember]
+        public string Device { get; set; }
 
         [DataMember]
         public int Cost { get; set; }
