@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologist", "AWPMetrologist\AWPMetrologist.csproj", "{E0BAC340-88AD-41D0-A896-F3028BF49DBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologist.Client", "AWPMetrologist\AWPMetrologist.Client.csproj", "{E0BAC340-88AD-41D0-A896-F3028BF49DBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DCAD0A6D-6A36-4DC6-A835-DE098336E293} = {DCAD0A6D-6A36-4DC6-A835-DE098336E293}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologistService", "AWPMetrologistService\AWPMetrologistService.csproj", "{DCAD0A6D-6A36-4DC6-A835-DE098336E293}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologist.Service", "AWPMetrologistService\AWPMetrologist.Service.csproj", "{DCAD0A6D-6A36-4DC6-A835-DE098336E293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologist.Common", "AWPMetrologist.Common\AWPMetrologist.Common.csproj", "{D34F27DB-189A-47A4-8010-2F91B639EE55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +72,26 @@ Global
 		{DCAD0A6D-6A36-4DC6-A835-DE098336E293}.Release|x64.Build.0 = Release|Any CPU
 		{DCAD0A6D-6A36-4DC6-A835-DE098336E293}.Release|x86.ActiveCfg = Release|Any CPU
 		{DCAD0A6D-6A36-4DC6-A835-DE098336E293}.Release|x86.Build.0 = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|ARM.Build.0 = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|x64.Build.0 = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Debug|x86.Build.0 = Debug|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|ARM.ActiveCfg = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|ARM.Build.0 = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|ARM64.Build.0 = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|x64.ActiveCfg = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|x64.Build.0 = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|x86.ActiveCfg = Release|Any CPU
+		{D34F27DB-189A-47A4-8010-2F91B639EE55}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
