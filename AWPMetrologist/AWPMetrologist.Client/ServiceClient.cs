@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AWPMetrologist
 {
-    public class Client
+    public class ServiceClient
     {
 
         // public List<MeasuringIn>
 
-        public Client Instance
+        public ServiceClient Instance
         {
             get
             {
@@ -19,6 +19,6 @@ namespace AWPMetrologist
             }
         }
 
-        private Client _instance = new Client();
+        private ServiceClient _instance = new ServiceClient();
     }
 }

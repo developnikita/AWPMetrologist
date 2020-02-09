@@ -7,8 +7,8 @@
     <ProjectGuid>{E0BAC340-88AD-41D0-A896-F3028BF49DBB}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AWPMetrologist</RootNamespace>
-    <AssemblyName>AWPMetrologist</AssemblyName>
+    <RootNamespace>AWPMetrologist.Client</RootNamespace>
+    <AssemblyName>AWPMetrologist.Client</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -119,7 +119,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
     <Compile Include="Connected Services\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +130,7 @@
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Helpers\TitleBarHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceClient.cs" />
     <Compile Include="Services\ElementThemeExtended.cs" />
     <Compile Include="Services\Navigation\FrameAdapter.cs" />
     <Compile Include="Services\Navigation\IFrameAdapter.cs" />
