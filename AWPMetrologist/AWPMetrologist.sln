@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologist.Service", "AWPMetrologist.Service\AWPMetrologist.Service.csproj", "{DCAD0A6D-6A36-4DC6-A835-DE098336E293}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWPMetrologist.Client", "AWPMetrologist.Client\AWPMetrologist.Client.csproj", "{E0BAC340-88AD-41D0-A896-F3028BF49DBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DCAD0A6D-6A36-4DC6-A835-DE098336E293} = {DCAD0A6D-6A36-4DC6-A835-DE098336E293}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

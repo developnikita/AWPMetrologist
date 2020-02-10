@@ -1,5 +1,7 @@
 ﻿using AWPMetrologistService.DataContract;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -32,8 +34,9 @@ namespace AWPMetrologistService
                             sqlDA.Fill(ds);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        System.Console.WriteLine(ex.Message);
                         return null;
                     }
                     finally
@@ -58,6 +61,6 @@ namespace AWPMetrologistService
             return mi;
         }
 
-        private string _conntectionString = "Data Source=(LocalDB)/MSSQLLocalDB;AttachDbFilename=C:/Users/Nekit/Documents/GitHub/AWPMetrologist/AWPMetrologist/AWPMetrologistService/App_Data/Database.mdf;Integrated Security=True";
+        private string _conntectionString = "server=localhost;user=admin;password=1234;database=ms;";
     }
 }

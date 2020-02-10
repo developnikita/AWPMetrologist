@@ -60,6 +60,8 @@ namespace AWPMetrologist
             InitWindow(skipWindowCreation: e.PrelaunchActivated);
 
             await StartUpAsync();
+
+            Connection.Instance.Test();
         }
 
         protected async override void OnActivated(IActivatedEventArgs args)
