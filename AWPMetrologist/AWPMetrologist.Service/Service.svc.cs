@@ -28,7 +28,7 @@ namespace AWPMetrologistService
                     try
                     {
                         sqlCon.Open();
-                        string sqlStr = "SELECT * FROM MeasuringInstrument";
+                        string sqlStr = "SELECT * FROM dbo.MeasuringInstruments";
                         using (SqlDataAdapter sqlDA = new SqlDataAdapter(sqlStr, sqlCon))
                         {
                             sqlDA.Fill(ds);
@@ -61,6 +61,6 @@ namespace AWPMetrologistService
             return mi;
         }
 
-        private string _conntectionString = "server=localhost;user=admin;password=1234;database=ms;";
+        private string _conntectionString = "Data Source=DESKTOP-1V00CT8;Initial Catalog=ms;Integrated Security=True";
     }
 }
