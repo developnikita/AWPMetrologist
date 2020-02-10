@@ -1,7 +1,7 @@
-﻿using AWPMetrologistService.DataContract;
+﻿using AWPMetrologist.Service.Converter;
+using AWPMetrologistService.DataContract;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -28,7 +28,11 @@ namespace AWPMetrologistService
                     try
                     {
                         sqlCon.Open();
-                        string sqlStr = "SELECT * FROM dbo.MeasuringInstruments";
+                        string sqlStr = "SELECT * FROM dbo.MeasuringInstruments AS m " +
+                                        "LEFT JOIN dbo.DeviceTypes AS d ON m.DeviceId = d.Id " +
+                                        "LEFT JOIN dbo.Kinds AS k ON m.KindId = k.Id " +
+                                        "LEFT JOIN dbo.VerificationPlaces AS v ON m.PlaceId = v.Id " +
+                                        "LEFT JOIN dbo.Categories AS c ON m.CategoryId = c.Id";
                         using (SqlDataAdapter sqlDA = new SqlDataAdapter(sqlStr, sqlCon))
                         {
                             sqlDA.Fill(ds);
@@ -49,11 +53,7 @@ namespace AWPMetrologistService
                 {
                     foreach (DataRow dr in dt.Rows)
                     {
-                        // TODO: Converter from sql data to program data.
-                        mi.Add(new MeasuringInstrument()
-                        {
-                            // Поля базы данных.
-                        });
+                        mi.Add(MIConverter.FromDataRowToMI(dr));
                     }
                 }
             }

@@ -15,7 +15,7 @@ namespace AWPMetrologistService.DataContract
         public MIDevice Device { get; set; }
 
         [DataMember]
-        public int Cost { get; set; }
+        public int? Cost { get; set; }
 
         [DataMember]
         public int Period { get; set; }
@@ -30,18 +30,18 @@ namespace AWPMetrologistService.DataContract
         public VerificationPlace Place { get; set; }
 
         [DataMember]
-        public int Gold { get; set; }
+        public int? Gold { get; set; }
 
         [DataMember]
-        public int Silver { get; set; }
+        public int? Silver { get; set; }
 
         [DataMember]
-        public int Platinum { get; set; }
+        public int? Platinum { get; set; }
 
         [DataMember]
-        public int Paladium { get; set; }
+        public int? Paladium { get; set; }
 
         [DataMember]
-        public int Mercury { get; set; }
+        public int? Mercury { get; set; }
     }
 }

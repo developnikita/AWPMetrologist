@@ -73,6 +73,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\MIConverter.cs" />
     <Compile Include="DataContract\MeasuringInstrument.cs" />
     <Compile Include="DataContract\MICategory.cs" />
     <Compile Include="DataContract\MIDevice.cs" />
