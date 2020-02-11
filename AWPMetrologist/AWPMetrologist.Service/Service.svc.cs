@@ -7,14 +7,32 @@ using System.Data.SqlClient;
 
 namespace AWPMetrologistService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service : IService
     {
 
         public List<MeasuringInstrument> GetMSJson()
         {
             return GetMS();
+        }
+
+        public List<MICategory> GetMICategoriesJson()
+        {
+            return GetMICategories();
+        }
+
+        public List<MIDevice> GetMIDevicesJson()
+        {
+            return GetMIDevices();
+        }
+
+        public List<MIKind> GetMIKindJson()
+        {
+            return GetMIKinds();
+        }
+
+        public List<VerificationPlace> GetVerificationPlacesJson()
+        {
+            return GetVerificationPlaces();
         }
 
         private List<MeasuringInstrument> GetMS()
@@ -40,7 +58,8 @@ namespace AWPMetrologistService
                     }
                     catch (Exception ex)
                     {
-                        System.Console.WriteLine(ex.Message);
+                        // TODO: Loggining
+                        // System.Console.WriteLine(ex.Message);
                         return null;
                     }
                     finally
@@ -59,6 +78,162 @@ namespace AWPMetrologistService
             }
 
             return mi;
+        }
+
+        private List<MICategory> GetMICategories()
+        {
+            var categories = new List<MICategory>();
+
+            using (DataSet ds = new DataSet())
+            {
+                using (SqlConnection sqlCon = new SqlConnection(_conntectionString))
+                {
+                    try
+                    {
+                        sqlCon.Open();
+                        string sqlStr = "SELECT * FROM dbo.Categories";
+                        using (SqlDataAdapter sqlDA = new SqlDataAdapter(sqlStr, sqlCon))
+                        {
+                            sqlDA.Fill(ds);
+                        }
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
+                }
+
+                using (DataTable dt = ds.Tables[0])
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        categories.Add(MIConverter.FromDataRowToCategory(dr));
+                    }
+                }
+            }
+
+            return categories;
+        }
+
+        private List<MIDevice> GetMIDevices()
+        {
+            var devices = new List<MIDevice>();
+
+            using (DataSet ds = new DataSet())
+            {
+                using (SqlConnection sqlCon = new SqlConnection(_conntectionString))
+                {
+                    try
+                    {
+                        sqlCon.Open();
+                        string sqlStr = "SELECT * FROM dbo.DeviceTypes";
+                        using (SqlDataAdapter sqlDA = new SqlDataAdapter(sqlStr, sqlCon))
+                        {
+                            sqlDA.Fill(ds);
+                        }
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
+                }
+
+                using (DataTable dt = ds.Tables[0])
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        devices.Add(MIConverter.FromDataRowToDevice(dr));
+                    }
+                }
+            }
+
+            return devices;
+        }
+
+        private List<MIKind> GetMIKinds()
+        {
+            var kinds = new List<MIKind>();
+
+            using (DataSet ds = new DataSet())
+            {
+                using (SqlConnection sqlCon = new SqlConnection(_conntectionString))
+                {
+                    try
+                    {
+                        sqlCon.Open();
+                        string sqlStr = "SELECT * FROM dbo.Kinds";
+                        using (SqlDataAdapter sqlDA = new SqlDataAdapter(sqlStr, sqlCon))
+                        {
+                            sqlDA.Fill(ds);
+                        }
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
+                }
+
+                using (DataTable dt = ds.Tables[0])
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        kinds.Add(MIConverter.FromDataRowToKind(dr));
+                    }
+                }
+            }
+
+            return kinds;
+        }
+
+        private List<VerificationPlace> GetVerificationPlaces()
+        {
+            var places = new List<VerificationPlace>();
+
+            using (DataSet ds = new DataSet())
+            {
+                using (SqlConnection sqlCon = new SqlConnection(_conntectionString))
+                {
+                    try
+                    {
+                        sqlCon.Open();
+                        string sqlStr = "SELECT * FROM dbo.VerificationPlaces";
+                        using (SqlDataAdapter sqlDA = new SqlDataAdapter(sqlStr, sqlCon))
+                        {
+                            sqlDA.Fill(ds);
+                        }
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
+                }
+
+                using (DataTable dt = ds.Tables[0])
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        places.Add(MIConverter.FromDataRowToPlace(dr));
+                    }
+                }
+            }
+
+            return places;
         }
 
         private string _conntectionString = "Data Source=DESKTOP-1V00CT8;Initial Catalog=ms;Integrated Security=True";
