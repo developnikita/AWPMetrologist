@@ -1,4 +1,4 @@
-﻿using AWPMetrologistService.DataContract;
+﻿using AWPMetrologist.Common.DataModel;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
@@ -15,7 +15,20 @@ namespace AWPMetrologistService
         List<MeasuringInstrument> GetMSJson();
 
         // TODO: Add your service operations here
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        List<MICategory> GetMICategoriesJson();
 
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        List<MIDevice> GetMIDevicesJson();
 
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        List<MIKind> GetMIKindJson();
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        List<VerificationPlace> GetVerificationPlacesJson();
     }
 }

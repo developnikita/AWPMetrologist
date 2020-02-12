@@ -1,8 +1,8 @@
-﻿using AWPMetrologistService.DataContract;
+﻿using AWPMetrologist.Common.DataModel;
 using System;
 using System.Data;
 
-namespace AWPMetrologist.Service.Converter
+namespace AWPMetrologist.Common.Converter
 {
     public static class MIConverter
     {

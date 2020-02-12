@@ -61,24 +61,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database.mdf" />
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\Database_log.ldf">
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
     <Content Include="Service.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter\MIConverter.cs" />
-    <Compile Include="DataContract\MeasuringInstrument.cs" />
-    <Compile Include="DataContract\MICategory.cs" />
-    <Compile Include="DataContract\MIDevice.cs" />
-    <Compile Include="DataContract\MIKind.cs" />
-    <Compile Include="DataContract\VerificationPlace.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
     </Compile>
@@ -96,6 +82,15 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataContract\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AWPMetrologist.Common\AWPMetrologist.Common.csproj">
+      <Project>{11a0a741-0882-4d5f-b061-378da550ad92}</Project>
+      <Name>AWPMetrologist.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

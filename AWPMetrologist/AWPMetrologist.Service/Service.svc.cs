@@ -1,5 +1,5 @@
-﻿using AWPMetrologist.Service.Converter;
-using AWPMetrologistService.DataContract;
+﻿using AWPMetrologist.Common.Converter;
+using AWPMetrologist.Common.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Data;

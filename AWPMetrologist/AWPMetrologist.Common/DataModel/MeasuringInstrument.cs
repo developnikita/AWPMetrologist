@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace AWPMetrologistService.DataContract
+namespace AWPMetrologist.Common.DataModel
 {
     [DataContract]
     public class MeasuringInstrument
