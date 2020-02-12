@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AWPMetrologist.Client
 {
@@ -11,17 +13,13 @@ namespace AWPMetrologist.Client
             _client.Endpoint.Address = new System.ServiceModel.EndpointAddress(new Uri("http://localhost:64455/Service"));
         }
 
-        // public List<MeasuringIn>
-
-        public List<ServiceReference.MeasuringInstrument> GetMeasuringInstruments()
+        public async Task<List<ServiceReference.MeasuringInstrument>> GetMeasuringInstruments()
         {
-            var result = _client.GetMSJsonAsync();
+            var results = await _client.GetMSJsonAsync();
 
-            result.Wait();
-
-            if (result.Result != null)
+            if (results != null)
             {
-                return new List<ServiceReference.MeasuringInstrument>(result.Result);
+                return results.ToList();
             }
             else
             {

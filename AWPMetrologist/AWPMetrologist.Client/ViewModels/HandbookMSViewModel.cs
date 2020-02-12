@@ -20,10 +20,10 @@ namespace AWPMetrologist.Client.ViewModels
         {
             await Task.Run(async () =>
             {
-                await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+                await DispatcherHelper.ExecuteOnUIThreadAsync(async () =>
                 {
                     foreach (ServiceReference.MeasuringInstrument mi in
-                                Connection.Instance.GetMeasuringInstruments())
+                                await Connection.Instance.GetMeasuringInstruments())
                     {
                         MeasuringInstruments.Add(mi);
                     }
