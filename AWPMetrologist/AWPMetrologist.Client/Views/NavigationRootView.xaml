@@ -20,7 +20,7 @@
                              Loaded="NavView_Loaded"
                              ItemInvoked="NavView_ItemInvoked">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Tag="Catalog" 
+                <muxc:NavigationViewItem Tag="Handbook" 
                                          Content="Справочник СИ">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" 

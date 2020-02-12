@@ -170,6 +170,21 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MeasuringInstrument.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MICategory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MIDevice.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MIKind.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.VerificationPlace.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\Service.disco" />
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference\configuration.svcinfo" />

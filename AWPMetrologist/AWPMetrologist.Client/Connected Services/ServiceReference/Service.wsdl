@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:64455/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:64455/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:64455/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract" />
+      <xsd:import schemaLocation="http://localhost:64455/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_GetMSJson_InputMessage">
@@ -13,10 +13,50 @@
   <wsdl:message name="IService_GetMSJson_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMSJsonResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetMICategoriesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMICategoriesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMICategoriesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMICategoriesJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMIDevicesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMIDevicesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMIDevicesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMIDevicesJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMIKindJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMIKindJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMIKindJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMIKindJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetVerificationPlacesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVerificationPlacesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetVerificationPlacesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVerificationPlacesJsonResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetMSJson">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMSJson" message="tns:IService_GetMSJson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMSJsonResponse" message="tns:IService_GetMSJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMICategoriesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMICategoriesJson" message="tns:IService_GetMICategoriesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMICategoriesJsonResponse" message="tns:IService_GetMICategoriesJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMIDevicesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMIDevicesJson" message="tns:IService_GetMIDevicesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMIDevicesJsonResponse" message="tns:IService_GetMIDevicesJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMIKindJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMIKindJson" message="tns:IService_GetMIKindJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMIKindJsonResponse" message="tns:IService_GetMIKindJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerificationPlacesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetVerificationPlacesJson" message="tns:IService_GetVerificationPlacesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetVerificationPlacesJsonResponse" message="tns:IService_GetVerificationPlacesJson_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RESTEndPoint" type="tns:IService">
@@ -30,10 +70,46 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMICategoriesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMICategoriesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMIDevicesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMIDevicesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMIKindJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMIKindJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerificationPlacesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetVerificationPlacesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="RESTEndPoint" binding="tns:RESTEndPoint">
-      <soap:address location="http://localhost:64455/Service.svc" />
+      <soap:address location="http://localhost:64455/Service.svc/Service" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

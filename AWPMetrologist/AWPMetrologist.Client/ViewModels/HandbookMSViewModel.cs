@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Toolkit.Uwp.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AWPMetrologist.Client.ViewModels
@@ -17,6 +14,29 @@ namespace AWPMetrologist.Client.ViewModels
         public void Initialize()
         {
             _measuringInstruments = new ObservableCollection<ServiceReference.MeasuringInstrument>();
+        }
+
+        public async Task LoadMeasuringInstruments()
+        {
+            await Task.Run(async () =>
+            {
+                await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+                {
+                    foreach (ServiceReference.MeasuringInstrument mi in
+                                Connection.Instance.GetMeasuringInstruments())
+                    {
+                        MeasuringInstruments.Add(mi);
+                    }
+                });
+            });
+        }
+
+        public ObservableCollection<ServiceReference.MeasuringInstrument> MeasuringInstruments
+        {
+            get
+            {
+                return _measuringInstruments;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

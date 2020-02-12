@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AWPMetrologist.Client
 {
@@ -12,11 +13,20 @@ namespace AWPMetrologist.Client
 
         // public List<MeasuringIn>
 
-        public void Test()
+        public List<ServiceReference.MeasuringInstrument> GetMeasuringInstruments()
         {
             var result = _client.GetMSJsonAsync();
-            
-            
+
+            result.Wait();
+
+            if (result.Result != null)
+            {
+                return new List<ServiceReference.MeasuringInstrument>(result.Result);
+            }
+            else
+            {
+                return new List<ServiceReference.MeasuringInstrument>();
+            }
         }
 
         public static Connection Instance
@@ -28,6 +38,6 @@ namespace AWPMetrologist.Client
         }
 
         private static Connection _instance = new Connection();
-        private Client.ServiceReference.ServiceClient _client = new Client.ServiceReference.ServiceClient();
+        private ServiceReference.ServiceClient _client = new ServiceReference.ServiceClient();
     }
 }

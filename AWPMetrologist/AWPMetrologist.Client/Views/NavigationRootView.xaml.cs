@@ -59,6 +59,10 @@ namespace AWPMetrologist.Client.Views
             // NOTE: as не вызовет исключение, не повлияет ли на тестирование и отладку.
             switch (args.InvokedItemContainer.Tag as string)
             {
+                case "Handbook":
+                    {
+                        _navigationService.NavigateToHandbookAsync();
+                    } break;
                 case "Accounting":
                     {
                         _navigationService.NavigateToAccountingAsync();

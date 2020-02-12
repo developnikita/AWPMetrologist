@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="ArrayOfMeasuringInstrument">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasuringInstrument" nillable="true" type="tns:MeasuringInstrument" />
@@ -9,18 +9,18 @@
   <xs:complexType name="MeasuringInstrument">
     <xs:sequence>
       <xs:element minOccurs="0" name="Category" nillable="true" type="tns:MICategory" />
-      <xs:element minOccurs="0" name="Cost" type="xs:int" />
+      <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Device" nillable="true" type="tns:MIDevice" />
-      <xs:element minOccurs="0" name="Gold" type="xs:int" />
+      <xs:element minOccurs="0" name="Gold" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Kind" nillable="true" type="tns:MIKind" />
       <xs:element minOccurs="0" name="MSType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Mercury" type="xs:int" />
-      <xs:element minOccurs="0" name="Paladium" type="xs:int" />
+      <xs:element minOccurs="0" name="Mercury" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Paladium" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Period" type="xs:int" />
       <xs:element minOccurs="0" name="Place" nillable="true" type="tns:VerificationPlace" />
-      <xs:element minOccurs="0" name="Platinum" type="xs:int" />
-      <xs:element minOccurs="0" name="Silver" type="xs:int" />
+      <xs:element minOccurs="0" name="Platinum" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Silver" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MeasuringInstrument" nillable="true" type="tns:MeasuringInstrument" />
@@ -52,4 +52,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VerificationPlace" nillable="true" type="tns:VerificationPlace" />
+  <xs:complexType name="ArrayOfMICategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MICategory" nillable="true" type="tns:MICategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMICategory" nillable="true" type="tns:ArrayOfMICategory" />
+  <xs:complexType name="ArrayOfMIDevice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MIDevice" nillable="true" type="tns:MIDevice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMIDevice" nillable="true" type="tns:ArrayOfMIDevice" />
+  <xs:complexType name="ArrayOfMIKind">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MIKind" nillable="true" type="tns:MIKind" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMIKind" nillable="true" type="tns:ArrayOfMIKind" />
+  <xs:complexType name="ArrayOfVerificationPlace">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VerificationPlace" nillable="true" type="tns:VerificationPlace" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVerificationPlace" nillable="true" type="tns:ArrayOfVerificationPlace" />
 </xs:schema>

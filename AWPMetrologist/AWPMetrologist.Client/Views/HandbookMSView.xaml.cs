@@ -20,7 +20,12 @@ namespace AWPMetrologist.Client.Views
 
         public void UpdateBindings()
         {
+            ViewModel.Initialize();
+        }
 
+        private async void Handbook_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            await ViewModel.LoadMeasuringInstruments();
         }
     }
 }

@@ -17,16 +17,16 @@ namespace AWPMetrologist.Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MeasuringInstrument", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MeasuringInstrument", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel")]
     public partial class MeasuringInstrument : object, System.ComponentModel.INotifyPropertyChanged {
         
         private AWPMetrologist.Client.ServiceReference.MICategory CategoryField;
         
-        private int CostField;
+        private System.Nullable<int> CostField;
         
         private AWPMetrologist.Client.ServiceReference.MIDevice DeviceField;
         
-        private int GoldField;
+        private System.Nullable<int> GoldField;
         
         private int IdField;
         
@@ -34,17 +34,17 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         private string MSTypeField;
         
-        private int MercuryField;
+        private System.Nullable<int> MercuryField;
         
-        private int PaladiumField;
+        private System.Nullable<int> PaladiumField;
         
         private int PeriodField;
         
         private AWPMetrologist.Client.ServiceReference.VerificationPlace PlaceField;
         
-        private int PlatinumField;
+        private System.Nullable<int> PlatinumField;
         
-        private int SilverField;
+        private System.Nullable<int> SilverField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public AWPMetrologist.Client.ServiceReference.MICategory Category {
@@ -60,7 +60,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Cost {
+        public System.Nullable<int> Cost {
             get {
                 return this.CostField;
             }
@@ -86,7 +86,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Gold {
+        public System.Nullable<int> Gold {
             get {
                 return this.GoldField;
             }
@@ -138,7 +138,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Mercury {
+        public System.Nullable<int> Mercury {
             get {
                 return this.MercuryField;
             }
@@ -151,7 +151,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Paladium {
+        public System.Nullable<int> Paladium {
             get {
                 return this.PaladiumField;
             }
@@ -190,7 +190,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Platinum {
+        public System.Nullable<int> Platinum {
             get {
                 return this.PlatinumField;
             }
@@ -203,7 +203,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Silver {
+        public System.Nullable<int> Silver {
             get {
                 return this.SilverField;
             }
@@ -227,7 +227,7 @@ namespace AWPMetrologist.Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MICategory", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MICategory", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel")]
     public partial class MICategory : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string CategoryField;
@@ -272,7 +272,7 @@ namespace AWPMetrologist.Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MIDevice", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MIDevice", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel")]
     public partial class MIDevice : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string DeviceField;
@@ -317,7 +317,7 @@ namespace AWPMetrologist.Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MIKind", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MIKind", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel")]
     public partial class MIKind : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int IdField;
@@ -362,7 +362,7 @@ namespace AWPMetrologist.Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="VerificationPlace", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologistService.DataContract")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VerificationPlace", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel")]
     public partial class VerificationPlace : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int IdField;
@@ -411,6 +411,18 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMSJson", ReplyAction="http://tempuri.org/IService/GetMSJsonResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MeasuringInstrument>> GetMSJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMICategoriesJson", ReplyAction="http://tempuri.org/IService/GetMICategoriesJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MICategory>> GetMICategoriesJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMIDevicesJson", ReplyAction="http://tempuri.org/IService/GetMIDevicesJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MIDevice>> GetMIDevicesJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMIKindJson", ReplyAction="http://tempuri.org/IService/GetMIKindJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MIKind>> GetMIKindJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetVerificationPlacesJson", ReplyAction="http://tempuri.org/IService/GetVerificationPlacesJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.VerificationPlace>> GetVerificationPlacesJsonAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -460,6 +472,22 @@ namespace AWPMetrologist.Client.ServiceReference {
             return base.Channel.GetMSJsonAsync();
         }
         
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MICategory>> GetMICategoriesJsonAsync() {
+            return base.Channel.GetMICategoriesJsonAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MIDevice>> GetMIDevicesJsonAsync() {
+            return base.Channel.GetMIDevicesJsonAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MIKind>> GetMIKindJsonAsync() {
+            return base.Channel.GetMIKindJsonAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.VerificationPlace>> GetVerificationPlacesJsonAsync() {
+            return base.Channel.GetVerificationPlacesJsonAsync();
+        }
+        
         public virtual System.Threading.Tasks.Task OpenAsync() {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
         }
@@ -482,7 +510,7 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.RESTEndPoint)) {
-                return new System.ServiceModel.EndpointAddress("http://localhost:64455/Service.svc");
+                return new System.ServiceModel.EndpointAddress("http://localhost:64455/Service.svc/Service");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }

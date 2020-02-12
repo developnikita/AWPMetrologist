@@ -4,11 +4,107 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:primitives="using:Microsoft.Toolkit.Uwp.UI.Controls.Primitives"
     xmlns:local="using:AWPMetrologist.Client.Views"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Loaded="Handbook_Loaded">
 
     <Grid>
+        <controls:DataGrid ItemsSource="{x:Bind ViewModel.MeasuringInstruments}"
+                           AutoGenerateColumns="False">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="№" 
+                                             Width="SizeToHeader"
+                                             Binding="{Binding Path=Id}"/>
+                <controls:DataGridTextColumn Header="Тип СИ" 
+                                             Width="SizeToHeader"
+                                             Binding="{Binding Path=MSType}"/>
+                <controls:DataGridTextColumn Header="Наименование СИ" 
+                                             Binding="{Binding Path=Device.Device}"/>
+                <controls:DataGridTextColumn Header="Начальная стоимость"
+                                             Binding="{Binding Path=Cost}"/>
+                <controls:DataGridTextColumn Header="Период"
+                                             Binding="{Binding Path=Period}"/>
+                <controls:DataGridTextColumn Header="Категория СИ"
+                                             Binding="{Binding Path=Category.Category}"/>
+                <controls:DataGridTextColumn Header="Вид СИ"
+                                             Binding="{Binding Path=Kind.Kind}"/>
+                <controls:DataGridTextColumn Header="Место поверки"
+                                             Binding="{Binding Path=Place.Place}"/>
 
+                
+                <!-- TODO: Сделать стиль для Header отдельно -->
+                <controls:DataGridTemplateColumn>
+                    <controls:DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="primitives:DataGridColumnHeader">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0"
+                                               Grid.ColumnSpan="5"
+                                               Text="Содержание драгоценных металлов" />
+                                            <TextBlock Grid.Row="1"
+                                               Grid.Column="0"
+                                               Text="Золото" />
+                                            <TextBlock Grid.Row="1"
+                                               Grid.Column="1"
+                                               Text="Серебро" />
+                                            <TextBlock Grid.Row="1"
+                                               Grid.Column="2"
+                                               Text="Платина" />
+                                            <TextBlock Grid.Row="1"
+                                               Grid.Column="3"
+                                               Text="Палладий" />
+                                            <TextBlock Grid.Row="1"
+                                               Grid.Column="4"
+                                               Text="Ртуть" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </controls:DataGridTemplateColumn.HeaderStyle>
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" 
+                                           Text="{Binding Path=Gold}" />
+                                <TextBlock Grid.Column="1" 
+                                           Text="{Binding Path=Silver}" />
+                                <TextBlock Grid.Column="2" 
+                                           Text="{Binding Path=Platinum}" />
+                                <TextBlock Grid.Column="3" 
+                                           Text="{Binding Path=Paladium}" />
+                                <TextBlock Grid.Column="4" 
+                                           Text="{Binding Path=Mercury}" />
+                            </Grid>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
     </Grid>
 </Page>

@@ -60,8 +60,6 @@ namespace AWPMetrologist.Client
             InitWindow(skipWindowCreation: e.PrelaunchActivated);
 
             await StartUpAsync();
-
-            Connection.Instance.Test();
         }
 
         protected async override void OnActivated(IActivatedEventArgs args)
@@ -97,6 +95,7 @@ namespace AWPMetrologist.Client
                 builder.RegisterType<AccountingViewModel>();
                 builder.RegisterType<SchedulesViewModel>();
                 builder.RegisterType<VerificationViewModel>();
+                builder.RegisterType<HandbookMSViewModel>();
 
                 builder.RegisterType<NavigationService>()
                     .AsImplementedInterfaces()
