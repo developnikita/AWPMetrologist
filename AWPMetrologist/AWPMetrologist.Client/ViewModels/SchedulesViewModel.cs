@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWPMetrologist.ViewModels
+namespace AWPMetrologist.Client.ViewModels
 {
     public class SchedulesViewModel
     {

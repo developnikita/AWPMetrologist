@@ -1,10 +1,10 @@
-﻿using AWPMetrologist.Helpers;
-using AWPMetrologist.Services;
+﻿using AWPMetrologist.Client.Helpers;
+using AWPMetrologist.Client.Services;
 using System.ComponentModel;
 using System.Windows.Input;
 using Windows.ApplicationModel;
 
-namespace AWPMetrologist.ViewModels
+namespace AWPMetrologist.Client.ViewModels
 {
     public class SettingsViewModel : INotifyPropertyChanged
     {

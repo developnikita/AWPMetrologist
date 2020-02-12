@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
+using AWPMetrologist.Client.ViewModels;
+using AWPMetrologist.Client.Views;
 // using AWPMetrologist.DataModels;
-using AWPMetrologist.ViewModels;
-using AWPMetrologist.Views;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace AWPMetrologist.Services.Navigation
+namespace AWPMetrologist.Client.Services.Navigation
 {
     public class NavigationService : INavigationService
     {
@@ -23,6 +23,7 @@ namespace AWPMetrologist.Services.Navigation
             RegisterPageViewModel<AccountingView, AccountingViewModel>();
             RegisterPageViewModel<VerificationView, VerificationViewModel>();
             RegisterPageViewModel<SchedulesView, SchedulesViewModel>();
+            RegisterPageViewModel<HandbookMSView, HandbookMSViewModel>();
 
             Frame.Navigated += Frame_Navigated;
         }
@@ -34,6 +35,8 @@ namespace AWPMetrologist.Services.Navigation
         public Task NavigateToVerificationAsync() => NavigateToPage<VerificationView>();
 
         public Task NavigateToSchedulesAsync() => NavigateToPage<SchedulesView>();
+
+        public Task NavigateToHandbookAsync() => NavigateToPage<HandbookMSView>();
 
         public async Task GoBackAsync()
         {

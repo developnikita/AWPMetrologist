@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml;
 
-namespace AWPMetrologist.Services
+namespace AWPMetrologist.Client.Services
 {
     public enum ElementThemeExtended
     {

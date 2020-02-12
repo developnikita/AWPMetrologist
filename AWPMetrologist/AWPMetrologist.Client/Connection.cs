@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.ServiceModel;
 
-namespace AWPMetrologist
+namespace AWPMetrologist.Client
 {
     public class Connection
     {
@@ -18,15 +15,8 @@ namespace AWPMetrologist
         public void Test()
         {
             var result = _client.GetMSJsonAsync();
-
-            /*
-            var serviceClient = new Client.ServiceReference.ServiceClient();
-            var data = serviceClient.GetMSJsonAsync();
-            if (data.Result == null)
-            {
-                System.Console.WriteLine("Работает");
-            }
-            */
+            
+            
         }
 
         public static Connection Instance

@@ -14,10 +14,13 @@ namespace AWPMetrologist.Client.ViewModels
         {
         }
 
-
+        public void Initialize()
+        {
+            _measuringInstruments = new ObservableCollection<ServiceReference.MeasuringInstrument>();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // private ObservableCollection<M>
+        private ObservableCollection<ServiceReference.MeasuringInstrument> _measuringInstruments;
     }
 }

@@ -1,12 +1,12 @@
 ﻿<Page
-    x:Class="AWPMetrologist.Views.SettingsView"
+    x:Class="AWPMetrologist.Client.Views.SettingsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:helper="using:AWPMetrologist.Helpers"
-    xmlns:services="using:AWPMetrologist.Services"
-    xmlns:local="using:AWPMetrologist.Views"
+    xmlns:helper="using:AWPMetrologist.Client.Helpers"
+    xmlns:services="using:AWPMetrologist.Client.Services"
+    xmlns:local="using:AWPMetrologist.Client.Views"
     mc:Ignorable="d">
 
     <Page.Resources>

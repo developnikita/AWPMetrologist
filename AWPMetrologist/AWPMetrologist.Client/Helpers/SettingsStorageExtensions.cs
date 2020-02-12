@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace AWPMetrologist.Helpers
+namespace AWPMetrologist.Client.Helpers
 {
     public static class SettingsStorageExtensions
     {

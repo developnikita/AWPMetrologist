@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Autofac;
-using AWPMetrologist.Services;
-using AWPMetrologist.Services.Navigation;
-using AWPMetrologist.ViewModels;
-using AWPMetrologist.Views;
+using AWPMetrologist.Client.Services;
+using AWPMetrologist.Client.Services.Navigation;
+using AWPMetrologist.Client.ViewModels;
+using AWPMetrologist.Client.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
@@ -12,7 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace AWPMetrologist
+namespace AWPMetrologist.Client
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace AWPMetrologist.Services.Navigation
+namespace AWPMetrologist.Client.Services.Navigation
 {
     public interface INavigationService
     {
@@ -12,6 +12,8 @@ namespace AWPMetrologist.Services.Navigation
         Task NavigateToVerificationAsync();
 
         Task NavigateToSchedulesAsync();
+
+        Task NavigateToHandbookAsync();
 
         Task GoBackAsync();
 

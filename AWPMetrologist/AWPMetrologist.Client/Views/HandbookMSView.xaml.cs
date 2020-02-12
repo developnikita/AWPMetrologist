@@ -1,6 +1,5 @@
-﻿using AWPMetrologist.Client.ViewModels;
-using AWPMetrologist.Services.Navigation;
-using System;
+﻿using AWPMetrologist.Client.Services.Navigation;
+using AWPMetrologist.Client.ViewModels;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238

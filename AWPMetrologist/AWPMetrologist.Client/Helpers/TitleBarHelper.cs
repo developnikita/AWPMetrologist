@@ -2,7 +2,7 @@
 using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml;
 
-namespace AWPMetrologist.Helpers
+namespace AWPMetrologist.Client.Helpers
 {
     public class TitleBarHelper : INotifyPropertyChanged
     {

@@ -1,4 +1,4 @@
-﻿namespace AWPMetrologist.Services.Navigation
+﻿namespace AWPMetrologist.Client.Services.Navigation
 {
     public interface IPageWithViewModel<T>
         where T : class

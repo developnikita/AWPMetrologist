@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Threading.Tasks;
 
-namespace AWPMetrologist.Helpers
+namespace AWPMetrologist.Client.Helpers
 {
     public static class Json
     {

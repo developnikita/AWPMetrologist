@@ -1,9 +1,8 @@
 ﻿using System;
-using AWPMetrologist.Helpers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace AWPMetrologist.Services.Navigation
+namespace AWPMetrologist.Client.Services.Navigation
 {
     public class FrameAdapter : IFrameAdapter
     {

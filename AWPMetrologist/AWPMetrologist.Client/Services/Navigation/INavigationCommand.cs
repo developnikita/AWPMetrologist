@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace AWPMetrologist.Services.Navigation
+namespace AWPMetrologist.Client.Services.Navigation
 {
     public interface INavigationCommand<T>
     {

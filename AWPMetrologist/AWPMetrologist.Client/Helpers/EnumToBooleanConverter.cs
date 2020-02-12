@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace AWPMetrologist.Helpers
+namespace AWPMetrologist.Client.Helpers
 {
     public class EnumToBooleanConverter : IValueConverter
     {

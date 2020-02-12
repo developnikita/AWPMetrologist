@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Navigation;
 
-namespace AWPMetrologist.Services.Navigation
+namespace AWPMetrologist.Client.Services.Navigation
 {
     public interface IFrameAdapter
     {
