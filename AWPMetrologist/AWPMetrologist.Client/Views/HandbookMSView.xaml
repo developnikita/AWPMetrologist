@@ -10,8 +10,19 @@
     mc:Ignorable="d"
     Loaded="Handbook_Loaded">
 
-    <Grid>
-        <controls:DataGrid ItemsSource="{x:Bind ViewModel.MeasuringInstruments}"
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="Справочник"
+                   FontWeight="Light"
+                   Style="{StaticResource PageTitleStyle}"/>
+
+        <controls:DataGrid Grid.Row="1" 
+                           ItemsSource="{x:Bind ViewModel.MeasuringInstruments}"
                            AutoGenerateColumns="False">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="№" 
@@ -33,7 +44,6 @@
                 <controls:DataGridTextColumn Header="Место поверки"
                                              Binding="{Binding Path=Place.Place}"/>
 
-                
                 <!-- TODO: Сделать стиль для Header отдельно -->
                 <controls:DataGridTemplateColumn>
                     <controls:DataGridTemplateColumn.HeaderStyle>

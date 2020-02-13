@@ -4,20 +4,34 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:local="using:AWPMetrologist.Client.Views"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="Учёт СИ"
+                   FontWeight="Light"
+                   Style="{StaticResource PageTitleStyle}"/>
 
-    <!-- TODO: поменять вид с вкладок на единую страницу -->
-    <Pivot Title="Учёт СИ">
-
-        <PivotItem Header="Эксплутационные данные">
-
-        </PivotItem>
-
-        <PivotItem Header="Заводские данные">
-
-        </PivotItem>
-    </Pivot>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" 
+                       Text="SubTitle" />
+            <controls:DockPanel>
+                
+            </controls:DockPanel>
+        </Grid>
+    </Grid>
 </Page>

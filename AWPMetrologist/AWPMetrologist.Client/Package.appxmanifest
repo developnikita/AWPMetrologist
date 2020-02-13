@@ -9,7 +9,7 @@
   <Identity
     Name="6ede45b1-e122-4ce6-8853-5a05fb1a9654"
     Publisher="CN=Nekit"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="6ede45b1-e122-4ce6-8853-5a05fb1a9654" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

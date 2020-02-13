@@ -6,26 +6,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:local="using:AWPMetrologist.Client.Views"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Pivot Title="План-Графики">
-        <PivotItem Header="По годам">
-            <controls:DataGrid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            </controls:DataGrid>
-        </PivotItem>
+        <TextBlock Grid.Row="0"
+                   Text="План-графики"
+                   FontWeight="Light"
+                   Style="{StaticResource PageTitleStyle}" />
 
-        <PivotItem Header="По месяцам">
-            <controls:DataGrid>
+        <Pivot Grid.Row="1">
+            <PivotItem Header="По годам">
+                <controls:DataGrid>
 
-            </controls:DataGrid>
-        </PivotItem>
+                </controls:DataGrid>
+            </PivotItem>
 
-        <PivotItem Header="По видам">
-            <controls:DataGrid>
+            <PivotItem Header="По месяцам">
+                <controls:DataGrid>
 
-            </controls:DataGrid>
-        </PivotItem>
-    </Pivot>
+                </controls:DataGrid>
+            </PivotItem>
+
+            <PivotItem Header="По видам">
+                <controls:DataGrid>
+
+                </controls:DataGrid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
 </Page>
