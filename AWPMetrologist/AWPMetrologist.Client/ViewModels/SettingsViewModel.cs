@@ -15,15 +15,8 @@ namespace AWPMetrologist.Client.ViewModels
         public void Initialize()
         {
             VersionDescription = GetVersionDescription();
-        }
 
-        private string GetVersionDescription()
-        {
-            var package = Package.Current;
-            var packageId = package.Id;
-            var version = packageId.Version;
 
-            return $"{package.DisplayName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
         }
 
         public ICommand SwitchThemeCommand
@@ -43,6 +36,19 @@ namespace AWPMetrologist.Client.ViewModels
             }
         }
 
+        /*
+        public ICommand SaveIpPortCommand
+        {
+            get
+            {
+                if (_saveIpPortCommand == null)
+                {
+                    _saveIpPortCommand = new RelayCommand(async ())
+                }
+            }
+        }
+        */
+
         public ElementThemeExtended ElementThemeExtended
         {
             get
@@ -58,6 +64,15 @@ namespace AWPMetrologist.Client.ViewModels
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ElementThemeExtended)));
                 }
             }
+        }
+
+        private string GetVersionDescription()
+        {
+            var package = Package.Current;
+            var packageId = package.Id;
+            var version = packageId.Version;
+
+            return $"{package.DisplayName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
         }
 
         public string VersionDescription
@@ -77,11 +92,48 @@ namespace AWPMetrologist.Client.ViewModels
             }
         }
 
+        public string Ip
+        {
+            get
+            {
+                return _ip;
+            }
+
+            set
+            {
+                if (_ip != value)
+                {
+                    _ip = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Ip)));
+                }
+            }
+        }
+
+        public string Port
+        {
+            get
+            {
+                return _port;
+            }
+
+            set
+            {
+                if (_port != value)
+                {
+                    _port = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Port)));
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ElementThemeExtended _elementTheme = ThemeSelectorService.Theme;
-        private string _versionDescription;
         private ICommand _switchThemeCommand;
-        // TODO: Command for save ip:port.
+        private ICommand _saveIpPortCommand;
+
+        private ElementThemeExtended _elementTheme = ThemeSelectorService.Theme;
+        private string _ip = IpAddressService.Ip;
+        private string _port = IpAddressService.Port;
+        private string _versionDescription;
     }
 }

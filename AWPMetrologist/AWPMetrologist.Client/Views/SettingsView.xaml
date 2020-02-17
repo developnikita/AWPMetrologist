@@ -79,10 +79,10 @@
                            Style="{StaticResource SubtitleTextBlockStyle}"/>
                 <StackPanel Orientation="Horizontal"
                             Margin="{StaticResource EightTopMargin}">
-                    <TextBox PlaceholderText="ИП адресс" />
+                    <TextBox PlaceholderText="ИП адресс" Text="{x:Bind ViewModel.Ip}"/>
                     <TextBlock Text=":" 
                                Style="{StaticResource BodyTextStyle}"/>
-                    <TextBox PlaceholderText="Порт"/>
+                    <TextBox PlaceholderText="Порт" Text="{x:Bind ViewModel.Port}"/>
                 </StackPanel>
             </StackPanel>
 
