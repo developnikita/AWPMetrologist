@@ -10,7 +10,8 @@
     mc:Ignorable="d"
     Loaded="Handbook_Loaded">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          Margin="{StaticResource PageMargin}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -45,6 +46,7 @@
                                              Binding="{Binding Path=Place.Place}"/>
 
                 <!-- TODO: Сделать стиль для Header отдельно -->
+                <!--
                 <controls:DataGridTemplateColumn>
                     <controls:DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="primitives:DataGridColumnHeader">
@@ -113,7 +115,7 @@
                         </DataTemplate>
                     </controls:DataGridTemplateColumn.CellTemplate>
                 </controls:DataGridTemplateColumn>
-
+                -->
             </controls:DataGrid.Columns>
         </controls:DataGrid>
     </Grid>

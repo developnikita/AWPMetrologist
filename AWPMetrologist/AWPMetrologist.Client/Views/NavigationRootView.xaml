@@ -24,7 +24,7 @@
                                          Content="Справочник СИ">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" 
-                                  Glyph="&#xE720;" ></FontIcon>
+                                  Glyph="&#xE71D;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 
@@ -32,7 +32,7 @@
                                          Content="Учёт СИ">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" 
-                                  Glyph="&#xE720;" ></FontIcon>
+                                  Glyph="&#xE76D;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
@@ -40,7 +40,7 @@
                                          Content="Поверка/Калибровка">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets"
-                                  Glyph="&#xE720;" ></FontIcon>
+                                  Glyph="&#xE787;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
@@ -48,7 +48,7 @@
                                          Content="План-графики">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" 
-                                  Glyph="&#xE720;" ></FontIcon>
+                                  Glyph="&#xE77F;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
@@ -84,6 +84,13 @@
                    Navigated="AppNavFrame_Navigated">
             </Frame>
         </muxc:NavigationView>
+
+        <TextBlock x:Name="windowTitle" 
+                   Style="{ThemeResource CaptionTextBlockStyle}" 
+                   Visibility="{x:Bind TitleHelper.TitleVisibility, Mode=OneWay}"
+                   Margin="{x:Bind TitleHelper.TitlePosition, Mode=OneWay}"
+                   VerticalAlignment="Top"
+                   Text="АРМ Метролога" />
 
     </Grid>
 </Page>

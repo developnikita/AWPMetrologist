@@ -10,88 +10,346 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   Text="Учёт СИ"
-                   FontWeight="Light"
-                   Style="{StaticResource PageTitleStyle}"/>
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <Grid Margin="{StaticResource PageMargin}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" 
-                       Grid.ColumnSpan="2"
-                       Text="Заводские данные" 
-                       Style="{StaticResource SubtitleTextBlockStyle}"/>
-            
-            <StackPanel Grid.Row="1"
-                        Grid.Column="0"
-                        Orientation="Vertical"
-                        Margin="{StaticResource EightTopMargin}">
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Тип СИ"/>
-                    <TextBox />
-                </controls:DockPanel>
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Наименование СИ"/>
-                    <TextBox />
-                </controls:DockPanel>
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Категория"/>
-                    <!-- TODO: Drop down list -->
-                    <TextBox />
-                </controls:DockPanel>
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Единица измерения"/>
-                    <!-- TODO: Drop down list -->
-                    <TextBox />
-                </controls:DockPanel>
-                
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Класс точности"/>
-                    <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                </controls:DockPanel>
-                
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Нижний предел"/>
-                    <TextBox />
-                </controls:DockPanel>
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Верхний предел"/>
-                    <TextBox />
-                </controls:DockPanel>
+                <TextBlock Grid.Row="0"
+                           Text="Учёт СИ"
+                           FontWeight="Light"
+                           Style="{StaticResource PageTitleStyle}"/>
 
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Погрешность"/>
-                    <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                </controls:DockPanel>
+                <Grid Grid.Row="1" 
+                      Margin="{StaticResource SettingsSubheaderMargin}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <controls:DockPanel>
-                    <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Завод-изготовитель"/>
-                    <TextBox />
-                </controls:DockPanel>
+                    <TextBlock Grid.Row="0" 
+                               Grid.ColumnSpan="2"
+                               Text="Заводские данные" 
+                               Style="{StaticResource SubtitleTextBlockStyle}"/>
 
-            </StackPanel>
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Orientation="Vertical"
+                                Margin="{StaticResource StackPanelMargin}">
 
-        </Grid>
+                        <StackPanel.Resources>
+                            <Style BasedOn="{StaticResource InputFieldLabel}" 
+                                   TargetType="TextBlock" />
+                            <Style BasedOn="{StaticResource InputField}" 
+                                   TargetType="controls:DockPanel" />
+                        </StackPanel.Resources>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Тип СИ"/>
+                            <TextBox />
+                        </controls:DockPanel>
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Наименование СИ"/>
+                            <TextBox />
+                        </controls:DockPanel>
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Категория"/>
+                            <!-- TODO: Drop down list -->
+                            <TextBox />
+                        </controls:DockPanel>
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Единица измерения"/>
+                            <!-- TODO: Drop down list -->
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Класс точности"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Нижний предел"/>
+                            <TextBox />
+                        </controls:DockPanel>
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Верхний предел"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Погрешность"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Завод-изготовитель"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="1"
+                                Orientation="Vertical"
+                                Margin="{StaticResource StackPanelMargin}">
+
+                        <StackPanel.Resources>
+                            <Style BasedOn="{StaticResource InputFieldLabel}" 
+                                   TargetType="TextBlock" />
+                            <Style BasedOn="{StaticResource InputField}" 
+                                   TargetType="controls:DockPanel" />
+                        </StackPanel.Resources>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Вид СИ"/>
+                            <TextBox />
+                        </controls:DockPanel>
+                        
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Заводской №"/>
+                            <TextBox />
+                        </controls:DockPanel>
+                        
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата изготовления"/>
+                            <CalendarDatePicker />
+                        </controls:DockPanel>
+                        
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Средний срок службы"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Стоимость"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                        <!-- TODO: перенести граммы за поле ввода -->
+                        <!--
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                               Text="Золото (гр.)"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                               Text="Серебро (гр.)"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                               Text="Платина (гр.)"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                               Text="Паладий (гр.)"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                               Text="Ртуть (гр.)"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+                        -->
+                    </StackPanel>
+
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      Margin="{StaticResource SettingsSubheaderMargin}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               Text="Эксплутационные данные"
+                               Style="{StaticResource SubtitleTextBlockStyle}" />
+
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Orientation="Vertical"
+                                Margin="{StaticResource StackPanelMargin}">
+
+                        <StackPanel.Resources>
+                            <Style BasedOn="{StaticResource InputFieldLabel}" 
+                                   TargetType="TextBlock" />
+                            <Style BasedOn="{StaticResource InputField}" 
+                                   TargetType="controls:DockPanel" />
+                        </StackPanel.Resources>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Место установки"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Измеряемый параметр"/>
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Первичный/Вторичный"/>
+                            <CheckBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Техническое состояние"/>
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Методика поверки"/>
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Место поверки (контроля)"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Причина ремонта"/>
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата ремонта"/>
+                            <CalendarDatePicker />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Ремонтная организация"/>
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата перевода на хранение"/>
+                            <CalendarDatePicker />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Место хранения СИ"/>
+                            <ComboBox />
+                        </controls:DockPanel>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="1"
+                                Orientation="Vertical"
+                                Margin="{StaticResource StackPanelMargin}">
+
+                        <StackPanel.Resources>
+                            <Style BasedOn="{StaticResource InputFieldLabel}" 
+                                   TargetType="TextBlock" />
+                            <Style BasedOn="{StaticResource InputField}" 
+                                   TargetType="controls:DockPanel" />
+                        </StackPanel.Resources>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата установки"/>
+                            <CalendarDatePicker />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Индикатор"/>
+                            <CheckBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Инвентарный №"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата последней поверки"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Переодичность поверки (кол-во месяцев)"/>
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата последующей поверки"/>
+                            <CalendarDatePicker />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата замены прибора на новый"/>
+                            <CalendarDatePicker />
+                        </controls:DockPanel>
+
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="№ свидетельства о поверке"/>
+                            <TextBox />
+                        </controls:DockPanel>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <Button Grid.Row="3" 
+                        Content="Сохранить" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,36,36"/>
+
+            </Grid>
+        </ScrollViewer>
     </Grid>
+
 </Page>
