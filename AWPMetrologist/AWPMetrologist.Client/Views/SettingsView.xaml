@@ -95,12 +95,13 @@
 
                     <TextBlock Text="Подробнее"
                                Margin="{StaticResource EightTopMargin}"/>
-                    <HyperlinkButton Content="Link"
+                    <HyperlinkButton Content="ОмГТУ"
+                                     NavigateUri="http://pmfi.omgtu.ru/"
                                      Margin="{StaticResource EightTopMargin}"/>
                 </StackPanel>
-                
+
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </Page>

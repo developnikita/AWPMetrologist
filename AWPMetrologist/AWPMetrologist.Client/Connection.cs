@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AWPMetrologist.Client.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace AWPMetrologist.Client
 
         private Connection()
         {
-            _client.Endpoint.Address = new System.ServiceModel.EndpointAddress(new Uri("http://localhost:64455/Service"));
+            string ip = IpAddressService.Ip;
+            string port = IpAddressService.Port;
+            _client.Endpoint.Address = new System.ServiceModel.EndpointAddress(new Uri("http://" + ip + ":" + port + "/Service"));
         }
 
         public async Task<List<ServiceReference.MeasuringInstrument>> GetMeasuringInstruments()

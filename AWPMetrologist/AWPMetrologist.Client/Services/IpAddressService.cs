@@ -81,8 +81,8 @@ namespace AWPMetrologist.Client.Services
             await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKeyPort, port);
         }
 
-        public static string Ip { get; set; }
-        public static string Port { get; set; }
+        public static string Ip { get; set; } = IPAddress.Loopback.ToString();
+        public static string Port { get; set; } = 64455.ToString();
 
         public static event EventHandler<string> OnIpChanged = (sender, args) => { };
         public static event EventHandler<string> OnPortChanged = (sender, args) => { };

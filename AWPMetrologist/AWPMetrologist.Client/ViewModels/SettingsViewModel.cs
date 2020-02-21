@@ -49,6 +49,15 @@ namespace AWPMetrologist.Client.ViewModels
         }
         */
 
+        private string GetVersionDescription()
+        {
+            var package = Package.Current;
+            var packageId = package.Id;
+            var version = packageId.Version;
+
+            return $"{package.DisplayName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        }
+
         public ElementThemeExtended ElementThemeExtended
         {
             get
@@ -64,15 +73,6 @@ namespace AWPMetrologist.Client.ViewModels
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ElementThemeExtended)));
                 }
             }
-        }
-
-        private string GetVersionDescription()
-        {
-            var package = Package.Current;
-            var packageId = package.Id;
-            var version = packageId.Version;
-
-            return $"{package.DisplayName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
         }
 
         public string VersionDescription
