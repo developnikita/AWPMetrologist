@@ -3,12 +3,12 @@
 namespace AWPMetrologist.Common.DataModel
 {
     [DataContract]
-    public class MICategory
+    public class Storage
     {
         [DataMember]
         public int Id { get; set; }
 
         [DataMember]
-        public string Category { get; set; }
+        public string StorageValue { get; set; }
     }
 }

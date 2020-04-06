@@ -3,12 +3,12 @@
 namespace AWPMetrologist.Common.DataModel
 {
     [DataContract]
-    public class VerificationPlace
+    public class MeasuringParameter
     {
         [DataMember]
-        public int Id { get; set; }
+        public int Id { get; }
 
         [DataMember]
-        public string Place { get; set; }
+        public string Parameter { get; set; }
     }
 }

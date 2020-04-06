@@ -24,7 +24,8 @@
 
         <controls:DataGrid Grid.Row="1" 
                            ItemsSource="{x:Bind ViewModel.MeasuringInstruments}"
-                           AutoGenerateColumns="False">
+                           AutoGenerateColumns="False"
+                           IsReadOnly="True">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="№" 
                                              Width="SizeToHeader"

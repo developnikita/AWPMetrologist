@@ -13,7 +13,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <Grid Margin="{StaticResource PageMargin}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" /> 
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -66,13 +66,13 @@
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Категория"/>
                             <!-- TODO: Drop down list -->
-                            <TextBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Единица измерения"/>
                             <!-- TODO: Drop down list -->
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
@@ -133,7 +133,7 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата изготовления"/>
-                            <CalendarDatePicker />
+                            <CalendarDatePicker HorizontalAlignment="Stretch" />
                         </controls:DockPanel>
                         
                         <controls:DockPanel>
@@ -147,38 +147,6 @@
                                        Text="Стоимость"/>
                             <TextBox />
                         </controls:DockPanel>
-
-                        <!-- TODO: перенести граммы за поле ввода -->
-                        <!--
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Золото (гр.)"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                        </controls:DockPanel>
-
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Серебро (гр.)"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                        </controls:DockPanel>
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Платина (гр.)"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                        </controls:DockPanel>
-
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Паладий (гр.)"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                        </controls:DockPanel>
-
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                               Text="Ртуть (гр.)"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
-                        </controls:DockPanel>
-                        -->
                     </StackPanel>
 
                 </Grid>
@@ -220,7 +188,7 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Измеряемый параметр"/>
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
@@ -232,13 +200,13 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Техническое состояние"/>
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Методика поверки"/>
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
@@ -250,31 +218,31 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Причина ремонта"/>
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата ремонта"/>
-                            <CalendarDatePicker />
+                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Ремонтная организация"/>
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата перевода на хранение"/>
-                            <CalendarDatePicker />
+                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Место хранения СИ"/>
-                            <ComboBox />
+                            <ComboBox HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                     </StackPanel>
@@ -294,7 +262,7 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата установки"/>
-                            <CalendarDatePicker />
+                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
@@ -312,7 +280,7 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата последней поверки"/>
-                            <TextBox />
+                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
@@ -324,13 +292,13 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата последующей поверки"/>
-                            <CalendarDatePicker />
+                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата замены прибора на новый"/>
-                            <CalendarDatePicker />
+                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
