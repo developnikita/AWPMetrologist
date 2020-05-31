@@ -7,62 +7,462 @@
       <xsd:import schemaLocation="http://localhost:64455/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService_GetMSJson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMSJson" />
+  <wsdl:message name="IService_GetMeasuringSystemsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuringSystemsJson" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMSJson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMSJsonResponse" />
+  <wsdl:message name="IService_GetMeasuringSystemsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuringSystemsJsonResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMICategoriesJson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMICategoriesJson" />
+  <wsdl:message name="IService_GetExploitationsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExploitationsJson" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMICategoriesJson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMICategoriesJsonResponse" />
+  <wsdl:message name="IService_GetExploitationsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExploitationsJsonResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMIDevicesJson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMIDevicesJson" />
+  <wsdl:message name="IService_GetFactoryManufacturersJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFactoryManufacturersJson" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMIDevicesJson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMIDevicesJsonResponse" />
+  <wsdl:message name="IService_GetFactoryManufacturersJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFactoryManufacturersJsonResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMIKindJson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMIKindJson" />
+  <wsdl:message name="IService_GetInstallationLocationsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstallationLocationsJson" />
   </wsdl:message>
-  <wsdl:message name="IService_GetMIKindJson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMIKindJsonResponse" />
+  <wsdl:message name="IService_GetInstallationLocationsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstallationLocationsJsonResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetVerificationPlacesJson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetVerificationPlacesJson" />
+  <wsdl:message name="IService_GetMeasuredParametersJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuredParametersJson" />
   </wsdl:message>
-  <wsdl:message name="IService_GetVerificationPlacesJson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetVerificationPlacesJsonResponse" />
+  <wsdl:message name="IService_GetMeasuredParametersJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuredParametersJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMeasuringsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuringsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMeasuringsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuringsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMSCategoriesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMSCategoriesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMSCategoriesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMSCategoriesJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMSKindsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMSKindsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMSKindsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMSKindsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRepairsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRepairsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRepairOrganizationsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairOrganizationsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRepairOrganizationsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairOrganizationsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRepairReasonsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairReasonsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRepairReasonsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairReasonsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetStoragesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoragesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetStoragesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoragesJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTechnicalConditionsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTechnicalConditionsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTechnicalConditionsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTechnicalConditionsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetUnitsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetUnitsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetVerificationsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVerificationsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetVerificationsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVerificationsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetVerificationMethodsJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVerificationMethodsJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetVerificationMethodsJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVerificationMethodsJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDeviceStatusesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceStatusesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDeviceStatusesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceStatusesJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetHandbookMeasuringSystemDataJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHandbookMeasuringSystemDataJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetHandbookMeasuringSystemDataJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHandbookMeasuringSystemDataJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMSCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMSCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMSCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMSCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddFactoryManufacturer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFactoryManufacturer" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddFactoryManufacturer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFactoryManufacturerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddInstallationLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddInstallationLocation" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddInstallationLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddInstallationLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMeasuredParameter_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMeasuredParameter" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMeasuredParameter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMeasuredParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMSKind_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMSKind" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMSKind_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMSKindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddRepairOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepairOrganization" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddRepairOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepairOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddRepairReason_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepairReason" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddRepairReason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepairReasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddStorage_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStorage" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddStorage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStorageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddTechnicalCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTechnicalCondition" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddTechnicalCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTechnicalConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddUnit_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUnit" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddUnit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddVerificationMethod_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVerificationMethod" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddVerificationMethod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVerificationMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMeasuringSystem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMeasuringSystem" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMeasuringSystem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMeasuringSystemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddExploitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddExploitation" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddExploitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddExploitationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMeasuring_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMeasuring" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMeasuring_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMeasuringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddVerification_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVerification" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddVerification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVerificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddRepair_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepair" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddRepair_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepairResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMSCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMSCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMSCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMSCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteFactoryManufacturer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFactoryManufacturer" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteFactoryManufacturer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFactoryManufacturerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteInstallationLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInstallationLocation" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteInstallationLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInstallationLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMeasuredParameter_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMeasuredParameter" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMeasuredParameter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMeasuredParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMSKind_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMSKind" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMSKind_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMSKindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteRepairOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRepairOrganization" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteRepairOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRepairOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteRepairReason_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRepairReason" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteRepairReason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRepairReasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteStorage_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStorage" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteStorage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStorageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteTechnicalCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTechnicalCondition" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteTechnicalCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTechnicalConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteUnit_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUnit" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteUnit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteVerificationMethod_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVerificationMethod" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteVerificationMethod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVerificationMethodResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
-    <wsdl:operation name="GetMSJson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMSJson" message="tns:IService_GetMSJson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMSJsonResponse" message="tns:IService_GetMSJson_OutputMessage" />
+    <wsdl:operation name="GetMeasuringSystemsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsJson" message="tns:IService_GetMeasuringSystemsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsJsonResponse" message="tns:IService_GetMeasuringSystemsJson_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetMICategoriesJson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMICategoriesJson" message="tns:IService_GetMICategoriesJson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMICategoriesJsonResponse" message="tns:IService_GetMICategoriesJson_OutputMessage" />
+    <wsdl:operation name="GetExploitationsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetExploitationsJson" message="tns:IService_GetExploitationsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetExploitationsJsonResponse" message="tns:IService_GetExploitationsJson_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetMIDevicesJson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMIDevicesJson" message="tns:IService_GetMIDevicesJson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMIDevicesJsonResponse" message="tns:IService_GetMIDevicesJson_OutputMessage" />
+    <wsdl:operation name="GetFactoryManufacturersJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetFactoryManufacturersJson" message="tns:IService_GetFactoryManufacturersJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetFactoryManufacturersJsonResponse" message="tns:IService_GetFactoryManufacturersJson_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetMIKindJson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMIKindJson" message="tns:IService_GetMIKindJson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMIKindJsonResponse" message="tns:IService_GetMIKindJson_OutputMessage" />
+    <wsdl:operation name="GetInstallationLocationsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetInstallationLocationsJson" message="tns:IService_GetInstallationLocationsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetInstallationLocationsJsonResponse" message="tns:IService_GetInstallationLocationsJson_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetVerificationPlacesJson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetVerificationPlacesJson" message="tns:IService_GetVerificationPlacesJson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetVerificationPlacesJsonResponse" message="tns:IService_GetVerificationPlacesJson_OutputMessage" />
+    <wsdl:operation name="GetMeasuredParametersJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMeasuredParametersJson" message="tns:IService_GetMeasuredParametersJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMeasuredParametersJsonResponse" message="tns:IService_GetMeasuredParametersJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMeasuringsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMeasuringsJson" message="tns:IService_GetMeasuringsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMeasuringsJsonResponse" message="tns:IService_GetMeasuringsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMSCategoriesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMSCategoriesJson" message="tns:IService_GetMSCategoriesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMSCategoriesJsonResponse" message="tns:IService_GetMSCategoriesJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMSKindsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMSKindsJson" message="tns:IService_GetMSKindsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMSKindsJsonResponse" message="tns:IService_GetMSKindsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRepairsJson" message="tns:IService_GetRepairsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRepairsJsonResponse" message="tns:IService_GetRepairsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairOrganizationsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRepairOrganizationsJson" message="tns:IService_GetRepairOrganizationsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRepairOrganizationsJsonResponse" message="tns:IService_GetRepairOrganizationsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairReasonsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRepairReasonsJson" message="tns:IService_GetRepairReasonsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRepairReasonsJsonResponse" message="tns:IService_GetRepairReasonsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStoragesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetStoragesJson" message="tns:IService_GetStoragesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetStoragesJsonResponse" message="tns:IService_GetStoragesJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTechnicalConditionsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTechnicalConditionsJson" message="tns:IService_GetTechnicalConditionsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTechnicalConditionsJsonResponse" message="tns:IService_GetTechnicalConditionsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUnitsJson" message="tns:IService_GetUnitsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUnitsJsonResponse" message="tns:IService_GetUnitsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerificationsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetVerificationsJson" message="tns:IService_GetVerificationsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetVerificationsJsonResponse" message="tns:IService_GetVerificationsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerificationMethodsJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetVerificationMethodsJson" message="tns:IService_GetVerificationMethodsJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetVerificationMethodsJsonResponse" message="tns:IService_GetVerificationMethodsJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceStatusesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDeviceStatusesJson" message="tns:IService_GetDeviceStatusesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDeviceStatusesJsonResponse" message="tns:IService_GetDeviceStatusesJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHandbookMeasuringSystemDataJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJson" message="tns:IService_GetHandbookMeasuringSystemDataJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJsonResponse" message="tns:IService_GetHandbookMeasuringSystemDataJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMSCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMSCategory" message="tns:IService_AddMSCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMSCategoryResponse" message="tns:IService_AddMSCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFactoryManufacturer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddFactoryManufacturer" message="tns:IService_AddFactoryManufacturer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddFactoryManufacturerResponse" message="tns:IService_AddFactoryManufacturer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInstallationLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddInstallationLocation" message="tns:IService_AddInstallationLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddInstallationLocationResponse" message="tns:IService_AddInstallationLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMeasuredParameter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMeasuredParameter" message="tns:IService_AddMeasuredParameter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMeasuredParameterResponse" message="tns:IService_AddMeasuredParameter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMSKind">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMSKind" message="tns:IService_AddMSKind_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMSKindResponse" message="tns:IService_AddMSKind_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRepairOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddRepairOrganization" message="tns:IService_AddRepairOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddRepairOrganizationResponse" message="tns:IService_AddRepairOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRepairReason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddRepairReason" message="tns:IService_AddRepairReason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddRepairReasonResponse" message="tns:IService_AddRepairReason_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStorage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddStorage" message="tns:IService_AddStorage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddStorageResponse" message="tns:IService_AddStorage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTechnicalCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddTechnicalCondition" message="tns:IService_AddTechnicalCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddTechnicalConditionResponse" message="tns:IService_AddTechnicalCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUnit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddUnit" message="tns:IService_AddUnit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddUnitResponse" message="tns:IService_AddUnit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVerificationMethod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddVerificationMethod" message="tns:IService_AddVerificationMethod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddVerificationMethodResponse" message="tns:IService_AddVerificationMethod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMeasuringSystem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMeasuringSystem" message="tns:IService_AddMeasuringSystem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMeasuringSystemResponse" message="tns:IService_AddMeasuringSystem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddExploitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddExploitation" message="tns:IService_AddExploitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddExploitationResponse" message="tns:IService_AddExploitation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMeasuring">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMeasuring" message="tns:IService_AddMeasuring_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMeasuringResponse" message="tns:IService_AddMeasuring_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVerification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddVerification" message="tns:IService_AddVerification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddVerificationResponse" message="tns:IService_AddVerification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRepair">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddRepair" message="tns:IService_AddRepair_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddRepairResponse" message="tns:IService_AddRepair_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMSCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteMSCategory" message="tns:IService_DeleteMSCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMSCategoryResponse" message="tns:IService_DeleteMSCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFactoryManufacturer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteFactoryManufacturer" message="tns:IService_DeleteFactoryManufacturer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteFactoryManufacturerResponse" message="tns:IService_DeleteFactoryManufacturer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstallationLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteInstallationLocation" message="tns:IService_DeleteInstallationLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteInstallationLocationResponse" message="tns:IService_DeleteInstallationLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMeasuredParameter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteMeasuredParameter" message="tns:IService_DeleteMeasuredParameter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMeasuredParameterResponse" message="tns:IService_DeleteMeasuredParameter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMSKind">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteMSKind" message="tns:IService_DeleteMSKind_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMSKindResponse" message="tns:IService_DeleteMSKind_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepairOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteRepairOrganization" message="tns:IService_DeleteRepairOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteRepairOrganizationResponse" message="tns:IService_DeleteRepairOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepairReason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteRepairReason" message="tns:IService_DeleteRepairReason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteRepairReasonResponse" message="tns:IService_DeleteRepairReason_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStorage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteStorage" message="tns:IService_DeleteStorage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteStorageResponse" message="tns:IService_DeleteStorage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTechnicalCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteTechnicalCondition" message="tns:IService_DeleteTechnicalCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteTechnicalConditionResponse" message="tns:IService_DeleteTechnicalCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUnit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteUnit" message="tns:IService_DeleteUnit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteUnitResponse" message="tns:IService_DeleteUnit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVerificationMethod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteVerificationMethod" message="tns:IService_DeleteVerificationMethod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteVerificationMethodResponse" message="tns:IService_DeleteVerificationMethod_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RESTEndPoint" type="tns:IService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetMSJson">
-      <soap:operation soapAction="http://tempuri.org/IService/GetMSJson" style="document" />
+    <wsdl:operation name="GetMeasuringSystemsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMeasuringSystemsJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -70,8 +470,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMICategoriesJson">
-      <soap:operation soapAction="http://tempuri.org/IService/GetMICategoriesJson" style="document" />
+    <wsdl:operation name="GetExploitationsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetExploitationsJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -79,8 +479,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMIDevicesJson">
-      <soap:operation soapAction="http://tempuri.org/IService/GetMIDevicesJson" style="document" />
+    <wsdl:operation name="GetFactoryManufacturersJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetFactoryManufacturersJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -88,8 +488,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMIKindJson">
-      <soap:operation soapAction="http://tempuri.org/IService/GetMIKindJson" style="document" />
+    <wsdl:operation name="GetInstallationLocationsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetInstallationLocationsJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -97,8 +497,368 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetVerificationPlacesJson">
-      <soap:operation soapAction="http://tempuri.org/IService/GetVerificationPlacesJson" style="document" />
+    <wsdl:operation name="GetMeasuredParametersJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMeasuredParametersJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeasuringsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMeasuringsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMSCategoriesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMSCategoriesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMSKindsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMSKindsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetRepairsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairOrganizationsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetRepairOrganizationsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairReasonsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetRepairReasonsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStoragesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetStoragesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTechnicalConditionsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetTechnicalConditionsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetUnitsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerificationsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetVerificationsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerificationMethodsJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetVerificationMethodsJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceStatusesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetDeviceStatusesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHandbookMeasuringSystemDataJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMSCategory">
+      <soap:operation soapAction="http://tempuri.org/IService/AddMSCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFactoryManufacturer">
+      <soap:operation soapAction="http://tempuri.org/IService/AddFactoryManufacturer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInstallationLocation">
+      <soap:operation soapAction="http://tempuri.org/IService/AddInstallationLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMeasuredParameter">
+      <soap:operation soapAction="http://tempuri.org/IService/AddMeasuredParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMSKind">
+      <soap:operation soapAction="http://tempuri.org/IService/AddMSKind" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRepairOrganization">
+      <soap:operation soapAction="http://tempuri.org/IService/AddRepairOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRepairReason">
+      <soap:operation soapAction="http://tempuri.org/IService/AddRepairReason" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStorage">
+      <soap:operation soapAction="http://tempuri.org/IService/AddStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTechnicalCondition">
+      <soap:operation soapAction="http://tempuri.org/IService/AddTechnicalCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUnit">
+      <soap:operation soapAction="http://tempuri.org/IService/AddUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddVerificationMethod">
+      <soap:operation soapAction="http://tempuri.org/IService/AddVerificationMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMeasuringSystem">
+      <soap:operation soapAction="http://tempuri.org/IService/AddMeasuringSystem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddExploitation">
+      <soap:operation soapAction="http://tempuri.org/IService/AddExploitation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMeasuring">
+      <soap:operation soapAction="http://tempuri.org/IService/AddMeasuring" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddVerification">
+      <soap:operation soapAction="http://tempuri.org/IService/AddVerification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRepair">
+      <soap:operation soapAction="http://tempuri.org/IService/AddRepair" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMSCategory">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteMSCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFactoryManufacturer">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteFactoryManufacturer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstallationLocation">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteInstallationLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMeasuredParameter">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteMeasuredParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMSKind">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteMSKind" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepairOrganization">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteRepairOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRepairReason">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteRepairReason" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStorage">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTechnicalCondition">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteTechnicalCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUnit">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVerificationMethod">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteVerificationMethod" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -109,7 +869,7 @@
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="RESTEndPoint" binding="tns:RESTEndPoint">
-      <soap:address location="http://localhost:64455/Service.svc/Service" />
+      <soap:address location="http://localhost:64455/Service.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

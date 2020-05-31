@@ -13,7 +13,7 @@ namespace AWPMetrologist.Common.DataModel
         public VerificationMethod VerificationMethod { get; set; }
 
         [DataMember]
-        public VerificationPlace VerificationPlace { get; set; }
+        public string VerificationPlace { get; set; }
 
         [DataMember]
         public DateTime LastDate { get; set; }

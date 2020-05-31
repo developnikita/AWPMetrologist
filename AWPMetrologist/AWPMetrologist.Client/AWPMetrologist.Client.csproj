@@ -131,6 +131,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DataAction.cs" />
+    <Compile Include="Helpers\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
@@ -146,21 +148,75 @@
     <Compile Include="Services\Navigation\INavigationCommand.cs" />
     <Compile Include="Services\Navigation\INavigationService.cs" />
     <Compile Include="Services\Navigation\IPageWithViewModel.cs" />
+    <Compile Include="Services\Navigation\IUserControlWithViewModel.cs" />
     <Compile Include="Services\Navigation\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="ViewModels\AccountingViewModel.cs" />
-    <Compile Include="ViewModels\HandbookMSViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\CommandViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\FactoryManufacturerViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\InstallationLocationViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\KindViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\MeasuredParameterViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\RepairOrganizationViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\RepairReasonViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\StorageViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\TechnicalConditionViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\UnitViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\VerificationMethodViewModel.cs" />
+    <Compile Include="ViewModels\HandbookViewModel.cs" />
+    <Compile Include="ViewModels\MeasuringSystemViewModel.cs" />
+    <Compile Include="ViewModels\ReferenceDataViewModel.cs" />
     <Compile Include="ViewModels\SchedulesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\VerificationViewModel.cs" />
     <Compile Include="Views\AccountingView.xaml.cs">
       <DependentUpon>AccountingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HandbookMSView.xaml.cs">
-      <DependentUpon>HandbookMSView.xaml</DependentUpon>
+    <Compile Include="Views\Dictionary\CategoryView.xaml.cs">
+      <DependentUpon>CategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\FactoryManufacturerView.xaml.cs">
+      <DependentUpon>FactoryManufacturerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\InstallationLocationView.xaml.cs">
+      <DependentUpon>InstallationLocationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\KindView.xaml.cs">
+      <DependentUpon>KindView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\MeasuredParameterView.xaml.cs">
+      <DependentUpon>MeasuredParameterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\RepairOrganizationView.xaml.cs">
+      <DependentUpon>RepairOrganizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\RepairReasonView.xaml.cs">
+      <DependentUpon>RepairReasonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\StorageView.xaml.cs">
+      <DependentUpon>StorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\TechnicalConditionView.xaml.cs">
+      <DependentUpon>TechnicalConditionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\UnitView.xaml.cs">
+      <DependentUpon>UnitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionary\VerificationMethodView.xaml.cs">
+      <DependentUpon>VerificationMethodView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HandbookView.xaml.cs">
+      <DependentUpon>HandbookView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeasuringSystemView.xaml.cs">
+      <DependentUpon>MeasuringSystemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationRootView.xaml.cs">
       <DependentUpon>NavigationRootView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReferenceData.xaml.cs">
+      <DependentUpon>ReferenceData.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SchedulesView.xaml.cs">
       <DependentUpon>SchedulesView.xaml</DependentUpon>
@@ -178,19 +234,55 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MeasuringInstrument.datasource">
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.DeviceStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MICategory.datasource">
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Exploitation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MIDevice.datasource">
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.FactoryManufacturer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MIKind.datasource">
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.InstallationLocation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.VerificationPlace.datasource">
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MeasuredParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Measuring.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MeasuringSystem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MSCategory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MSKind.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Repair.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.RepairOrganization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.RepairReason.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Storage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.TechnicalCondition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Unit.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Verification.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.VerificationMethod.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\Service.disco" />
@@ -238,11 +330,63 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HandbookMSView.xaml">
+    <Page Include="Views\Dictionary\CategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\FactoryManufacturerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\InstallationLocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\KindView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\MeasuredParameterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\RepairOrganizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\RepairReasonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\StorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\TechnicalConditionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\UnitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionary\VerificationMethodView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HandbookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeasuringSystemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NavigationRootView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReferenceData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

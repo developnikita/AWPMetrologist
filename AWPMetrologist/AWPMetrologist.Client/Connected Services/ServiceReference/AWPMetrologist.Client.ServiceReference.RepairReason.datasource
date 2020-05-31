@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="MIDevice" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>AWPMetrologist.Client.ServiceReference.MIDevice</TypeInfo>
+<GenericObjectDataSource DisplayName="RepairReason" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>AWPMetrologist.Client.ServiceReference.RepairReason</TypeInfo>
 </GenericObjectDataSource>

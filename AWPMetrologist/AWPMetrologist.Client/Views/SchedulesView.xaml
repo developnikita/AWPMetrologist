@@ -21,13 +21,13 @@
                    Style="{StaticResource PageTitleStyle}" />
 
         <Pivot Grid.Row="1">
-            <PivotItem Header="По годам">
+            <PivotItem Header="По месяцам">
                 <controls:DataGrid>
 
                 </controls:DataGrid>
             </PivotItem>
 
-            <PivotItem Header="По месяцам">
+            <PivotItem Header="По годам">
                 <controls:DataGrid>
 
                 </controls:DataGrid>

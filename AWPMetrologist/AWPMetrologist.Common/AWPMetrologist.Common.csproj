@@ -43,11 +43,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converter\MIConverter.cs" />
-    <Compile Include="DataModel\MeasuringInstrument.cs" />
-    <Compile Include="DataModel\MICategory.cs" />
-    <Compile Include="DataModel\MIDevice.cs" />
-    <Compile Include="DataModel\MIKind.cs" />
-    <Compile Include="DataModel\VerificationPlace.cs" />
+    <Compile Include="DataModel\DeviceStatus.cs" />
+    <Compile Include="DataModel\Exploitation.cs" />
+    <Compile Include="DataModel\FactoryManufacturer.cs" />
+    <Compile Include="DataModel\InstallationLocation.cs" />
+    <Compile Include="DataModel\MeasuredParameter.cs" />
+    <Compile Include="DataModel\Measuring.cs" />
+    <Compile Include="DataModel\MeasuringSystem.cs" />
+    <Compile Include="DataModel\MSCategory.cs" />
+    <Compile Include="DataModel\MSKind.cs" />
+    <Compile Include="DataModel\Repair.cs" />
+    <Compile Include="DataModel\RepairOrganization.cs" />
+    <Compile Include="DataModel\RepairReason.cs" />
+    <Compile Include="DataModel\Storage.cs" />
+    <Compile Include="DataModel\TechnicalCondition.cs" />
+    <Compile Include="DataModel\Unit.cs" />
+    <Compile Include="DataModel\Verification.cs" />
+    <Compile Include="DataModel\VerificationMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,79 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfMeasuringInstrument">
+  <xs:complexType name="ArrayOfMeasuringSystem">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasuringInstrument" nillable="true" type="tns:MeasuringInstrument" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasuringSystem" nillable="true" type="tns:MeasuringSystem" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfMeasuringInstrument" nillable="true" type="tns:ArrayOfMeasuringInstrument" />
-  <xs:complexType name="MeasuringInstrument">
+  <xs:element name="ArrayOfMeasuringSystem" nillable="true" type="tns:ArrayOfMeasuringSystem" />
+  <xs:complexType name="MeasuringSystem">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:MICategory" />
-      <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Device" nillable="true" type="tns:MIDevice" />
-      <xs:element minOccurs="0" name="Gold" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Cost" type="xs:float" />
+      <xs:element minOccurs="0" name="Exploitation" nillable="true" type="tns:Exploitation" />
+      <xs:element minOccurs="0" name="FactoryManufacturer" nillable="true" type="tns:FactoryManufacturer" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Kind" nillable="true" type="tns:MIKind" />
+      <xs:element minOccurs="0" name="LifeTime" type="xs:int" />
+      <xs:element minOccurs="0" name="MSCategory" nillable="true" type="tns:MSCategory" />
       <xs:element minOccurs="0" name="MSType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Mercury" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Paladium" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Period" type="xs:int" />
-      <xs:element minOccurs="0" name="Place" nillable="true" type="tns:VerificationPlace" />
-      <xs:element minOccurs="0" name="Platinum" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Silver" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Measuring" nillable="true" type="tns:Measuring" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductionDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="MeasuringInstrument" nillable="true" type="tns:MeasuringInstrument" />
-  <xs:complexType name="MICategory">
+  <xs:element name="MeasuringSystem" nillable="true" type="tns:MeasuringSystem" />
+  <xs:complexType name="Exploitation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Indicator" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InstallationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InstallationLocation" nillable="true" type="tns:InstallationLocation" />
+      <xs:element minOccurs="0" name="InstrumentReplacementDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InventoryNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimOrSec" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Repair" nillable="true" type="tns:Repair" />
+      <xs:element minOccurs="0" name="SentToStore" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Storage" nillable="true" type="tns:Storage" />
+      <xs:element minOccurs="0" name="Verification" nillable="true" type="tns:Verification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Exploitation" nillable="true" type="tns:Exploitation" />
+  <xs:complexType name="InstallationLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InstallationLocation" nillable="true" type="tns:InstallationLocation" />
+  <xs:complexType name="Repair">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="RepairDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RepairOrganization" nillable="true" type="tns:RepairOrganization" />
+      <xs:element minOccurs="0" name="RepairReason" nillable="true" type="tns:RepairReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Repair" nillable="true" type="tns:Repair" />
+  <xs:complexType name="RepairOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepairOrganization" nillable="true" type="tns:RepairOrganization" />
+  <xs:complexType name="RepairReason">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepairReason" nillable="true" type="tns:RepairReason" />
+  <xs:complexType name="Storage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="StorageValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Storage" nillable="true" type="tns:Storage" />
+  <xs:complexType name="Verification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CertificateNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LastDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NextDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Period" type="xs:int" />
+      <xs:element minOccurs="0" name="Replaced" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VerificationMethod" nillable="true" type="tns:VerificationMethod" />
+      <xs:element minOccurs="0" name="VerificationPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerificationResult" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Verification" nillable="true" type="tns:Verification" />
+  <xs:complexType name="VerificationMethod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Method" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VerificationMethod" nillable="true" type="tns:VerificationMethod" />
+  <xs:complexType name="FactoryManufacturer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Factory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FactoryManufacturer" nillable="true" type="tns:FactoryManufacturer" />
+  <xs:complexType name="MSCategory">
     <xs:sequence>
       <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="MICategory" nillable="true" type="tns:MICategory" />
-  <xs:complexType name="MIDevice">
+  <xs:element name="MSCategory" nillable="true" type="tns:MSCategory" />
+  <xs:complexType name="Measuring">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Device" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Accuracy" type="xs:float" />
+      <xs:element minOccurs="0" name="Error" type="xs:float" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LowerLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="MSKind" nillable="true" type="tns:MSKind" />
+      <xs:element minOccurs="0" name="MeasuredParameter" nillable="true" type="tns:MeasuredParameter" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="tns:Unit" />
+      <xs:element minOccurs="0" name="UpperLimit" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="MIDevice" nillable="true" type="tns:MIDevice" />
-  <xs:complexType name="MIKind">
+  <xs:element name="Measuring" nillable="true" type="tns:Measuring" />
+  <xs:complexType name="MSKind">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Kind" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="MIKind" nillable="true" type="tns:MIKind" />
-  <xs:complexType name="VerificationPlace">
+  <xs:element name="MSKind" nillable="true" type="tns:MSKind" />
+  <xs:complexType name="MeasuredParameter">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Place" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parameter" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VerificationPlace" nillable="true" type="tns:VerificationPlace" />
-  <xs:complexType name="ArrayOfMICategory">
+  <xs:element name="MeasuredParameter" nillable="true" type="tns:MeasuredParameter" />
+  <xs:complexType name="Unit">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MICategory" nillable="true" type="tns:MICategory" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitValue" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfMICategory" nillable="true" type="tns:ArrayOfMICategory" />
-  <xs:complexType name="ArrayOfMIDevice">
+  <xs:element name="Unit" nillable="true" type="tns:Unit" />
+  <xs:complexType name="ArrayOfExploitation">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MIDevice" nillable="true" type="tns:MIDevice" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Exploitation" nillable="true" type="tns:Exploitation" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfMIDevice" nillable="true" type="tns:ArrayOfMIDevice" />
-  <xs:complexType name="ArrayOfMIKind">
+  <xs:element name="ArrayOfExploitation" nillable="true" type="tns:ArrayOfExploitation" />
+  <xs:complexType name="ArrayOfFactoryManufacturer">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MIKind" nillable="true" type="tns:MIKind" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FactoryManufacturer" nillable="true" type="tns:FactoryManufacturer" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfMIKind" nillable="true" type="tns:ArrayOfMIKind" />
-  <xs:complexType name="ArrayOfVerificationPlace">
+  <xs:element name="ArrayOfFactoryManufacturer" nillable="true" type="tns:ArrayOfFactoryManufacturer" />
+  <xs:complexType name="ArrayOfInstallationLocation">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VerificationPlace" nillable="true" type="tns:VerificationPlace" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InstallationLocation" nillable="true" type="tns:InstallationLocation" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVerificationPlace" nillable="true" type="tns:ArrayOfVerificationPlace" />
+  <xs:element name="ArrayOfInstallationLocation" nillable="true" type="tns:ArrayOfInstallationLocation" />
+  <xs:complexType name="ArrayOfMeasuredParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasuredParameter" nillable="true" type="tns:MeasuredParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMeasuredParameter" nillable="true" type="tns:ArrayOfMeasuredParameter" />
+  <xs:complexType name="ArrayOfMeasuring">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Measuring" nillable="true" type="tns:Measuring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMeasuring" nillable="true" type="tns:ArrayOfMeasuring" />
+  <xs:complexType name="ArrayOfMSCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MSCategory" nillable="true" type="tns:MSCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMSCategory" nillable="true" type="tns:ArrayOfMSCategory" />
+  <xs:complexType name="ArrayOfMSKind">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MSKind" nillable="true" type="tns:MSKind" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMSKind" nillable="true" type="tns:ArrayOfMSKind" />
+  <xs:complexType name="ArrayOfRepair">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Repair" nillable="true" type="tns:Repair" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepair" nillable="true" type="tns:ArrayOfRepair" />
+  <xs:complexType name="ArrayOfRepairOrganization">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepairOrganization" nillable="true" type="tns:RepairOrganization" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepairOrganization" nillable="true" type="tns:ArrayOfRepairOrganization" />
+  <xs:complexType name="ArrayOfRepairReason">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepairReason" nillable="true" type="tns:RepairReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepairReason" nillable="true" type="tns:ArrayOfRepairReason" />
+  <xs:complexType name="ArrayOfStorage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Storage" nillable="true" type="tns:Storage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStorage" nillable="true" type="tns:ArrayOfStorage" />
+  <xs:complexType name="ArrayOfTechnicalCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TechnicalCondition" nillable="true" type="tns:TechnicalCondition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTechnicalCondition" nillable="true" type="tns:ArrayOfTechnicalCondition" />
+  <xs:complexType name="TechnicalCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TechnicalCondition" nillable="true" type="tns:TechnicalCondition" />
+  <xs:complexType name="ArrayOfUnit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Unit" nillable="true" type="tns:Unit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUnit" nillable="true" type="tns:ArrayOfUnit" />
+  <xs:complexType name="ArrayOfVerification">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Verification" nillable="true" type="tns:Verification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVerification" nillable="true" type="tns:ArrayOfVerification" />
+  <xs:complexType name="ArrayOfVerificationMethod">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VerificationMethod" nillable="true" type="tns:VerificationMethod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVerificationMethod" nillable="true" type="tns:ArrayOfVerificationMethod" />
+  <xs:complexType name="ArrayOfDeviceStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeviceStatus" nillable="true" type="tns:DeviceStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeviceStatus" nillable="true" type="tns:ArrayOfDeviceStatus" />
+  <xs:complexType name="DeviceStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Condition" nillable="true" type="tns:TechnicalCondition" />
+      <xs:element minOccurs="0" name="FromTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="MS" nillable="true" type="tns:MeasuringSystem" />
+      <xs:element minOccurs="0" name="ToTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeviceStatus" nillable="true" type="tns:DeviceStatus" />
 </xs:schema>

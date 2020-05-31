@@ -6,14 +6,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:c="using:AWPMetrologist.Client.Helpers"
     xmlns:local="using:AWPMetrologist.Client.Views"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="{x:Bind Path=ViewModel.LoadData}">
+
+    <Page.Resources>
+        <c:DateTimeToDateTimeOffsetConverter x:Key="DateConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <Grid Margin="{StaticResource PageMargin}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" /> 
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -55,53 +61,87 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Тип СИ"/>
-                            <TextBox />
+                            <TextBox Text="{x:Bind Path=ViewModel.MS.MSType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Наименование СИ"/>
-                            <TextBox />
+                            <TextBox Text="{x:Bind Path=ViewModel.MS.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Категория"/>
-                            <!-- TODO: Drop down list -->
-                            <ComboBox HorizontalAlignment="Stretch"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Categories}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.MSCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Category}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Единица измерения"/>
-                            <!-- TODO: Drop down list -->
-                            <ComboBox HorizontalAlignment="Stretch"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Units}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Measuring.Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=UnitValue}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Класс точности"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                            <muxc:NumberBox PlaceholderText="0.00" 
+                                            SpinButtonPlacementMode="Compact"
+                                            SmallChange="0.01"
+                                            NumberFormatter="{x:Bind Path=Formatter}"
+                                            Value="{x:Bind Path=ViewModel.MS.Measuring.Accuracy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Нижний предел"/>
-                            <TextBox />
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" 
+                                            SmallChange="1"
+                                            Value="{x:Bind Path=ViewModel.MS.Measuring.LowerLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Верхний предел"/>
-                            <TextBox />
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" 
+                                            SmallChange="1"
+                                            Value="{x:Bind Path=ViewModel.MS.Measuring.UpperLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Погрешность"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                            <muxc:NumberBox PlaceholderText="0.00" 
+                                            SpinButtonPlacementMode="Compact" 
+                                            SmallChange="0.01"
+                                            NumberFormatter="{x:Bind Path=Formatter}"
+                                            Value="{x:Bind Path=ViewModel.MS.Measuring.Error, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Завод-изготовитель"/>
-                            <TextBox />
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Factories}" 
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.FactoryManufacturer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Factory}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
 
                     </StackPanel>
@@ -121,31 +161,46 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Вид СИ"/>
-                            <TextBox />
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Kinds}" 
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Measuring.MSKind, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Kind}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
-                        
+
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Заводской №"/>
-                            <TextBox />
+                            <TextBox Text="{x:Bind Path=ViewModel.MS.SerialNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
-                        
+
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата изготовления"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch" />
+                            <CalendarDatePicker HorizontalAlignment="Stretch" 
+                                                Date="{x:Bind Path=ViewModel.MS.ProductionDate, 
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
                         </controls:DockPanel>
-                        
+
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Средний срок службы"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact" 
+                                            SmallChange="1"
+                                            Value="{x:Bind Path=ViewModel.MS.LifeTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Стоимость"/>
-                            <TextBox />
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact"
+                                            SmallChange="10"
+                                            NumberFormatter="{x:Bind Path=Formatter}"
+                                            Value="{x:Bind Path=ViewModel.MS.Cost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
                     </StackPanel>
 
@@ -182,69 +237,131 @@
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Место установки"/>
-                            <TextBox />
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Locations}" 
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Exploitation.InstallationLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Location}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Измеряемый параметр"/>
-                            <ComboBox HorizontalAlignment="Stretch"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Parameters}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Measuring.MeasuredParameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Parameter}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Первичный/Вторичный"/>
-                            <CheckBox />
+                            <CheckBox IsChecked="{x:Bind Path=ViewModel.MS.Exploitation.PrimOrSec, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Техническое состояние"/>
-                            <ComboBox HorizontalAlignment="Stretch"/>
-                        </controls:DockPanel>
-
-                        <controls:DockPanel>
+                        <!--<controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Методика поверки"/>
-                            <ComboBox HorizontalAlignment="Stretch"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Methods}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Exploitation.Verification.VerificationMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Method}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Место поверки (контроля)"/>
-                            <TextBox />
+                            <TextBox Text="{x:Bind Path=ViewModel.MS.Exploitation.Verification.VerificationPlace, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Причина ремонта"/>
-                            <ComboBox HorizontalAlignment="Stretch"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Reasons}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Exploitation.Repair.RepairReason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Reason}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата ремонта"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
-                        </controls:DockPanel>
+                            <CalendarDatePicker HorizontalAlignment="Stretch"
+                                                Date="{x:Bind Path=ViewModel.MS.Exploitation.Repair.RepairDate, 
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
+                        </controls:DockPanel>-->
 
-                        <controls:DockPanel>
+                        <!--<controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Ремонтная организация"/>
-                            <ComboBox HorizontalAlignment="Stretch"/>
-                        </controls:DockPanel>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Organizations}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Exploitation.Repair.RepairOrganization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Organization}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </controls:DockPanel>-->
 
-                        <controls:DockPanel>
+                        <!--<controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата перевода на хранение"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
+                            <CalendarDatePicker HorizontalAlignment="Stretch"
+                                                Date="{x:Bind Path=ViewModel.MS.Exploitation.SentToStore, 
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
+                        </controls:DockPanel>-->
+
+                        <!-- Перенёс -->
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата установки"/>
+                            <CalendarDatePicker HorizontalAlignment="Stretch"
+                                                Date="{x:Bind Path=ViewModel.MS.Exploitation.InstallationDate, 
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Место хранения СИ"/>
-                            <ComboBox HorizontalAlignment="Stretch"/>
+                                       Text="Индикатор"/>
+                            <CheckBox IsChecked="{x:Bind Path=ViewModel.MS.Exploitation.Indicator, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Инвентарный №"/>
+                            <TextBox Text="{x:Bind Path=ViewModel.MS.Exploitation.InventoryNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </controls:DockPanel>
+
+                        <!-- Ещё перенёс -->
+                        <controls:DockPanel>
+                            <TextBlock controls:DockPanel.Dock="Left" 
+                                       Text="Дата замены прибора на новый"/>
+                            <CalendarDatePicker HorizontalAlignment="Stretch"
+                                                Date="{x:Bind Path=ViewModel.MS.Exploitation.InstrumentReplacementDate, 
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
+                        </controls:DockPanel>
+                        
                     </StackPanel>
 
                     <StackPanel Grid.Row="1"
@@ -259,53 +376,53 @@
                                    TargetType="controls:DockPanel" />
                         </StackPanel.Resources>
 
-                        <controls:DockPanel>
+                        <!--<controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Дата установки"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
-                        </controls:DockPanel>
+                                       Text="Место хранения СИ"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Storages}"
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Exploitation.Storage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=StorageValue}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </controls:DockPanel>-->
 
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Индикатор"/>
-                            <CheckBox />
-                        </controls:DockPanel>
 
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Инвентарный №"/>
-                            <TextBox />
-                        </controls:DockPanel>
 
-                        <controls:DockPanel>
+                        <!--<controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата последней поверки"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
+                            <CalendarDatePicker HorizontalAlignment="Stretch"
+                                                Date="{x:Bind Path=ViewModel.MS.Exploitation.Verification.LastDate,
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Переодичность поверки (кол-во месяцев)"/>
-                            <muxc:NumberBox SpinButtonPlacementMode="Compact" />
+                            <muxc:NumberBox SpinButtonPlacementMode="Compact"
+                                            SmallChange="1"
+                                            Value="{x:Bind Path=ViewModel.MS.Exploitation.Verification.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </controls:DockPanel>
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="Дата последующей поверки"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
-                        </controls:DockPanel>
+                            <CalendarDatePicker HorizontalAlignment="Stretch"
+                                                Date="{x:Bind Path=ViewModel.MS.Exploitation.Verification.NextDate, 
+                                                              Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConverter}}"/>
+                        </controls:DockPanel>-->
 
-                        <controls:DockPanel>
-                            <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Дата замены прибора на новый"/>
-                            <CalendarDatePicker HorizontalAlignment="Stretch"/>
-                        </controls:DockPanel>
+                        
 
-                        <controls:DockPanel>
+                        <!--<controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
                                        Text="№ свидетельства о поверке"/>
-                            <TextBox />
-                        </controls:DockPanel>
+                            <TextBox Text="{x:Bind Path=ViewModel.MS.Exploitation.Verification.CertificateNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </controls:DockPanel>-->
 
                     </StackPanel>
 
@@ -314,7 +431,8 @@
                 <Button Grid.Row="3" 
                         Content="Сохранить" 
                         HorizontalAlignment="Right"
-                        Margin="0,0,36,36"/>
+                        Margin="0,0,36,36"
+                        Click="{x:Bind Path=ViewModel.Save}"/>
 
             </Grid>
         </ScrollViewer>

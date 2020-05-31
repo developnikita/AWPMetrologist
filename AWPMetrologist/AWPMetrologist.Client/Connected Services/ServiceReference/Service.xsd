@@ -1,63 +1,597 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64455/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" />
-  <xs:element name="GetMSJson">
+  <xs:element name="GetMeasuringSystemsJson">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMSJsonResponse">
+  <xs:element name="GetMeasuringSystemsJsonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMSJsonResult" nillable="true" type="q1:ArrayOfMeasuringInstrument" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMeasuringSystemsJsonResult" nillable="true" type="q1:ArrayOfMeasuringSystem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMICategoriesJson">
+  <xs:element name="GetExploitationsJson">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMICategoriesJsonResponse">
+  <xs:element name="GetExploitationsJsonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMICategoriesJsonResult" nillable="true" type="q2:ArrayOfMICategory" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetExploitationsJsonResult" nillable="true" type="q2:ArrayOfExploitation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMIDevicesJson">
+  <xs:element name="GetFactoryManufacturersJson">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMIDevicesJsonResponse">
+  <xs:element name="GetFactoryManufacturersJsonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMIDevicesJsonResult" nillable="true" type="q3:ArrayOfMIDevice" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetFactoryManufacturersJsonResult" nillable="true" type="q3:ArrayOfFactoryManufacturer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMIKindJson">
+  <xs:element name="GetInstallationLocationsJson">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMIKindJsonResponse">
+  <xs:element name="GetInstallationLocationsJsonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMIKindJsonResult" nillable="true" type="q4:ArrayOfMIKind" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetInstallationLocationsJsonResult" nillable="true" type="q4:ArrayOfInstallationLocation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetVerificationPlacesJson">
+  <xs:element name="GetMeasuredParametersJson">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetVerificationPlacesJsonResponse">
+  <xs:element name="GetMeasuredParametersJsonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetVerificationPlacesJsonResult" nillable="true" type="q5:ArrayOfVerificationPlace" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMeasuredParametersJsonResult" nillable="true" type="q5:ArrayOfMeasuredParameter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMeasuringsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMeasuringsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMeasuringsJsonResult" nillable="true" type="q6:ArrayOfMeasuring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMSCategoriesJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMSCategoriesJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMSCategoriesJsonResult" nillable="true" type="q7:ArrayOfMSCategory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMSKindsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMSKindsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetMSKindsJsonResult" nillable="true" type="q8:ArrayOfMSKind" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepairsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepairsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetRepairsJsonResult" nillable="true" type="q9:ArrayOfRepair" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepairOrganizationsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepairOrganizationsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetRepairOrganizationsJsonResult" nillable="true" type="q10:ArrayOfRepairOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepairReasonsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepairReasonsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetRepairReasonsJsonResult" nillable="true" type="q11:ArrayOfRepairReason" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStoragesJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStoragesJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetStoragesJsonResult" nillable="true" type="q12:ArrayOfStorage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTechnicalConditionsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTechnicalConditionsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetTechnicalConditionsJsonResult" nillable="true" type="q13:ArrayOfTechnicalCondition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnitsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnitsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetUnitsJsonResult" nillable="true" type="q14:ArrayOfUnit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVerificationsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVerificationsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetVerificationsJsonResult" nillable="true" type="q15:ArrayOfVerification" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVerificationMethodsJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVerificationMethodsJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetVerificationMethodsJsonResult" nillable="true" type="q16:ArrayOfVerificationMethod" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeviceStatusesJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeviceStatusesJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetDeviceStatusesJsonResult" nillable="true" type="q17:ArrayOfDeviceStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHandbookMeasuringSystemDataJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHandbookMeasuringSystemDataJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="GetHandbookMeasuringSystemDataJsonResult" nillable="true" type="q18:ArrayOfMeasuringSystem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMSCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="category" nillable="true" type="q19:MSCategory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMSCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMSCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFactoryManufacturer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="factory" nillable="true" type="q20:FactoryManufacturer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFactoryManufacturerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddFactoryManufacturerResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddInstallationLocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="location" nillable="true" type="q21:InstallationLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddInstallationLocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddInstallationLocationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMeasuredParameter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="parameter" nillable="true" type="q22:MeasuredParameter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMeasuredParameterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMeasuredParameterResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMSKind">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="kind" nillable="true" type="q23:MSKind" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMSKindResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMSKindResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRepairOrganization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="organization" nillable="true" type="q24:RepairOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRepairOrganizationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddRepairOrganizationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRepairReason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="reason" nillable="true" type="q25:RepairReason" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRepairReasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddRepairReasonResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStorage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="storage" nillable="true" type="q26:Storage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStorageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddStorageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTechnicalCondition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="condition" nillable="true" type="q27:TechnicalCondition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTechnicalConditionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddTechnicalConditionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUnit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="unit" nillable="true" type="q28:Unit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUnitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddUnitResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddVerificationMethod">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="method" nillable="true" type="q29:VerificationMethod" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddVerificationMethodResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddVerificationMethodResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMeasuringSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="system" nillable="true" type="q30:MeasuringSystem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMeasuringSystemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMeasuringSystemResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddExploitation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="exploitation" nillable="true" type="q31:Exploitation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddExploitationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddExploitationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMeasuring">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="measuring" nillable="true" type="q32:Measuring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMeasuringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMeasuringResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddVerification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="verification" nillable="true" type="q33:Verification" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddVerificationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddVerificationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRepair">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="repair" nillable="true" type="q34:Repair" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRepairResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddRepairResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMSCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="category" nillable="true" type="q35:MSCategory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMSCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteMSCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFactoryManufacturer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="factory" nillable="true" type="q36:FactoryManufacturer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFactoryManufacturerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFactoryManufacturerResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteInstallationLocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="location" nillable="true" type="q37:InstallationLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteInstallationLocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteInstallationLocationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMeasuredParameter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="parameter" nillable="true" type="q38:MeasuredParameter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMeasuredParameterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteMeasuredParameterResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMSKind">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="kind" nillable="true" type="q39:MSKind" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMSKindResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteMSKindResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepairOrganization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="organization" nillable="true" type="q40:RepairOrganization" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepairOrganizationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteRepairOrganizationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepairReason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="reason" nillable="true" type="q41:RepairReason" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepairReasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteRepairReasonResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteStorage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="storage" nillable="true" type="q42:Storage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteStorageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteStorageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTechnicalCondition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="condition" nillable="true" type="q43:TechnicalCondition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTechnicalConditionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteTechnicalConditionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUnit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="unit" nillable="true" type="q44:Unit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUnitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteUnitResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteVerificationMethod">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel" minOccurs="0" name="method" nillable="true" type="q45:VerificationMethod" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteVerificationMethodResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteVerificationMethodResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

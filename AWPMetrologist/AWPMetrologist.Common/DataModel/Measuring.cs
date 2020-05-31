@@ -12,6 +12,12 @@ namespace AWPMetrologist.Common.DataModel
         public Unit Unit { get; set; }
 
         [DataMember]
+        public MSKind MSKind { get; set; }
+
+        [DataMember]
+        public MeasuredParameter MeasuredParameter { get; set; }
+
+        [DataMember]
         public float Accuracy { get; set; }
 
         [DataMember]
@@ -22,11 +28,5 @@ namespace AWPMetrologist.Common.DataModel
 
         [DataMember]
         public float Error { get; set; }
-
-        [DataMember]
-        public MSKind MSKind { get; set; }
-
-        [DataMember]
-        public MeasuredParameter MeasuredParameter { get; set; }
     }
 }

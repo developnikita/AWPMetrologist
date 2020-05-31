@@ -95,7 +95,7 @@ namespace AWPMetrologist.Client
                 builder.RegisterType<AccountingViewModel>();
                 builder.RegisterType<SchedulesViewModel>();
                 builder.RegisterType<VerificationViewModel>();
-                builder.RegisterType<HandbookMSViewModel>();
+                builder.RegisterType<HandbookViewModel>();
 
                 builder.RegisterType<NavigationService>()
                     .AsImplementedInterfaces()

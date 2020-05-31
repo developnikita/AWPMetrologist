@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Autofac;
 using AWPMetrologist.Client.ViewModels;
 using AWPMetrologist.Client.Views;
-// using AWPMetrologist.DataModels;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -23,7 +22,7 @@ namespace AWPMetrologist.Client.Services.Navigation
             RegisterPageViewModel<AccountingView, AccountingViewModel>();
             RegisterPageViewModel<VerificationView, VerificationViewModel>();
             RegisterPageViewModel<SchedulesView, SchedulesViewModel>();
-            RegisterPageViewModel<HandbookMSView, HandbookMSViewModel>();
+            RegisterPageViewModel<HandbookView, HandbookViewModel>();
 
             Frame.Navigated += Frame_Navigated;
         }
@@ -36,7 +35,7 @@ namespace AWPMetrologist.Client.Services.Navigation
 
         public Task NavigateToSchedulesAsync() => NavigateToPage<SchedulesView>();
 
-        public Task NavigateToHandbookAsync() => NavigateToPage<HandbookMSView>();
+        public Task NavigateToHandbookAsync() => NavigateToPage<HandbookView>();
 
         public async Task GoBackAsync()
         {
@@ -82,6 +81,14 @@ namespace AWPMetrologist.Client.Services.Navigation
 
             PageViewModels[typeof(TPage)] = navigatedTo;
         }
+
+        /*
+        private void RegisterUserControlViewModel<TUserControl, TViewModel>()
+            where TViewModel : class
+        {
+
+        }
+        */
 
         private Task NavigateToPage<TPage>()
         {

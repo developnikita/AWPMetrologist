@@ -10,9 +10,6 @@ namespace AWPMetrologist.Common.DataModel
         public int Id { get; set; }
 
         [DataMember]
-        public string Name { get; set; }
-
-        [DataMember]
         public MSCategory MSCategory { get; set; }
 
         [DataMember]
@@ -20,6 +17,15 @@ namespace AWPMetrologist.Common.DataModel
 
         [DataMember]
         public FactoryManufacturer FactoryManufacturer { get; set; }
+
+        [DataMember]
+        public Exploitation Exploitation { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string MSType { get; set; }
 
         [DataMember]
         public string SerialNumber { get; set; }
@@ -32,8 +38,5 @@ namespace AWPMetrologist.Common.DataModel
 
         [DataMember]
         public float Cost { get; set; }
-
-        [DataMember]
-        public Exploitation Exploitation { get; set; }
     }
 }

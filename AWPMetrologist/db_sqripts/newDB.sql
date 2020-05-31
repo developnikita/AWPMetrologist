@@ -73,6 +73,7 @@ CREATE TABLE dbo.Storage
 );
 GO
 
+/*
 CREATE TABLE dbo.StorageInformation
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
@@ -80,6 +81,7 @@ CREATE TABLE dbo.StorageInformation
 	[StorageDate] DATE NOT NULL
 );
 GO
+*/
 
 CREATE TABLE dbo.RepairReason
 (
@@ -88,7 +90,7 @@ CREATE TABLE dbo.RepairReason
 );
 GO
 
-CREATE TABLE dbo.Repair
+CREATE TABLE dbo.Repair 
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
 	[RepairReasonId] INT NOT NULL FOREIGN KEY REFERENCES dbo.RepairReason,
@@ -104,22 +106,15 @@ CREATE TABLE dbo.VerificationMethod
 );
 GO
 
-CREATE TABLE dbo.VerificationPlace
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
-	[Place] VARCHAR(100) NOT NULL
-);
-GO
-
 CREATE TABLE dbo.Verification
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
 	[VerificationMethodId] INT NOT NULL FOREIGN KEY REFERENCES dbo.VerificationMethod(Id),
-	[VerificationPlaceId] INT NOT NULL FOREIGN KEY REFERENCES dbo.VerificationPlace(Id),
+	[VerificationPlace] VARCHAR(50) NOT NULL,
 	[LastDate] DATE NOT NULL,
 	[Period] INT NOT NULL,
 	[NextDate] DATE NOT NULL,
-	[CertificateNumber] VARCHAR(100) NOT NULL,
+	[CertificateNumber] VARCHAR(100),
 	[VerificationResut] BIT,
 	[Replaced] BIT
 );
@@ -129,24 +124,24 @@ CREATE TABLE dbo.Measuring
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
 	[UnitId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Unit(Id),
+	[MSKindId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MSKind(Id),
+	[MeasuredParameterId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MeasuredParameter(Id),
 	[Accuracy] FLOAT(5) NOT NULL,
 	[LowerLimit] INT NOT NULL,
 	[UpperLimit] INT NOT NULL,
-	[Error] FLOAT(6) NOT NULL,
-	[MSKindId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MSKind(Id),
-	[MeasuredParameterId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MeasuredParameter(Id)
+	[Error] FLOAT(6) NOT NULL
 );
 GO
 
 CREATE TABLE dbo.Exploitation
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[VerificationId] INT FOREIGN KEY REFERENCES dbo.Verification(Id),
 	[InstallationLocationId] INT NOT NULL FOREIGN KEY REFERENCES dbo.InstallationLocation(Id),
-	[PrimOrSec] BIT,
-	[TechnicalConditionId] INT NOT NULL FOREIGN KEY REFERENCES dbo.TechnicalCondition(Id),
-	[VerificationId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Verification(Id),
+	[StorageId] INT FOREIGN KEY REFERENCES dbo.Storage(Id),
 	[RepairId] INT FOREIGN KEY REFERENCES dbo.Repair(Id),
-	[StorageInformationId] INT FOREIGN KEY REFERENCES dbo.StorageInformation(Id),
+	[SendToStore] DATE,
+	[PrimOrSec] BIT,
 	[InstallationDate] DATE NOT NULL,
 	[Indicator] BIT,
 	[InventoryNumber] VARCHAR(100) NOT NULL,
@@ -157,14 +152,26 @@ GO
 CREATE TABLE dbo.MeasuringSystem
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
-	[Name] VARCHAR(20) NOT NULL,
 	[MSCategoryId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MSCategory(Id),
 	[MeasuringId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Measuring(Id),
 	[FactoryManufacturerId] INT NOT NULL FOREIGN KEY REFERENCES dbo.FactoryManufacturer(Id),
+	[ExploitationId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Exploitation(Id),
+	[Name] VARCHAR(20) NOT NULL,
+	[MSType] VARCHAR(30) NOT NULL,
 	[SerialNumber] VARCHAR(50) NOT NULL,
 	[ProductionDate] DATE NOT NULL,
 	[LifeTime] INT NOT NULL,
-	[Cost] FLOAT(2),
-	[ExploitationId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Exploitation(Id)
+	[Cost] FLOAT(2)
 );
 GO
+
+CREATE TABLE dbo.DeviceStatus
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[MSId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MeasuringSystem(Id),
+	[TechnicalConditionId] INT NOT NULL FOREIGN KEY REFERENCES dbo.TechnicalCondition(Id),
+	[FromTime] DATE NOT NULL,
+	[ToTime] DATE NOT NULL
+);
+GO
+

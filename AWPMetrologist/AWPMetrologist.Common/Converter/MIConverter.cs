@@ -6,75 +6,136 @@ namespace AWPMetrologist.Common.Converter
 {
     public static class MIConverter
     {
-        public static MeasuringInstrument FromDataRowToMI(DataRow dr)
+        public static MSCategory FromDRToCategory(DataRow dr)
         {
-            return new MeasuringInstrument()
-            {
-                Id = Convert.ToInt32(dr["Id"]),
-                MSType = dr["Type"].ToString(),
-                Device = new MIDevice()
-                {
-                    Id = Convert.ToInt32(dr["DeviceId"]),
-                    Device = dr["Device"].ToString()
-                },
-                Cost = DBNull.Value.Equals(dr["Cost"]) ? null : (int?)Convert.ToInt32(dr["Cost"]),
-                Period = Convert.ToInt32(dr["Period"]),
-                Category = new MICategory()
-                {
-                    Id = Convert.ToInt32(dr["CategoryId"]),
-                    Category = dr["Category"].ToString()
-                },
-                Kind = new MIKind()
-                {
-                    Id = Convert.ToInt32(dr["KindId"]),
-                    Kind = dr["Kind"].ToString()
-                },
-                Place = new VerificationPlace()
-                {
-                    Id = Convert.ToInt32(dr["PlaceId"]),
-                    Place = dr["Place"].ToString()
-                },
-                Gold = DBNull.Value.Equals(dr["Gold"]) ? null : (int?)Convert.ToInt32(dr["Gold"]),
-                Silver = DBNull.Value.Equals(dr["Silver"]) ? null : (int?)Convert.ToInt32(dr["Silver"]),
-                Platinum = DBNull.Value.Equals(dr["Platinum"]) ? null : (int?)Convert.ToInt32(dr["Platinum"]),
-                Paladium = DBNull.Value.Equals(dr["Paladium"]) ? null : (int?)Convert.ToInt32(dr["Paladium"]),
-                Mercury = DBNull.Value.Equals(dr["Mercury"]) ? null : (int?)Convert.ToInt32(dr["Mercury"])
-            };
-        }
-
-        public static MICategory FromDataRowToCategory(DataRow dr)
-        {
-            return new MICategory()
+            return new MSCategory()
             {
                 Id = Convert.ToInt32(dr["Id"]),
                 Category = dr["Category"].ToString()
             };
         }
 
-        public static MIDevice FromDataRowToDevice(DataRow dr)
+        public static FactoryManufacturer FromDRToFactoryManufacturer(DataRow dr)
         {
-            return new MIDevice()
+            return new FactoryManufacturer()
             {
                 Id = Convert.ToInt32(dr["Id"]),
-                Device = dr["Device"].ToString()
+                Factory = dr["Factory"].ToString()
             };
         }
 
-        public static MIKind FromDataRowToKind(DataRow dr)
+        public static InstallationLocation FromDRToInstallationLocation(DataRow dr)
         {
-            return new MIKind()
+            return new InstallationLocation()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Location = dr["Location"].ToString()
+            };
+        }
+
+        public static MeasuredParameter FromDRToMeasuredParameter(DataRow dr)
+        {
+            return new MeasuredParameter()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Parameter = dr["Parameter"].ToString()
+            };
+        }
+
+        public static MSKind FromDRToKind(DataRow dr)
+        {
+            return new MSKind()
             {
                 Id = Convert.ToInt32(dr["Id"]),
                 Kind = dr["Kind"].ToString()
             };
         }
 
-        public static VerificationPlace FromDataRowToPlace(DataRow dr)
+        public static RepairOrganization FromDRToRepairOrganization(DataRow dr)
         {
-            return new VerificationPlace()
+            return new RepairOrganization()
             {
                 Id = Convert.ToInt32(dr["Id"]),
-                Place = dr["Place"].ToString()
+                Organization = dr["Organization"].ToString()
+            };
+        }
+
+        public static RepairReason FromDRToRepairReason(DataRow dr)
+        {
+            return new RepairReason()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Reason = dr["Reason"].ToString()
+            };
+        }
+
+        public static Storage FromDRToStorage(DataRow dr)
+        {
+            return new Storage()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                StorageValue = dr["Storage"].ToString()
+            };
+        }
+
+        public static TechnicalCondition FromDRToTechnicalCondition(DataRow dr)
+        {
+            return new TechnicalCondition()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Condition = dr["Condition"].ToString()
+            };
+        }
+
+        public static Unit FromDRToUnit(DataRow dr)
+        {
+            return new Unit()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                UnitValue = dr["Unit"].ToString()
+            };
+        }
+
+        public static VerificationMethod FromDRToVerificationMethod(DataRow dr)
+        {
+            return new VerificationMethod()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Method = dr["Method"].ToString()
+            };
+        }
+
+        public static MeasuringSystem FromDRToHandbookMeasuringSystemData(DataRow dr)
+        {
+            return new MeasuringSystem()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                MSCategory = new MSCategory()
+                {
+                    Id = Convert.ToInt32(dr["MSCategoryId"]),
+                    Category = dr["Category"].ToString()
+                },
+                Measuring = new Measuring()
+                {
+                    Id = Convert.ToInt32(dr["MeasuringId"]),
+                    MSKind = new MSKind()
+                    {
+                        Id = Convert.ToInt32(dr["MSKindId"]),
+                        Kind = dr["Kind"].ToString()
+                    },
+                },
+                Exploitation = new Exploitation()
+                {
+                    Id = Convert.ToInt32(dr["ExploitationId"]),
+                    InstallationLocation = new InstallationLocation()
+                    {
+                        Id = Convert.ToInt32(dr["InstallationLocationId"]),
+                        Location = dr["Location"].ToString()
+                    }
+                },
+                Name = dr["Name"].ToString(),
+                MSType = dr["MSType"].ToString(),
+                Cost = Convert.ToInt32(dr["Cost"])
             };
         }
     }
