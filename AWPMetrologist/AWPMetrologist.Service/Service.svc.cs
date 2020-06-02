@@ -782,10 +782,11 @@ namespace AWPMetrologistService
 
         public int AddExploitation(Exploitation exploitation)
         {
-            int result;
+            object result;
             string sqlStr = "INSERT INTO dbo.Exploitation VALUES(@Verification," +
                             " @Location, @Storage, @Repair, @Send, @PrimSec," +
-                            " @InstallationDate, @Indicator, @Invertory, @ReplaceDate)";
+                            " @InstallationDate, @Indicator, @Invertory, @ReplaceDate);" +
+                            "SELECT SCOPE_IDENTITY();";
             using (SqlConnection sqlCon = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
@@ -800,16 +801,17 @@ namespace AWPMetrologistService
                 cmd.Parameters.Add("@Invertory", SqlDbType.NVarChar).Value = exploitation.InventoryNumber;
                 cmd.Parameters.Add("@ReplaceDate", SqlDbType.Date).Value = exploitation.InstrumentReplacementDate.Date;
                 sqlCon.Open();
-                result = cmd.ExecuteNonQuery();
+                result = cmd.ExecuteScalar();
             }
-            return result;
+            return Convert.ToInt32(result);
         }
 
         public int AddMeasuring(Measuring measuring)
         {
-            int result;
+            object result;
             string sqlStr = "INSERT INTO dbo.Measuring VALUES(@Unit, @Kind, @Param," +
-                            " @Accuracy, @Lower, @Upper, @Error)";
+                            " @Accuracy, @Lower, @Upper, @Error);" +
+                            "SELECT SCOPE_IDENTITY();";
             using (SqlConnection sqlCon = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
@@ -821,9 +823,9 @@ namespace AWPMetrologistService
                 cmd.Parameters.Add("@Upper", SqlDbType.Int).Value = measuring.UpperLimit;
                 cmd.Parameters.Add("@Error", SqlDbType.Float).Value = measuring.Error;
                 sqlCon.Open();
-                result = cmd.ExecuteNonQuery();
+                result = cmd.ExecuteScalar();
             }
-            return result;
+            return Convert.ToInt32(result);
         }
 
         public int AddVerification(Verification verification)

@@ -143,6 +143,8 @@ namespace AWPMetrologist.Common.Converter
         {
             var id = dr["VerificationId"];
 
+            var method = dr["Method"];
+
             return new MeasuringSystem()
             {
                 Id = Convert.ToInt32(dr["Id"]),

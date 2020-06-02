@@ -25,42 +25,29 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0"
-                    Grid.Column="0"
-                    Orientation="Horizontal">
-            <TextBlock Text="№" />
-            <TextBlock Text="Наименование" />
-            <TextBlock Text="Тип СИ" />
-            <TextBlock Text="Заводской номер" />
-        </StackPanel>
-
-        <ListView Grid.Column="0"
-                  Grid.Row="1"
-                  BorderThickness="1"
-                  HorizontalAlignment="Left"
-                  IsItemClickEnabled="True"
-                  MinWidth="150"
-                  ItemsSource="{x:Bind Path=ViewModel.MS}"
-                  SelectedItem="{x:Bind Path=ViewModel.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionChanged="{x:Bind Path=ViewModel.SelectionChanged}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=Id}" />
-                        <TextBlock Text="." />
-                        <TextBlock Text="{Binding Path=Name}" Margin="0,0,10,0"/>
-                        <TextBlock Text="{Binding Path=MSType}" Margin="0,0,10,0"/>
-                        <TextBlock Text="{Binding Path=SerialNumber}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <controls:DataGrid Grid.Column="0"
+                           Grid.Row="0"
+                           BorderThickness="1"
+                           HorizontalAlignment="Left"
+                           AutoGenerateColumns="False"
+                           ItemsSource="{x:Bind Path=ViewModel.MS}"
+                           SelectedItem="{x:Bind Path=ViewModel.SelectedItem}"
+                           SelectionChanged="{x:Bind Path=ViewModel.SelectionChanged}">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="№"
+                                             Binding="{Binding Path=Id}" />
+                <controls:DataGridTextColumn Header="Наименование"
+                                             Binding="{Binding Path=Name}" />
+                <controls:DataGridTextColumn Header="Тип СИ"
+                                             Binding="{Binding Path=MSType}" />
+                <controls:DataGridTextColumn Header="Заводской номер"
+                                             Binding="{Binding Path=SerialNumber}" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
 
         <Grid Grid.Column="1"
-              Grid.Row="1"
+              Grid.Row="0"
               Margin="20,0,0,0">
             <StackPanel Margin="{StaticResource StackPanelMargin}">
                 <StackPanel.Resources>
@@ -74,7 +61,7 @@
                                Text="Метод поверки" />
                     <ComboBox HorizontalAlignment="Stretch" 
                               ItemsSource="{x:Bind Path=ViewModel.Methods}"
-                              SelectedItem="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.VerificationMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                              SelectedItem="{x:Bind Path=ViewModel.SelectedMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Method}"/>
@@ -106,7 +93,8 @@
                 <controls:DockPanel>
                     <TextBlock controls:DockPanel.Dock="Left"
                                Text="Период" />
-                    <muxc:NumberBox SmallChange="1" 
+                    <muxc:NumberBox SmallChange="1"
+                                    SpinButtonPlacementMode="Compact"
                                     Value="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </controls:DockPanel>
 
@@ -118,7 +106,7 @@
 
                 <controls:DockPanel>
                     <TextBlock controls:DockPanel.Dock="Left"
-                               Text="Результат поверки" />
+                               Text="Поверка пройдена" />
                     <CheckBox IsChecked="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.VerificationResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </controls:DockPanel>
 
@@ -130,10 +118,11 @@
             </StackPanel>
         </Grid>
 
-        <Button Grid.Column="1" 
-                Grid.Row="3" 
+        <Button Grid.ColumnSpan="2" 
+                Grid.Row="1" 
                 Content="Сохранить"
-                HorizontalAlignment="Left"
+                HorizontalAlignment="Right"
+                Margin="0,0,30,0"
                 Click="{x:Bind Path=ViewModel.Save}"/>
     </Grid>
 </UserControl>

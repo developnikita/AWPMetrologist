@@ -51,6 +51,14 @@
                                   Glyph="&#xE77F;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Tag="Repair" 
+                                         Content="Состояние СИ">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" 
+                                  Glyph="&#xE90F;" ></FontIcon>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
             <!--
