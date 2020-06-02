@@ -138,5 +138,65 @@ namespace AWPMetrologist.Common.Converter
                 Cost = Convert.ToInt32(dr["Cost"])
             };
         }
+
+        public static MeasuringSystem FromDRToMeasuringSystemVerification(DataRow dr)
+        {
+            var id = dr["VerificationId"];
+
+            return new MeasuringSystem()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Name = dr["Name"].ToString(),
+                MSType = dr["MSType"].ToString(),
+                SerialNumber = dr["SerialNumber"].ToString(),
+                Measuring = new Measuring()
+                {
+                    Id = Convert.ToInt32(dr["MeasuringId"]),
+                    MSKind = new MSKind()
+                    {
+                        Id = Convert.ToInt32(dr["MSKindId"]),
+                        Kind = dr["Kind"].ToString()
+                    }
+                },
+                Exploitation = new Exploitation()
+                {
+                    Id = Convert.ToInt32(dr["ExploitationId"]),
+                    Verification = dr["VerificationId"].Equals(DBNull.Value) ? null : new Verification()
+                    {
+                        Id = Convert.ToInt32(dr["VerificationId"]),
+                        VerificationMethod = new VerificationMethod()
+                        {
+                            Id = Convert.ToInt32(dr["VerificationMethodId"]),
+                            Method = dr["Method"].ToString()
+                        },
+                        VerificationPlace = dr["VerificationPlace"].ToString(),
+                        Period = Convert.ToInt32(dr["Period"]),
+                        Replaced = Convert.ToBoolean(dr["Replaced"]),
+                        CertificateNumber = dr["CertificateNumber"].ToString(),
+                        VerificationResult = Convert.ToBoolean(dr["VerificationResut"]),
+                        LastDate = DateTime.Parse(dr["LastDate"].ToString()),
+                        NextDate = DateTime.Parse(dr["NextDate"].ToString())
+                    },
+                    InstallationLocation = new InstallationLocation()
+                    {
+                        Id = Convert.ToInt32(dr["InstallationLocationId"])
+                    },
+                    Indicator = Convert.ToBoolean(dr["Indicator"]),
+                    Storage = dr["StorageId"].Equals(DBNull.Value) ? null : new Storage()
+                    {
+                        Id = Convert.ToInt32(dr["StorageId"])
+                    },
+                    Repair = dr["RepairId"].Equals(DBNull.Value) ? null : new Repair()
+                    {
+                        Id = Convert.ToInt32(dr["RepairId"])
+                    },
+                    SentToStore = DateTime.Parse(dr["SendToStore"].ToString()),
+                    PrimOrSec = Convert.ToBoolean(dr["PrimOrSec"]),
+                    InstallationDate = DateTime.Parse(dr["InstallationDate"].ToString()),
+                    InventoryNumber = dr["InventoryNumber"].ToString(),
+                    InstrumentReplacementDate = DateTime.Parse(dr["InstrumentReplacementDate"].ToString())
+                }
+            };
+        }
     }
 }

@@ -115,7 +115,7 @@ CREATE TABLE dbo.Verification
 	[Period] INT NOT NULL,
 	[NextDate] DATE NOT NULL,
 	[CertificateNumber] VARCHAR(100),
-	[VerificationResut] BIT,
+	[VerificationResult] BIT,
 	[Replaced] BIT
 );
 GO

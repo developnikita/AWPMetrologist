@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AWPMetrologist.Client.ViewModels
+﻿namespace AWPMetrologist.Client.ViewModels
 {
     public class VerificationViewModel
     {
+        public VerificationViewModel()
+        {
+        }
     }
 }

@@ -1378,6 +1378,9 @@ namespace AWPMetrologist.Client.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJson", ReplyAction="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJsonResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MeasuringSystem>> GetHandbookMeasuringSystemDataJsonAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMeasuringSystemsVerificationJson", ReplyAction="http://tempuri.org/IService/GetMeasuringSystemsVerificationJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MeasuringSystem>> GetMeasuringSystemsVerificationJsonAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddMSCategory", ReplyAction="http://tempuri.org/IService/AddMSCategoryResponse")]
         System.Threading.Tasks.Task<bool> AddMSCategoryAsync(AWPMetrologist.Client.ServiceReference.MSCategory category);
         
@@ -1415,13 +1418,13 @@ namespace AWPMetrologist.Client.ServiceReference {
         System.Threading.Tasks.Task<bool> AddMeasuringSystemAsync(AWPMetrologist.Client.ServiceReference.MeasuringSystem system);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddExploitation", ReplyAction="http://tempuri.org/IService/AddExploitationResponse")]
-        System.Threading.Tasks.Task<bool> AddExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation);
+        System.Threading.Tasks.Task<int> AddExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddMeasuring", ReplyAction="http://tempuri.org/IService/AddMeasuringResponse")]
-        System.Threading.Tasks.Task<bool> AddMeasuringAsync(AWPMetrologist.Client.ServiceReference.Measuring measuring);
+        System.Threading.Tasks.Task<int> AddMeasuringAsync(AWPMetrologist.Client.ServiceReference.Measuring measuring);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddVerification", ReplyAction="http://tempuri.org/IService/AddVerificationResponse")]
-        System.Threading.Tasks.Task<bool> AddVerificationAsync(AWPMetrologist.Client.ServiceReference.Verification verification);
+        System.Threading.Tasks.Task<int> AddVerificationAsync(AWPMetrologist.Client.ServiceReference.Verification verification);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddRepair", ReplyAction="http://tempuri.org/IService/AddRepairResponse")]
         System.Threading.Tasks.Task<bool> AddRepairAsync(AWPMetrologist.Client.ServiceReference.Repair repair);
@@ -1458,6 +1461,12 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteVerificationMethod", ReplyAction="http://tempuri.org/IService/DeleteVerificationMethodResponse")]
         System.Threading.Tasks.Task<bool> DeleteVerificationMethodAsync(AWPMetrologist.Client.ServiceReference.VerificationMethod method);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateExploitation", ReplyAction="http://tempuri.org/IService/UpdateExploitationResponse")]
+        System.Threading.Tasks.Task<bool> UpdateExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateVerification", ReplyAction="http://tempuri.org/IService/UpdateVerificationResponse")]
+        System.Threading.Tasks.Task<bool> UpdateVerificationAsync(AWPMetrologist.Client.ServiceReference.Verification verification);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1575,6 +1584,10 @@ namespace AWPMetrologist.Client.ServiceReference {
             return base.Channel.GetHandbookMeasuringSystemDataJsonAsync();
         }
         
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MeasuringSystem>> GetMeasuringSystemsVerificationJsonAsync() {
+            return base.Channel.GetMeasuringSystemsVerificationJsonAsync();
+        }
+        
         public System.Threading.Tasks.Task<bool> AddMSCategoryAsync(AWPMetrologist.Client.ServiceReference.MSCategory category) {
             return base.Channel.AddMSCategoryAsync(category);
         }
@@ -1623,15 +1636,15 @@ namespace AWPMetrologist.Client.ServiceReference {
             return base.Channel.AddMeasuringSystemAsync(system);
         }
         
-        public System.Threading.Tasks.Task<bool> AddExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation) {
+        public System.Threading.Tasks.Task<int> AddExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation) {
             return base.Channel.AddExploitationAsync(exploitation);
         }
         
-        public System.Threading.Tasks.Task<bool> AddMeasuringAsync(AWPMetrologist.Client.ServiceReference.Measuring measuring) {
+        public System.Threading.Tasks.Task<int> AddMeasuringAsync(AWPMetrologist.Client.ServiceReference.Measuring measuring) {
             return base.Channel.AddMeasuringAsync(measuring);
         }
         
-        public System.Threading.Tasks.Task<bool> AddVerificationAsync(AWPMetrologist.Client.ServiceReference.Verification verification) {
+        public System.Threading.Tasks.Task<int> AddVerificationAsync(AWPMetrologist.Client.ServiceReference.Verification verification) {
             return base.Channel.AddVerificationAsync(verification);
         }
         
@@ -1681,6 +1694,14 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteVerificationMethodAsync(AWPMetrologist.Client.ServiceReference.VerificationMethod method) {
             return base.Channel.DeleteVerificationMethodAsync(method);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation) {
+            return base.Channel.UpdateExploitationAsync(exploitation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateVerificationAsync(AWPMetrologist.Client.ServiceReference.Verification verification) {
+            return base.Channel.UpdateVerificationAsync(verification);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

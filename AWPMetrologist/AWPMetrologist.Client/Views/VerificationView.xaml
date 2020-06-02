@@ -16,16 +16,33 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="Title" 
                    Grid.Row="0"
-                   Text="Результаты поверки/калибровки"
+                   Text="Поверка"
                    FontWeight="Light"
                    Style="{StaticResource PageTitleStyle}"/>
-        <controls:DataGrid AutoGenerateColumns="True"
+
+        <Pivot x:Name="Pivot" 
+               Grid.Row="1">
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <PivotItem Header="Поверка устройства">
+                <local:MeasuringSystemVerificationView Margin="0,16,0,0"/>
+            </PivotItem>
+
+            <PivotItem Header="Результаты поверка">
+                <local:VerificationResultView Margin="0,16,0,0"/>
+            </PivotItem>
+        </Pivot>
+
+        <!--<controls:DataGrid AutoGenerateColumns="True"
                            Grid.Row="1">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="№ П.П">
                     
                 </controls:DataGridTextColumn>
             </controls:DataGrid.Columns>
-        </controls:DataGrid>
+        </controls:DataGrid>-->
     </Grid>
 </Page>

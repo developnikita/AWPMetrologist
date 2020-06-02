@@ -115,6 +115,12 @@
   <wsdl:message name="IService_GetHandbookMeasuringSystemDataJson_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetHandbookMeasuringSystemDataJsonResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetMeasuringSystemsVerificationJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuringSystemsVerificationJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMeasuringSystemsVerificationJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasuringSystemsVerificationJsonResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_AddMSCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMSCategory" />
   </wsdl:message>
@@ -277,6 +283,18 @@
   <wsdl:message name="IService_DeleteVerificationMethod_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteVerificationMethodResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_UpdateExploitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExploitation" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateExploitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExploitationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateVerification_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVerification" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateVerification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVerificationResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetMeasuringSystemsJson">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsJson" message="tns:IService_GetMeasuringSystemsJson_InputMessage" />
@@ -349,6 +367,10 @@
     <wsdl:operation name="GetHandbookMeasuringSystemDataJson">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJson" message="tns:IService_GetHandbookMeasuringSystemDataJson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJsonResponse" message="tns:IService_GetHandbookMeasuringSystemDataJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMeasuringSystemsVerificationJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsVerificationJson" message="tns:IService_GetMeasuringSystemsVerificationJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsVerificationJsonResponse" message="tns:IService_GetMeasuringSystemsVerificationJson_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddMSCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMSCategory" message="tns:IService_AddMSCategory_InputMessage" />
@@ -457,6 +479,14 @@
     <wsdl:operation name="DeleteVerificationMethod">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteVerificationMethod" message="tns:IService_DeleteVerificationMethod_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteVerificationMethodResponse" message="tns:IService_DeleteVerificationMethod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExploitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateExploitation" message="tns:IService_UpdateExploitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateExploitationResponse" message="tns:IService_UpdateExploitation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVerification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateVerification" message="tns:IService_UpdateVerification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateVerificationResponse" message="tns:IService_UpdateVerification_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RESTEndPoint" type="tns:IService">
@@ -616,6 +646,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetHandbookMeasuringSystemDataJson">
       <soap:operation soapAction="http://tempuri.org/IService/GetHandbookMeasuringSystemDataJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeasuringSystemsVerificationJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMeasuringSystemsVerificationJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -859,6 +898,24 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteVerificationMethod">
       <soap:operation soapAction="http://tempuri.org/IService/DeleteVerificationMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExploitation">
+      <soap:operation soapAction="http://tempuri.org/IService/UpdateExploitation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVerification">
+      <soap:operation soapAction="http://tempuri.org/IService/UpdateVerification" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -165,10 +165,12 @@
     <Compile Include="ViewModels\Dictionary\UnitViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\VerificationMethodViewModel.cs" />
     <Compile Include="ViewModels\HandbookViewModel.cs" />
+    <Compile Include="ViewModels\MeasuringSystemVerificationViewModel.cs" />
     <Compile Include="ViewModels\MeasuringSystemViewModel.cs" />
     <Compile Include="ViewModels\ReferenceDataViewModel.cs" />
     <Compile Include="ViewModels\SchedulesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\VerificationResultViewModel.cs" />
     <Compile Include="ViewModels\VerificationViewModel.cs" />
     <Compile Include="Views\AccountingView.xaml.cs">
       <DependentUpon>AccountingView.xaml</DependentUpon>
@@ -209,6 +211,9 @@
     <Compile Include="Views\HandbookView.xaml.cs">
       <DependentUpon>HandbookView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MeasuringSystemVerificationView.xaml.cs">
+      <DependentUpon>MeasuringSystemVerificationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MeasuringSystemView.xaml.cs">
       <DependentUpon>MeasuringSystemView.xaml</DependentUpon>
     </Compile>
@@ -223,6 +228,9 @@
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VerificationResultView.xaml.cs">
+      <DependentUpon>VerificationResultView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VerificationView.xaml.cs">
       <DependentUpon>VerificationView.xaml</DependentUpon>
@@ -378,6 +386,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MeasuringSystemVerificationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MeasuringSystemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -395,6 +407,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VerificationResultView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

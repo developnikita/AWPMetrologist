@@ -198,6 +198,20 @@ namespace AWPMetrologist.Client
             }
         }
 
+        public async Task<List<MeasuringSystem>> GetMeasuringSystemVerification()
+        {
+            var result = await _client.GetMeasuringSystemsVerificationJsonAsync();
+
+            if (result != null)
+            {
+                return result.ToList();
+            }
+            else
+            {
+                return new List<MeasuringSystem>();
+            }
+        }
+
         public async Task<bool> AddMSCategory(MSCategory category)
         {
             var result = await _client.AddMSCategoryAsync(category);
@@ -282,6 +296,13 @@ namespace AWPMetrologist.Client
             return result;
         }
 
+        public async Task<int> AddVerification(Verification verification)
+        {
+            var result = await _client.AddVerificationAsync(verification);
+
+            return result;
+        }
+
         public async Task<bool> DeleteMSCategory(MSCategory category)
         {
             var result = await _client.DeleteMSCategoryAsync(category);
@@ -355,6 +376,20 @@ namespace AWPMetrologist.Client
         public async Task<bool> DeleteVerificationMethod(VerificationMethod method)
         {
             var result = await _client.DeleteVerificationMethodAsync(method);
+
+            return result;
+        }
+
+        public async Task<bool> UpdateExploitation(Exploitation exploitation)
+        {
+            var result = await _client.UpdateExploitationAsync(exploitation);
+
+            return result;
+        }
+
+        public async Task<bool> UpdateVerification(Verification verification)
+        {
+            var result = await _client.UpdateVerificationAsync(verification);
 
             return result;
         }

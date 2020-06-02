@@ -52,12 +52,12 @@
                     <TextBlock Text="{Binding}" Style="{StaticResource SubtitleTextBlockStyle}"/>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
-            <PivotItem Header="Системы измерения">
+            <PivotItem Header="Средства измерения">
                 <local:MeasuringSystemView Margin="0,16,0,0"/>
             </PivotItem>
 
             <PivotItem Header="Справочные данные">
-                <ContentControl Content="{Binding ElementName=Handbook, Path=ReferenceData}" />
+                <ContentControl Content="{Binding ElementName=Handbook, Path=ReferenceData}" Margin="0,16,0,0"/>
                 <!--<local:ReferenceData x:Name="Dictionary" Margin="0,8,0,0"/>-->
             </PivotItem>
         </Pivot>

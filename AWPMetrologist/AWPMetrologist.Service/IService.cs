@@ -82,6 +82,10 @@ namespace AWPMetrologistService
         List<MeasuringSystem> GetHandbookMeasuringSystemDataJson();
 
         [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        List<MeasuringSystem> GetMeasuringSystemsVerificationJson();
+
+        [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool AddMSCategory(MSCategory category);
@@ -154,7 +158,7 @@ namespace AWPMetrologistService
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        bool AddVerification(Verification verification);
+        int AddVerification(Verification verification);
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
@@ -216,6 +220,15 @@ namespace AWPMetrologistService
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool DeleteVerificationMethod(VerificationMethod method);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool UpdateExploitation(Exploitation exploitation);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool UpdateVerification(Verification verification);
 
         // TODO: Add your service operations here
     }

@@ -100,6 +100,11 @@ namespace AWPMetrologistService
             return GetHandbookMeasuringSystemData();
         }
 
+        public List<MeasuringSystem> GetMeasuringSystemsVerificationJson()
+        {
+            return GetMeasuringSystemsVerification();
+        }
+
         private List<MeasuringSystem> GetMeasuringSystems()
         {
             var ms = new List<MeasuringSystem>();
@@ -469,6 +474,39 @@ namespace AWPMetrologistService
             return ms;
         }
 
+        private List<MeasuringSystem> GetMeasuringSystemsVerification()
+        {
+            var ms = new List<MeasuringSystem>();
+            
+            string sqlStr = "SELECT ms.Id, MeasuringId, ExploitationId, MSType, " +
+                            "Name, SerialNumber, MSKindId, Kind, VerificationId, " +
+                            "VerificationMethodId, Method, VerificationPlace, " +
+                            "CertificateNumber, VerificationResut, Replaced, LastDate, " +
+                            "NextDate, Period, " +
+                            "InstallationLocationId, StorageId, RepairId, " +
+                            "SendToStore, PrimOrSec, InstallationDate, " +
+                            "Indicator, InventoryNumber, InstrumentReplacementDate " +
+                            "FROM dbo.MeasuringSystem AS ms " +
+                            "LEFT JOIN dbo.Measuring AS m ON ms.MeasuringId = m.Id " +
+                            "LEFT JOIN dbo.MSKind AS k ON m.MSKindId = k.Id " +
+                            "LEFT JOIN dbo.Exploitation AS e ON ms.ExploitationId = e.Id " +
+                            "LEFT JOIN dbo.InstallationLocation AS l ON e.InstallationLocationId = l.Id " +
+                            "LEFT OUTER JOIN dbo.Storage AS s ON e.StorageId = s.Id " +
+                            "LEFT OUTER JOIN dbo.Repair AS r ON e.RepairId = r.Id " +
+                            "LEFT JOIN dbo.Verification AS v ON e.VerificationId = v.Id " +
+                            "LEFT OUTER JOIN dbo.VerificationMethod AS vm ON v.VerificationMethodId = vm.Id;";
+
+            using (DataTable dt = SendQueryToDB(sqlStr))
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ms.Add(MIConverter.FromDRToMeasuringSystemVerification(dr));
+                }
+            }
+
+            return ms;
+        }
+
         private DataTable SendQueryToDB(string sqlQuery)
         {
             using (DataSet ds = new DataSet())
@@ -788,11 +826,12 @@ namespace AWPMetrologistService
             return result;
         }
 
-        public bool AddVerification(Verification verification)
+        public int AddVerification(Verification verification)
         {
-            int result;
+            object result;
             string sqlStr = "INSERT INTO dbo.Verification VALUES(@Method, @Place, @Last," +
-                            " @Period, @Next, @Cetification, @Result, @Replaced)";
+                            " @Period, @Next, @Certification, @Result, @Replaced);" +
+                            "SELECT SCOPE_IDENTITY();";
             using (SqlConnection sqlCon = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
@@ -805,13 +844,10 @@ namespace AWPMetrologistService
                 cmd.Parameters.Add("@Result", SqlDbType.Bit).Value = verification.VerificationResult;
                 cmd.Parameters.Add("@Replaced", SqlDbType.Bit).Value = verification.Replaced;
                 sqlCon.Open();
-                result = cmd.ExecuteNonQuery();
+                result = cmd.ExecuteScalar();
             }
-            if (result != 0)
-            {
-                return true;
-            }
-            return false;
+            int id = Convert.ToInt32(result);
+            return id;
         }
 
         public bool AddRepair(Repair repair)
@@ -1036,6 +1072,68 @@ namespace AWPMetrologistService
                 result = cmd.ExecuteNonQuery();
             }
 
+            if (result != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateExploitation(Exploitation exploitation)
+        {
+            int result;
+            string sqlStr = "UPDATE dbo.Exploitation SET " +
+                            "InstallationLocationId=@LocationId, StorageId=@StorageId, VerificationId=@VerificationId, " +
+                            "RepairId=@RepairId, SendToStore=@SendToStore, PrimOrSec=@PrimOrSec, " +
+                            "InstallationDate=@InstallationDate, Indicator=@Indicator, " +
+                            "InventoryNumber=@Number, InstrumentReplacementDate=@ReplacementDate " +
+                            "WHERE Id=@Id;";
+            using (SqlConnection sqlCon = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
+                cmd.Parameters.Add("@VerificationId", SqlDbType.Int).Value = exploitation.Verification != null ? exploitation.Verification.Id : (object)DBNull.Value;
+                cmd.Parameters.Add("@LocationId", SqlDbType.Int).Value = exploitation.InstallationLocation.Id;
+                cmd.Parameters.Add("StorageId", SqlDbType.Int).Value = exploitation.Storage != null ? exploitation.Storage.Id : (object)DBNull.Value;
+                cmd.Parameters.Add("@RepairId", SqlDbType.Int).Value = exploitation.Repair != null ? exploitation.Repair.Id : (object)DBNull.Value;
+                cmd.Parameters.Add("@SendToStore", SqlDbType.Date).Value = exploitation.SentToStore.Date;
+                cmd.Parameters.Add("@PrimOrSec", SqlDbType.Bit).Value = exploitation.PrimOrSec;
+                cmd.Parameters.Add("@InstallationDate", SqlDbType.Date).Value = exploitation.InstallationDate.Date;
+                cmd.Parameters.Add("@Indicator", SqlDbType.Bit).Value = exploitation.Indicator;
+                cmd.Parameters.Add("@Number", SqlDbType.NVarChar).Value = exploitation.InventoryNumber;
+                cmd.Parameters.Add("@ReplacementDate", SqlDbType.Date).Value = exploitation.InstrumentReplacementDate.Date;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = exploitation.Id;
+                sqlCon.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+            if (result != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateVerification(Verification verification)
+        {
+            int result;
+            string sqlStr = "UPDATE dbo.Verification SET VerificationMethodId=@Method, " +
+                            "VerificationPlace=@Place, LastDate=@LastDate, Period=@Period, " +
+                            "NextDate=@NextDate, CertificateNumber=@Number, VerificationResut=@Result, " +
+                            "Replaced=@Replaced WHERE Id=@Id;";
+            using (SqlConnection sqlCon = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
+                cmd.Parameters.Add("@Method", SqlDbType.Int).Value = verification.VerificationMethod.Id;
+                cmd.Parameters.Add("@Place", SqlDbType.NVarChar).Value = verification.VerificationPlace;
+                cmd.Parameters.Add("@LastDate", SqlDbType.Date).Value = verification.LastDate.Date;
+                cmd.Parameters.Add("NextDate", SqlDbType.Date).Value = verification.NextDate.Date;
+                cmd.Parameters.Add("@Period", SqlDbType.Int).Value = verification.Period;
+                cmd.Parameters.Add("@Number", SqlDbType.NVarChar).Value = verification.CertificateNumber;
+                cmd.Parameters.Add("@Result", SqlDbType.Bit).Value = verification.VerificationResult;
+                cmd.Parameters.Add("@Replaced", SqlDbType.Bit).Value = verification.Replaced;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = verification.Id;
+                sqlCon.Open();
+                result = cmd.ExecuteNonQuery();
+            }
             if (result != 0)
             {
                 return true;

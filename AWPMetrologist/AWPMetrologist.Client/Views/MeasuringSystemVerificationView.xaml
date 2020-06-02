@@ -1,0 +1,139 @@
+﻿<UserControl
+    x:Class="AWPMetrologist.Client.Views.MeasuringSystemVerificationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:AWPMetrologist.Client.Helpers"
+    xmlns:local="using:AWPMetrologist.Client.Views"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Loaded="{x:Bind Path=ViewModel.LoadData}">
+
+    <UserControl.Resources>
+        <converter:DateTimeToDateTimeOffsetConverter x:Key="DateConvert" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    Orientation="Horizontal">
+            <TextBlock Text="№" />
+            <TextBlock Text="Наименование" />
+            <TextBlock Text="Тип СИ" />
+            <TextBlock Text="Заводской номер" />
+        </StackPanel>
+
+        <ListView Grid.Column="0"
+                  Grid.Row="1"
+                  BorderThickness="1"
+                  HorizontalAlignment="Left"
+                  IsItemClickEnabled="True"
+                  MinWidth="150"
+                  ItemsSource="{x:Bind Path=ViewModel.MS}"
+                  SelectedItem="{x:Bind Path=ViewModel.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectionChanged="{x:Bind Path=ViewModel.SelectionChanged}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}" />
+                        <TextBlock Text="." />
+                        <TextBlock Text="{Binding Path=Name}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Path=MSType}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Path=SerialNumber}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              Margin="20,0,0,0">
+            <StackPanel Margin="{StaticResource StackPanelMargin}">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource InputFieldLabel}" 
+                           TargetType="TextBlock" />
+                    <Style BasedOn="{StaticResource InputField}" 
+                           TargetType="controls:DockPanel" />
+                </StackPanel.Resources>
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Метод поверки" />
+                    <ComboBox HorizontalAlignment="Stretch" 
+                              ItemsSource="{x:Bind Path=ViewModel.Methods}"
+                              SelectedItem="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.VerificationMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Method}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Место поверки" />
+                    <TextBox Text="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.VerificationPlace, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Дата последней поверки" />
+                    <CalendarDatePicker HorizontalAlignment="Stretch"
+                                        Date="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.LastDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConvert}}"/>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Дата последующей поверки" />
+                    <CalendarDatePicker HorizontalAlignment="Stretch"
+                                        Date="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.NextDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateConvert}}"/>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Период" />
+                    <muxc:NumberBox SmallChange="1" 
+                                    Value="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Сертификационный номер поверки" />
+                    <TextBox Text="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.CertificateNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Результат поверки" />
+                    <CheckBox IsChecked="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.VerificationResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </controls:DockPanel>
+
+                <controls:DockPanel>
+                    <TextBlock controls:DockPanel.Dock="Left"
+                               Text="Требует замены" />
+                    <CheckBox IsChecked="{x:Bind Path=ViewModel.SelectedItem.Exploitation.Verification.Replaced, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </controls:DockPanel>
+            </StackPanel>
+        </Grid>
+
+        <Button Grid.Column="1" 
+                Grid.Row="3" 
+                Content="Сохранить"
+                HorizontalAlignment="Left"
+                Click="{x:Bind Path=ViewModel.Save}"/>
+    </Grid>
+</UserControl>

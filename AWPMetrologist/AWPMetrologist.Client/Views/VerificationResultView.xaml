@@ -1,0 +1,54 @@
+﻿<UserControl
+    x:Class="AWPMetrologist.Client.Views.VerificationResultView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AWPMetrologist.Client.Views"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:primitives="using:Microsoft.Toolkit.Uwp.UI.Controls.Primitives"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <controls:DataGrid AutoGenerateColumns="False"
+                           IsReadOnly="True"
+                           ItemsSource="{x:Bind Path=ViewModel.MS}"
+                           Loaded="{x:Bind Path=ViewModel.LoadData}">
+            <controls:DataGrid.Columns>
+                
+                <controls:DataGridTextColumn Header="№" 
+                                             Binding="{Binding Path=Item1.Id}"/>
+                <controls:DataGridTextColumn Header="Вид СИ" 
+                                             Binding="{Binding Path=Item1.Measuring.MSKind.Kind}"/>
+                <controls:DataGridTextColumn Header="Наименование СИ"
+                                             Binding="{Binding Path=Item1.Name}"/>
+                <controls:DataGridTextColumn Header="Тип СИ" 
+                                             Binding="{Binding Path=Item1.MSType}"/>
+                <controls:DataGridTextColumn Header="Заводской номер"
+                                             Width="SizeToHeader" 
+                                             Binding="{Binding Path=Item1.SerialNumber}"/>
+                <controls:DataGridTextColumn Header="Период" 
+                                             Width="SizeToHeader"
+                                             Binding="{Binding Path=Item1.Exploitation.Verification.Period}" />
+
+                <controls:DataGridTextColumn Header="Дата последней поверки"
+                                             Binding="{Binding Path=Item1.Exploitation.Verification.LastDate}"/>
+                <controls:DataGridTextColumn Header="Дата последующей поверки"
+                                             Binding="{Binding Path=Item1.Exploitation.Verification.LastDate}"/>
+
+                <controls:DataGridTextColumn Header="До поверки осталось" 
+                                             Binding="{Binding Path=Item2}"/>
+                <controls:DataGridTextColumn Header="Место проведения поверки" 
+                                             Binding="{Binding Path=Item1.Exploitation.Verification.VerificationPlace}"/>
+                <controls:DataGridTextColumn Header="Результат поверки" 
+                                             Binding="{Binding Path=Item1.Exploitation.Verification.Result}"/>
+                <controls:DataGridCheckBoxColumn Header="Замена"
+                                                 Width="SizeToHeader"
+                                                 Binding="{Binding Path=Item1.Exploitation.Verification.Replaced}"/>
+
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</UserControl>

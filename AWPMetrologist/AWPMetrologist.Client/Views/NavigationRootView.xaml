@@ -27,7 +27,7 @@
                                   Glyph="&#xE71D;" ></FontIcon>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                
+
                 <muxc:NavigationViewItem Tag="Accounting" 
                                          Content="Учёт СИ">
                     <muxc:NavigationViewItem.Icon>
@@ -37,7 +37,7 @@
                 </muxc:NavigationViewItem>
 
                 <muxc:NavigationViewItem Tag="Verification" 
-                                         Content="Поверка/Калибровка">
+                                         Content="Поверка">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets"
                                   Glyph="&#xE787;" ></FontIcon>
@@ -79,7 +79,7 @@
 
             </muxc:NavigationView.PaneFooter>
             -->
-            
+
             <Frame x:Name="AppNavFrame" 
                    Navigated="AppNavFrame_Navigated">
             </Frame>
