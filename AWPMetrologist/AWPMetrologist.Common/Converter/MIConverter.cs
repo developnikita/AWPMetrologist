@@ -134,7 +134,11 @@ namespace AWPMetrologist.Common.Converter
                     }
                 },
                 Name = dr["Name"].ToString(),
-                MSType = dr["MSType"].ToString(),
+                Type = new MSType()
+                {
+                    Id = Convert.ToInt32(dr["MSTypeId"]),
+                    Type = dr["Type"].ToString()
+                },
                 Cost = Convert.ToInt32(dr["Cost"])
             };
         }
@@ -149,7 +153,11 @@ namespace AWPMetrologist.Common.Converter
             {
                 Id = Convert.ToInt32(dr["Id"]),
                 Name = dr["Name"].ToString(),
-                MSType = dr["MSType"].ToString(),
+                Type = new MSType()
+                { 
+                    Id = Convert.ToInt32(dr["MSTypeId"]),
+                    Type = dr["Type"].ToString()
+                },
                 SerialNumber = dr["SerialNumber"].ToString(),
                 Measuring = new Measuring()
                 {
@@ -175,7 +183,7 @@ namespace AWPMetrologist.Common.Converter
                         Period = Convert.ToInt32(dr["Period"]),
                         Replaced = Convert.ToBoolean(dr["Replaced"]),
                         CertificateNumber = dr["CertificateNumber"].ToString(),
-                        VerificationResult = Convert.ToBoolean(dr["VerificationResut"]),
+                        VerificationResult = Convert.ToBoolean(dr["VerificationResult"]),
                         LastDate = DateTime.Parse(dr["LastDate"].ToString()),
                         NextDate = DateTime.Parse(dr["NextDate"].ToString())
                     },
@@ -198,6 +206,15 @@ namespace AWPMetrologist.Common.Converter
                     InventoryNumber = dr["InventoryNumber"].ToString(),
                     InstrumentReplacementDate = DateTime.Parse(dr["InstrumentReplacementDate"].ToString())
                 }
+            };
+        }
+
+        public static MSType FromDRToMSType(DataRow dr)
+        {
+            return new MSType()
+            {
+                Id = Convert.ToInt32(dr["Id"]),
+                Type = dr["Type"].ToString()
             };
         }
     }

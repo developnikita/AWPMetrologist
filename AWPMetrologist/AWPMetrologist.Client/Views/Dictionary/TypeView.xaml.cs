@@ -1,4 +1,4 @@
-﻿using AWPMetrologist.Client.Services.Navigation;
+﻿using AWPMetrologist.Client.ServiceReference;
 using AWPMetrologist.Client.ViewModels.Dictionary;
 using Windows.UI.Xaml.Controls;
 
@@ -6,16 +6,16 @@ using Windows.UI.Xaml.Controls;
 
 namespace AWPMetrologist.Client.Views.Dictionary
 {
-    public sealed partial class CategoryView : UserControl, IUserControlWithViewModel<CategoryViewModel>
+    public sealed partial class TypeView : UserControl
     {
-        public CategoryView()
+        public TypeView()
         {
             this.InitializeComponent();
-            ViewModel = new CategoryViewModel();
+            ViewModel = new TypeViewModel();
             UpdateBindings();
         }
 
-        public CategoryViewModel ViewModel { get; set; }
+        public TypeViewModel ViewModel { get; set; }
 
         public void UpdateBindings()
         {
@@ -25,7 +25,7 @@ namespace AWPMetrologist.Client.Views.Dictionary
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewModel.SelectedItems.Clear();
-            foreach (ServiceReference.MSCategory c in this.DataGrid.SelectedItems)
+            foreach (MSType c in this.DataGrid.SelectedItems)
             {
                 ViewModel.SelectedItems.Add(c);
             }

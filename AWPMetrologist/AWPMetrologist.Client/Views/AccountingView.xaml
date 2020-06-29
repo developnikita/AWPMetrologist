@@ -8,14 +8,14 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:c="using:AWPMetrologist.Client.Helpers"
     xmlns:local="using:AWPMetrologist.Client.Views"
-    mc:Ignorable="d"
-    Loaded="{x:Bind Path=ViewModel.LoadData}">
+    mc:Ignorable="d">
 
     <Page.Resources>
         <c:DateTimeToDateTimeOffsetConverter x:Key="DateConverter"/>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          Loaded="{x:Bind Path=ViewModel.LoadData}">
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <Grid Margin="{StaticResource PageMargin}">
                 <Grid.RowDefinitions>
@@ -60,8 +60,16 @@
 
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 
-                                       Text="Тип СИ"/>
-                            <TextBox Text="{x:Bind Path=ViewModel.MS.MSType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                       Text="Вид СИ"/>
+                            <ComboBox HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Path=ViewModel.Types}" 
+                                      SelectedItem="{x:Bind Path=ViewModel.MS.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Type}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </controls:DockPanel>
                         <controls:DockPanel>
                             <TextBlock controls:DockPanel.Dock="Left" 

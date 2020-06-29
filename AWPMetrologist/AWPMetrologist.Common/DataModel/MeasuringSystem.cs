@@ -25,7 +25,7 @@ namespace AWPMetrologist.Common.DataModel
         public string Name { get; set; }
 
         [DataMember]
-        public string MSType { get; set; }
+        public MSType Type { get; set; }
 
         [DataMember]
         public string SerialNumber { get; set; }

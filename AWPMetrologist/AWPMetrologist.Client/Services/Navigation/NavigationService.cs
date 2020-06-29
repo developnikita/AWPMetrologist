@@ -23,6 +23,7 @@ namespace AWPMetrologist.Client.Services.Navigation
             RegisterPageViewModel<VerificationView, VerificationViewModel>();
             RegisterPageViewModel<SchedulesView, SchedulesViewModel>();
             RegisterPageViewModel<HandbookView, HandbookViewModel>();
+            RegisterPageViewModel<RepairMeasuringSystemView, RepairMeasuringSystemViewModel>();
 
             Frame.Navigated += Frame_Navigated;
         }
@@ -36,6 +37,8 @@ namespace AWPMetrologist.Client.Services.Navigation
         public Task NavigateToSchedulesAsync() => NavigateToPage<SchedulesView>();
 
         public Task NavigateToHandbookAsync() => NavigateToPage<HandbookView>();
+
+        public Task NavigateToRepairAsync() => NavigateToPage<RepairMeasuringSystemView>();
 
         public async Task GoBackAsync()
         {

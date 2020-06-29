@@ -86,6 +86,15 @@ namespace AWPMetrologistService
         List<MeasuringSystem> GetMeasuringSystemsVerificationJson();
 
         [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        List<MSType> GetMSTypesJson();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        List<DeviceStatus> GetDeviceStatusesForAnalyzJson(MSType type, TechnicalCondition condition);
+
+        [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool AddMSCategory(MSCategory category);
@@ -168,6 +177,16 @@ namespace AWPMetrologistService
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool AddDeviceStatus(DeviceStatus deviceStatus);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool AddMSType(MSType type);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool DeleteMSCategory(MSCategory category);
 
         [OperationContract]
@@ -219,6 +238,11 @@ namespace AWPMetrologistService
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool DeleteVerificationMethod(VerificationMethod method);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool DeleteMSType(MSType type);
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,

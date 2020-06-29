@@ -15,6 +15,8 @@ namespace AWPMetrologist.Client.Services.Navigation
 
         Task NavigateToHandbookAsync();
 
+        Task NavigateToRepairAsync();
+
         Task GoBackAsync();
 
         bool CanGoBack { get; }

@@ -74,6 +74,7 @@ namespace AWPMetrologist.Client.ViewModels.Dictionary
             {
                 // Connection.AddMSCategory();
             }
+            ClearChangedData();
         }
 
         private int GetHighestId()

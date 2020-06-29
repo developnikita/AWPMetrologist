@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml.Controls;
 
 namespace AWPMetrologist.Client.ViewModels
@@ -25,6 +24,7 @@ namespace AWPMetrologist.Client.ViewModels
             _itemList.Add("Техническое состояние", new TechnicalConditionView());
             _itemList.Add("Единицы измерения", new UnitView());
             _itemList.Add("Метод поверки", new VerificationMethodView());
+            _itemList.Add("Тип измерителя", new TypeView());
         }
 
         public void ListItemClick(object sender, ItemClickEventArgs args)
@@ -69,6 +69,9 @@ namespace AWPMetrologist.Client.ViewModels
                     break;
                 case "VerificationMethodView":
                     _controlViewModel = (value as VerificationMethodView).ViewModel;
+                    break;
+                case "TypeView":
+                    _controlViewModel = (value as TypeView).ViewModel;
                     break;
             };
         }

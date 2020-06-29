@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AWPMetrologist.Client.ServiceReference;
+using System;
 using System.Collections.Generic;
+using Windows.Media.Capture;
 using Windows.UI.Xaml;
 
 namespace AWPMetrologist.Client.ViewModels
@@ -27,6 +29,7 @@ namespace AWPMetrologist.Client.ViewModels
             _storages = new List<ServiceReference.Storage>();
             _repairOrganizations = new List<ServiceReference.RepairOrganization>();
             _repairReasons = new List<ServiceReference.RepairReason>();
+            _types = new List<MSType>();
         }
 
         public async void LoadData(object sender, RoutedEventArgs args)
@@ -90,6 +93,12 @@ namespace AWPMetrologist.Client.ViewModels
             foreach (ServiceReference.RepairReason r in reasons)
             {
                 _repairReasons.Add(r);
+            }
+            var types = await Connection.Instance.GetMSTypes();
+            _types.Clear();
+            foreach (MSType t in types)
+            {
+                _types.Add(t);
             }
         }
 
@@ -190,6 +199,16 @@ namespace AWPMetrologist.Client.ViewModels
             private set { }
         }
 
+        public List<MSType> Types
+        {
+            get
+            {
+                return _types;
+            }
+
+            private set { }
+        }
+
         public ServiceReference.MeasuringSystem MS
         {
             get
@@ -217,5 +236,6 @@ namespace AWPMetrologist.Client.ViewModels
         private List<ServiceReference.Storage> _storages;
         private List<ServiceReference.RepairOrganization> _repairOrganizations;
         private List<ServiceReference.RepairReason> _repairReasons;
+        private List<MSType> _types;
     }
 }

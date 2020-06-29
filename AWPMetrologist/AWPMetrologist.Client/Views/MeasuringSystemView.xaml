@@ -8,10 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400"
-    Loaded="{x:Bind Path=ViewModel.LoadData}">
+    d:DesignWidth="400">
 
-    <Grid>
+    <Grid Loaded="{x:Bind Path=ViewModel.LoadData}">
         <controls:DataGrid AutoGenerateColumns="False"
                            IsReadOnly="True"
                            ItemsSource="{x:Bind Path=ViewModel.MS}">
@@ -21,7 +20,7 @@
                                              Binding="{Binding Path=Id}"/>
                 <controls:DataGridTextColumn Header="Тип СИ" 
                                              Width="SizeToHeader"
-                                             Binding="{Binding Path=MSType}"/>
+                                             Binding="{Binding Path=Type.Type}"/>
                 <controls:DataGridTextColumn Header="Наименование СИ" 
                                              Binding="{Binding Path=Name}"/>
                 <controls:DataGridTextColumn Header="Начальная стоимость"

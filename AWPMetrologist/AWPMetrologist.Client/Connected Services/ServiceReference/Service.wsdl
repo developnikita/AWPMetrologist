@@ -121,6 +121,18 @@
   <wsdl:message name="IService_GetMeasuringSystemsVerificationJson_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMeasuringSystemsVerificationJsonResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetMSTypesJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMSTypesJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMSTypesJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMSTypesJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDeviceStatusesForAnalyzJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceStatusesForAnalyzJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDeviceStatusesForAnalyzJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceStatusesForAnalyzJsonResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_AddMSCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMSCategory" />
   </wsdl:message>
@@ -217,6 +229,18 @@
   <wsdl:message name="IService_AddRepair_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddRepairResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_AddDeviceStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDeviceStatus" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddDeviceStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDeviceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMSType_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMSType" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddMSType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMSTypeResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_DeleteMSCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteMSCategory" />
   </wsdl:message>
@@ -282,6 +306,12 @@
   </wsdl:message>
   <wsdl:message name="IService_DeleteVerificationMethod_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteVerificationMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMSType_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMSType" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteMSType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMSTypeResponse" />
   </wsdl:message>
   <wsdl:message name="IService_UpdateExploitation_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateExploitation" />
@@ -372,6 +402,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsVerificationJson" message="tns:IService_GetMeasuringSystemsVerificationJson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMeasuringSystemsVerificationJsonResponse" message="tns:IService_GetMeasuringSystemsVerificationJson_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetMSTypesJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMSTypesJson" message="tns:IService_GetMSTypesJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMSTypesJsonResponse" message="tns:IService_GetMSTypesJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceStatusesForAnalyzJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDeviceStatusesForAnalyzJson" message="tns:IService_GetDeviceStatusesForAnalyzJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDeviceStatusesForAnalyzJsonResponse" message="tns:IService_GetDeviceStatusesForAnalyzJson_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddMSCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMSCategory" message="tns:IService_AddMSCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMSCategoryResponse" message="tns:IService_AddMSCategory_OutputMessage" />
@@ -436,6 +474,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddRepair" message="tns:IService_AddRepair_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/AddRepairResponse" message="tns:IService_AddRepair_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddDeviceStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddDeviceStatus" message="tns:IService_AddDeviceStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddDeviceStatusResponse" message="tns:IService_AddDeviceStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMSType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddMSType" message="tns:IService_AddMSType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddMSTypeResponse" message="tns:IService_AddMSType_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteMSCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteMSCategory" message="tns:IService_DeleteMSCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMSCategoryResponse" message="tns:IService_DeleteMSCategory_OutputMessage" />
@@ -479,6 +525,10 @@
     <wsdl:operation name="DeleteVerificationMethod">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteVerificationMethod" message="tns:IService_DeleteVerificationMethod_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteVerificationMethodResponse" message="tns:IService_DeleteVerificationMethod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMSType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteMSType" message="tns:IService_DeleteMSType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMSTypeResponse" message="tns:IService_DeleteMSType_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateExploitation">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateExploitation" message="tns:IService_UpdateExploitation_InputMessage" />
@@ -662,6 +712,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMSTypesJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMSTypesJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceStatusesForAnalyzJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetDeviceStatusesForAnalyzJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddMSCategory">
       <soap:operation soapAction="http://tempuri.org/IService/AddMSCategory" style="document" />
       <wsdl:input>
@@ -806,6 +874,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddDeviceStatus">
+      <soap:operation soapAction="http://tempuri.org/IService/AddDeviceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMSType">
+      <soap:operation soapAction="http://tempuri.org/IService/AddMSType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteMSCategory">
       <soap:operation soapAction="http://tempuri.org/IService/DeleteMSCategory" style="document" />
       <wsdl:input>
@@ -898,6 +984,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteVerificationMethod">
       <soap:operation soapAction="http://tempuri.org/IService/DeleteVerificationMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMSType">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteMSType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

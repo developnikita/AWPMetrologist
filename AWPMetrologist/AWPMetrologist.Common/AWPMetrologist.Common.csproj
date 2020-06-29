@@ -52,6 +52,7 @@
     <Compile Include="DataModel\MeasuringSystem.cs" />
     <Compile Include="DataModel\MSCategory.cs" />
     <Compile Include="DataModel\MSKind.cs" />
+    <Compile Include="DataModel\MSType.cs" />
     <Compile Include="DataModel\Repair.cs" />
     <Compile Include="DataModel\RepairOrganization.cs" />
     <Compile Include="DataModel\RepairReason.cs" />

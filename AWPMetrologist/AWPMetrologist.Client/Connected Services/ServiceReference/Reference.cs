@@ -32,8 +32,6 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         private AWPMetrologist.Client.ServiceReference.MSCategory MSCategoryField;
         
-        private string MSTypeField;
-        
         private AWPMetrologist.Client.ServiceReference.Measuring MeasuringField;
         
         private string NameField;
@@ -41,6 +39,8 @@ namespace AWPMetrologist.Client.ServiceReference {
         private System.DateTime ProductionDateField;
         
         private string SerialNumberField;
+        
+        private AWPMetrologist.Client.ServiceReference.MSType TypeField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public float Cost {
@@ -121,19 +121,6 @@ namespace AWPMetrologist.Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MSType {
-            get {
-                return this.MSTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MSTypeField, value) != true)) {
-                    this.MSTypeField = value;
-                    this.RaisePropertyChanged("MSType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public AWPMetrologist.Client.ServiceReference.Measuring Measuring {
             get {
                 return this.MeasuringField;
@@ -181,6 +168,19 @@ namespace AWPMetrologist.Client.ServiceReference {
                 if ((object.ReferenceEquals(this.SerialNumberField, value) != true)) {
                     this.SerialNumberField = value;
                     this.RaisePropertyChanged("SerialNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AWPMetrologist.Client.ServiceReference.MSType Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }
@@ -586,6 +586,51 @@ namespace AWPMetrologist.Client.ServiceReference {
                 if ((this.UpperLimitField.Equals(value) != true)) {
                     this.UpperLimitField = value;
                     this.RaisePropertyChanged("UpperLimit");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MSType", Namespace="http://schemas.datacontract.org/2004/07/AWPMetrologist.Common.DataModel")]
+    public partial class MSType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int IdField;
+        
+        private string TypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }
@@ -1381,6 +1426,12 @@ namespace AWPMetrologist.Client.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMeasuringSystemsVerificationJson", ReplyAction="http://tempuri.org/IService/GetMeasuringSystemsVerificationJsonResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MeasuringSystem>> GetMeasuringSystemsVerificationJsonAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMSTypesJson", ReplyAction="http://tempuri.org/IService/GetMSTypesJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MSType>> GetMSTypesJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDeviceStatusesForAnalyzJson", ReplyAction="http://tempuri.org/IService/GetDeviceStatusesForAnalyzJsonResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.DeviceStatus>> GetDeviceStatusesForAnalyzJsonAsync(AWPMetrologist.Client.ServiceReference.MSType type, AWPMetrologist.Client.ServiceReference.TechnicalCondition condition);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddMSCategory", ReplyAction="http://tempuri.org/IService/AddMSCategoryResponse")]
         System.Threading.Tasks.Task<bool> AddMSCategoryAsync(AWPMetrologist.Client.ServiceReference.MSCategory category);
         
@@ -1429,6 +1480,12 @@ namespace AWPMetrologist.Client.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddRepair", ReplyAction="http://tempuri.org/IService/AddRepairResponse")]
         System.Threading.Tasks.Task<bool> AddRepairAsync(AWPMetrologist.Client.ServiceReference.Repair repair);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddDeviceStatus", ReplyAction="http://tempuri.org/IService/AddDeviceStatusResponse")]
+        System.Threading.Tasks.Task<bool> AddDeviceStatusAsync(AWPMetrologist.Client.ServiceReference.DeviceStatus deviceStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddMSType", ReplyAction="http://tempuri.org/IService/AddMSTypeResponse")]
+        System.Threading.Tasks.Task<bool> AddMSTypeAsync(AWPMetrologist.Client.ServiceReference.MSType type);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteMSCategory", ReplyAction="http://tempuri.org/IService/DeleteMSCategoryResponse")]
         System.Threading.Tasks.Task<bool> DeleteMSCategoryAsync(AWPMetrologist.Client.ServiceReference.MSCategory category);
         
@@ -1461,6 +1518,9 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteVerificationMethod", ReplyAction="http://tempuri.org/IService/DeleteVerificationMethodResponse")]
         System.Threading.Tasks.Task<bool> DeleteVerificationMethodAsync(AWPMetrologist.Client.ServiceReference.VerificationMethod method);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteMSType", ReplyAction="http://tempuri.org/IService/DeleteMSTypeResponse")]
+        System.Threading.Tasks.Task<bool> DeleteMSTypeAsync(AWPMetrologist.Client.ServiceReference.MSType type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateExploitation", ReplyAction="http://tempuri.org/IService/UpdateExploitationResponse")]
         System.Threading.Tasks.Task<bool> UpdateExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation);
@@ -1588,6 +1648,14 @@ namespace AWPMetrologist.Client.ServiceReference {
             return base.Channel.GetMeasuringSystemsVerificationJsonAsync();
         }
         
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.MSType>> GetMSTypesJsonAsync() {
+            return base.Channel.GetMSTypesJsonAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<AWPMetrologist.Client.ServiceReference.DeviceStatus>> GetDeviceStatusesForAnalyzJsonAsync(AWPMetrologist.Client.ServiceReference.MSType type, AWPMetrologist.Client.ServiceReference.TechnicalCondition condition) {
+            return base.Channel.GetDeviceStatusesForAnalyzJsonAsync(type, condition);
+        }
+        
         public System.Threading.Tasks.Task<bool> AddMSCategoryAsync(AWPMetrologist.Client.ServiceReference.MSCategory category) {
             return base.Channel.AddMSCategoryAsync(category);
         }
@@ -1652,6 +1720,14 @@ namespace AWPMetrologist.Client.ServiceReference {
             return base.Channel.AddRepairAsync(repair);
         }
         
+        public System.Threading.Tasks.Task<bool> AddDeviceStatusAsync(AWPMetrologist.Client.ServiceReference.DeviceStatus deviceStatus) {
+            return base.Channel.AddDeviceStatusAsync(deviceStatus);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddMSTypeAsync(AWPMetrologist.Client.ServiceReference.MSType type) {
+            return base.Channel.AddMSTypeAsync(type);
+        }
+        
         public System.Threading.Tasks.Task<bool> DeleteMSCategoryAsync(AWPMetrologist.Client.ServiceReference.MSCategory category) {
             return base.Channel.DeleteMSCategoryAsync(category);
         }
@@ -1694,6 +1770,10 @@ namespace AWPMetrologist.Client.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteVerificationMethodAsync(AWPMetrologist.Client.ServiceReference.VerificationMethod method) {
             return base.Channel.DeleteVerificationMethodAsync(method);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteMSTypeAsync(AWPMetrologist.Client.ServiceReference.MSType type) {
+            return base.Channel.DeleteMSTypeAsync(type);
         }
         
         public System.Threading.Tasks.Task<bool> UpdateExploitationAsync(AWPMetrologist.Client.ServiceReference.Exploitation exploitation) {

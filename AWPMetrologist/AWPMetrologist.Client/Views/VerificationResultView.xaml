@@ -32,7 +32,7 @@
                 <controls:DataGridTextColumn Header="Наименование СИ"
                                              Binding="{Binding Path=Item1.Name}"/>
                 <controls:DataGridTextColumn Header="Тип СИ" 
-                                             Binding="{Binding Path=Item1.MSType}"/>
+                                             Binding="{Binding Path=Item1.Type.Type}"/>
                 <controls:DataGridTextColumn Header="Заводской номер"
                                              Width="SizeToHeader" 
                                              Binding="{Binding Path=Item1.SerialNumber}"/>

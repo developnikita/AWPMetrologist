@@ -212,6 +212,34 @@ namespace AWPMetrologist.Client
             }
         }
 
+        public async Task<List<MSType>> GetMSTypes()
+        {
+            var result = await _client.GetMSTypesJsonAsync();
+
+            if (result != null)
+            {
+                return result.ToList();
+            }
+            else
+            {
+                return new List<MSType>();
+            }
+        }
+
+        public async Task<List<DeviceStatus>> GetDeviceStatusesForAnalyz(MSType type, TechnicalCondition condition)
+        {
+            var result = await _client.GetDeviceStatusesForAnalyzJsonAsync(type, condition);
+
+            if (result != null)
+            {
+                return result.ToList();
+            }
+            else
+            {
+                return new List<DeviceStatus>();
+            }
+        }
+
         public async Task<bool> AddMSCategory(MSCategory category)
         {
             var result = await _client.AddMSCategoryAsync(category);
@@ -303,6 +331,20 @@ namespace AWPMetrologist.Client
             return result;
         }
 
+        public async Task<bool> AddDeviceStatus(DeviceStatus deviceStatus)
+        {
+            var result = await _client.AddDeviceStatusAsync(deviceStatus);
+
+            return result;
+        }
+
+        public async Task<bool> AddMSType(MSType type)
+        {
+            var result = await _client.AddMSTypeAsync(type);
+
+            return result;
+        }
+
         public async Task<bool> DeleteMSCategory(MSCategory category)
         {
             var result = await _client.DeleteMSCategoryAsync(category);
@@ -376,6 +418,13 @@ namespace AWPMetrologist.Client
         public async Task<bool> DeleteVerificationMethod(VerificationMethod method)
         {
             var result = await _client.DeleteVerificationMethodAsync(method);
+
+            return result;
+        }
+
+        public async Task<bool> DeleteMSType(MSType type)
+        {
+            var result = await _client.DeleteMSTypeAsync(type);
 
             return result;
         }

@@ -1,6 +1,4 @@
 ﻿using AWPMetrologist.Client.Helpers;
-using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
@@ -75,6 +73,7 @@ namespace AWPMetrologist.Client.ViewModels.Dictionary
             {
                 // Connection.AddMSCategory();
             }
+            ClearChangedData();
         }
 
         private int GetHighestId()
@@ -117,7 +116,6 @@ namespace AWPMetrologist.Client.ViewModels.Dictionary
 
             private set { }
         }
-
 
         private ObservableCollection<ServiceReference.MSCategory> _categories;
         private Dictionary<DataAction, List<ServiceReference.MSCategory>> _changedCategory;

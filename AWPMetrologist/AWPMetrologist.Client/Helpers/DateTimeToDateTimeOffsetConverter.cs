@@ -22,8 +22,12 @@ namespace AWPMetrologist.Client.Helpers
         {
             try
             {
-                DateTimeOffset dto = (DateTimeOffset)value;
-                return dto.DateTime;
+                if (value != null)
+                {
+                    DateTimeOffset dto = (DateTimeOffset)value;
+                    return dto.DateTime;
+                }
+                return DateTime.Now;
             }
             catch (Exception ex)
             {

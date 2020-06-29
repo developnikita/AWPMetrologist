@@ -78,6 +78,11 @@ namespace AWPMetrologist.Client.Views
                         _navigationService.NavigateToSchedulesAsync();
                     }
                     break;
+                case "Repair":
+                    {
+                        _navigationService.NavigateToRepairAsync();
+                    }
+                    break;
 
             }
         }

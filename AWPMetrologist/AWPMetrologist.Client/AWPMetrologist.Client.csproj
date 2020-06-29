@@ -131,6 +131,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\Analyz.cs" />
     <Compile Include="Helpers\DataAction.cs" />
     <Compile Include="Helpers\DateFormatConverter.cs" />
     <Compile Include="Helpers\DateTimeToDateTimeOffsetConverter.cs" />
@@ -155,6 +156,8 @@
     <Compile Include="Services\Navigation\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="ViewModels\AccountingViewModel.cs" />
+    <Compile Include="ViewModels\BreakdownAnalysisViewModel.cs" />
+    <Compile Include="ViewModels\DeviceStatusViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\CommandViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\FactoryManufacturerViewModel.cs" />
@@ -165,18 +168,26 @@
     <Compile Include="ViewModels\Dictionary\RepairReasonViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\StorageViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\TechnicalConditionViewModel.cs" />
+    <Compile Include="ViewModels\Dictionary\TypeViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\UnitViewModel.cs" />
     <Compile Include="ViewModels\Dictionary\VerificationMethodViewModel.cs" />
     <Compile Include="ViewModels\HandbookViewModel.cs" />
     <Compile Include="ViewModels\MeasuringSystemVerificationViewModel.cs" />
     <Compile Include="ViewModels\MeasuringSystemViewModel.cs" />
     <Compile Include="ViewModels\ReferenceDataViewModel.cs" />
+    <Compile Include="ViewModels\RepairMeasuringSystemViewModel.cs" />
     <Compile Include="ViewModels\SchedulesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\VerificationResultViewModel.cs" />
     <Compile Include="ViewModels\VerificationViewModel.cs" />
     <Compile Include="Views\AccountingView.xaml.cs">
       <DependentUpon>AccountingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BreakdownAnalysisView.xaml.cs">
+      <DependentUpon>BreakdownAnalysisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceStatusView.xaml.cs">
+      <DependentUpon>DeviceStatusView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dictionary\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
@@ -205,6 +216,9 @@
     <Compile Include="Views\Dictionary\TechnicalConditionView.xaml.cs">
       <DependentUpon>TechnicalConditionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dictionary\TypeView.xaml.cs">
+      <DependentUpon>TypeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dictionary\UnitView.xaml.cs">
       <DependentUpon>UnitView.xaml</DependentUpon>
     </Compile>
@@ -225,6 +239,9 @@
     </Compile>
     <Compile Include="Views\ReferenceData.xaml.cs">
       <DependentUpon>ReferenceData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepairMeasuringSystemView.xaml.cs">
+      <DependentUpon>RepairMeasuringSystemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SchedulesView.xaml.cs">
       <DependentUpon>SchedulesView.xaml</DependentUpon>
@@ -270,6 +287,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MSKind.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.MSType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\AWPMetrologist.Client.ServiceReference.Repair.datasource">
@@ -341,6 +361,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\BreakdownAnalysisView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceStatusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dictionary\CategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -377,6 +405,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dictionary\TypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dictionary\UnitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -402,6 +434,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReferenceData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RepairMeasuringSystemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -450,7 +486,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="DataModels\" />
     <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>

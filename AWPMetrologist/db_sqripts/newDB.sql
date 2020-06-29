@@ -73,16 +73,6 @@ CREATE TABLE dbo.Storage
 );
 GO
 
-/*
-CREATE TABLE dbo.StorageInformation
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
-	[StorageId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Storage(Id),
-	[StorageDate] DATE NOT NULL
-);
-GO
-*/
-
 CREATE TABLE dbo.RepairReason
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
@@ -103,6 +93,13 @@ CREATE TABLE dbo.VerificationMethod
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
 	[Method] VARCHAR(50) NOT NULL
+);
+GO
+
+CREATE TABLE dbo.MSType
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Type] VARCHAR(50) NOT NULL
 );
 GO
 
@@ -156,8 +153,8 @@ CREATE TABLE dbo.MeasuringSystem
 	[MeasuringId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Measuring(Id),
 	[FactoryManufacturerId] INT NOT NULL FOREIGN KEY REFERENCES dbo.FactoryManufacturer(Id),
 	[ExploitationId] INT NOT NULL FOREIGN KEY REFERENCES dbo.Exploitation(Id),
+	[MSTypeId] INT NOT NULL FOREIGN KEY REFERENCES dbo.MSType(Id),
 	[Name] VARCHAR(20) NOT NULL,
-	[MSType] VARCHAR(30) NOT NULL,
 	[SerialNumber] VARCHAR(50) NOT NULL,
 	[ProductionDate] DATE NOT NULL,
 	[LifeTime] INT NOT NULL,

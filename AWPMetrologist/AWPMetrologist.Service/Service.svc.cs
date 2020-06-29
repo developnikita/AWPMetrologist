@@ -105,6 +105,26 @@ namespace AWPMetrologistService
             return GetMeasuringSystemsVerification();
         }
 
+        public List<MSType> GetMSTypesJson()
+        {
+            var types = new List<MSType>();
+
+            string sqlStr = "SELECT * FROM dbo.MSType;";
+
+            using (DataTable dt = SendQueryToDB(sqlStr))
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        types.Add(MIConverter.FromDRToMSType(dr));
+                    }
+                }
+            }
+
+            return types;
+        }
+
         private List<MeasuringSystem> GetMeasuringSystems()
         {
             var ms = new List<MeasuringSystem>();
@@ -433,7 +453,7 @@ namespace AWPMetrologistService
         {
             var statuses = new List<DeviceStatus>();
 
-            string sqlStr = "SELECT * FROM";
+            string sqlStr = "SELECT * FROM dbo.DeviceStatuses";
 
             using (DataTable dt = SendQueryToDB(sqlStr))
             {
@@ -453,10 +473,11 @@ namespace AWPMetrologistService
             string sqlStr = "SELECT ms.Id, ms.MSCategoryId, ms.MeasuringId, " +
                             "ms.ExploitationId, e.VerificationId, " +
                             "m.MSKindId, v.Period, ms.Name, " +
-                            "ms.MSType, ms.Cost, c.Category, " +
+                            "MSTypeId, Type, ms.Cost, c.Category, " +
                             "k.Kind, il.Location, e.InstallationLocationId " +
                             "FROM dbo.MeasuringSystem AS ms " +
                             "LEFT JOIN dbo.MSCategory AS c ON ms.MSCategoryId = c.Id " +
+                            "LEFT JOIN dbo.MSType AS t ON ms.MSTypeId = t.Id " +
                             "LEFT JOIN dbo.Measuring AS m ON ms.MeasuringId = m.Id " +
                             "LEFT JOIN dbo.MSKind AS k ON m.MSKindId = k.Id " +
                             "LEFT JOIN dbo.Exploitation AS e ON ms.ExploitationId = e.Id " +
@@ -477,16 +498,17 @@ namespace AWPMetrologistService
         private List<MeasuringSystem> GetMeasuringSystemsVerification()
         {
             var ms = new List<MeasuringSystem>();
-            
-            string sqlStr = "SELECT ms.Id, MeasuringId, ExploitationId, MSType, " +
+
+            string sqlStr = "SELECT ms.Id, MeasuringId, ExploitationId, MSTypeId, " +
                             "Name, SerialNumber, MSKindId, Kind, VerificationId, " +
                             "VerificationMethodId, Method, VerificationPlace, " +
-                            "CertificateNumber, VerificationResut, Replaced, LastDate, " +
-                            "NextDate, Period, " +
+                            "CertificateNumber, VerificationResult, Replaced, LastDate, " +
+                            "NextDate, Period, Type, " +
                             "InstallationLocationId, StorageId, RepairId, " +
                             "SendToStore, PrimOrSec, InstallationDate, " +
                             "Indicator, InventoryNumber, InstrumentReplacementDate " +
                             "FROM dbo.MeasuringSystem AS ms " +
+                            "LEFT JOIN dbo.MSType AS t ON ms.MSTypeId = t.Id " +
                             "LEFT JOIN dbo.Measuring AS m ON ms.MeasuringId = m.Id " +
                             "LEFT JOIN dbo.MSKind AS k ON m.MSKindId = k.Id " +
                             "LEFT JOIN dbo.Exploitation AS e ON ms.ExploitationId = e.Id " +
@@ -505,6 +527,25 @@ namespace AWPMetrologistService
             }
 
             return ms;
+        }
+
+        public List<DeviceStatus> GetDeviceStatusesForAnalyzJson(MSType type, TechnicalCondition condition)
+        {
+            var result = new List<DeviceStatus>();
+            string sqlStr = "SELECT * FROM dbo.DeviceStatus AS ds " +
+                            "LEFT JOIN dbo.MeasuringSystem AS ms ON ds.MSId=ms.Id " +
+                            "WHERE TechnicalConditionId=@Condition AND ms.MSTypeId=@TypeId;";
+
+            using (SqlConnection sqlCon = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
+                cmd.Parameters.Add("@Condition", SqlDbType.Int).Value = condition.Id;
+                cmd.Parameters.Add("@TypeId", SqlDbType.Int).Value = type.Id;
+                sqlCon.Open();
+                var test = cmd.ExecuteReader();
+            }
+
+            return result;
         }
 
         private DataTable SendQueryToDB(string sqlQuery)
@@ -754,7 +795,7 @@ namespace AWPMetrologistService
         {
             int result;
             string sqlStr = "INSERT INTO dbo.MeasuringSystem VALUES(@Category, @Measuring, @Factory," +
-                            " @Exploitation, @Name, @Type, @SerialNumber, @ProductionDate, @LifeTime, @Cost)";
+                            " @Exploitation, @Type, @Name, @SerialNumber, @ProductionDate, @LifeTime, @Cost)";
             int measuringId = AddMeasuring(system.Measuring);
             int exploitationId = AddExploitation(system.Exploitation);
             using (SqlConnection sqlCon = new SqlConnection(_connectionString))
@@ -765,7 +806,7 @@ namespace AWPMetrologistService
                 cmd.Parameters.Add("@Factory", SqlDbType.Int).Value = system.FactoryManufacturer.Id;
                 cmd.Parameters.Add("@Exploitation", SqlDbType.Int).Value = exploitationId;
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = system.Name;
-                cmd.Parameters.Add("@Type", SqlDbType.NVarChar).Value = system.MSType;
+                cmd.Parameters.Add("@Type", SqlDbType.Int).Value = system.Type.Id;
                 cmd.Parameters.Add("@SerialNumber", SqlDbType.NVarChar).Value = system.SerialNumber;
                 cmd.Parameters.Add("@ProductionDate", SqlDbType.Date).Value = system.ProductionDate.Date;
                 cmd.Parameters.Add("@LifeTime", SqlDbType.Int).Value = system.LifeTime;
@@ -865,6 +906,49 @@ namespace AWPMetrologistService
                 sqlCon.Open();
                 result = cmd.ExecuteNonQuery();
             }
+            if (result != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddDeviceStatus(DeviceStatus deviceStatus)
+        {
+            int result;
+            string sqlStr = "INSERT INTO dbo.DeviceStatus VALUES(@MSID, @Condition, @FromTime, @ToTime);";
+
+            using (SqlConnection sqlCon = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
+                cmd.Parameters.Add("@Condition", SqlDbType.Int).Value = deviceStatus.Condition.Id;
+                cmd.Parameters.Add("@MSID", SqlDbType.Int).Value = deviceStatus.MS.Id;
+                cmd.Parameters.Add("@FromTime", SqlDbType.Date).Value = deviceStatus.FromTime.Date;
+                cmd.Parameters.Add("@ToTime", SqlDbType.Date).Value = deviceStatus.ToTime.Date;
+                sqlCon.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+
+            if (result != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddMSType(MSType type)
+        {
+            int result;
+            string sqlStr = "INSERT INTO dbo.MSType VALUES(@Type);";
+
+            using (SqlConnection sqlCon = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
+                cmd.Parameters.Add("@Type", SqlDbType.NVarChar).Value = type.Type;
+                sqlCon.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+
             if (result != 0)
             {
                 return true;
@@ -1070,6 +1154,25 @@ namespace AWPMetrologistService
             {
                 SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = method.Id;
+                sqlCon.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+
+            if (result != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteMSType(MSType type)
+        {
+            int result;
+            string sqlStr = "DELETE FROM dbo.MSType WHERE Id=@Id";
+            using (SqlConnection sqlCon = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStr, sqlCon);
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = type.Id;
                 sqlCon.Open();
                 result = cmd.ExecuteNonQuery();
             }

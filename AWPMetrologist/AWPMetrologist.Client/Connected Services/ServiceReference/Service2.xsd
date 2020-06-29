@@ -14,11 +14,11 @@
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LifeTime" type="xs:int" />
       <xs:element minOccurs="0" name="MSCategory" nillable="true" type="tns:MSCategory" />
-      <xs:element minOccurs="0" name="MSType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Measuring" nillable="true" type="tns:Measuring" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductionDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="tns:MSType" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MeasuringSystem" nillable="true" type="tns:MeasuringSystem" />
@@ -144,6 +144,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Unit" nillable="true" type="tns:Unit" />
+  <xs:complexType name="MSType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MSType" nillable="true" type="tns:MSType" />
   <xs:complexType name="ArrayOfExploitation">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Exploitation" nillable="true" type="tns:Exploitation" />
@@ -257,4 +264,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DeviceStatus" nillable="true" type="tns:DeviceStatus" />
+  <xs:complexType name="ArrayOfMSType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MSType" nillable="true" type="tns:MSType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMSType" nillable="true" type="tns:ArrayOfMSType" />
 </xs:schema>
